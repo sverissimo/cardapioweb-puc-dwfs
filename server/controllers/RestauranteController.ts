@@ -41,6 +41,7 @@ class RestauranteController {
             return res.status(201).json(restaurante)
 
         } catch (error) {
+            console.log("🚀 ~ file: RestauranteController.ts ~ line 44 ~ RestauranteController ~ create ~ error", error)
             res.status(400).send(`Restaurante de nome ${req?.body?.nome} já existe`)
         }
     }

@@ -9,8 +9,9 @@ export class CreateTableRestaurantes1637287986960 implements MigrationInterface 
                 columns: [
                     {
                         name: 'id',
-                        type: 'uuid',
-                        isPrimary: true
+                        type: 'integer',
+                        isPrimary: true,
+                        isGenerated: true
                     },
                     {
                         name: 'nome',
@@ -28,7 +29,8 @@ export class CreateTableRestaurantes1637287986960 implements MigrationInterface 
                     },
                     {
                         name: 'endereco',
-                        type: 'text'
+                        type: 'text',
+                        isNullable: true
                     },
                     {
                         name: 'cozinha_id',

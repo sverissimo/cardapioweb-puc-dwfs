@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Restaurante } from "./Restaurante";
 
 @Entity('usuarios')
 class Usuario {
@@ -18,6 +19,12 @@ class Usuario {
     @Column()
     perfil: string;
 
+    @Column()
+    restaurante_id?: number;
+
+    @OneToOne(() => Restaurante)
+    @JoinColumn({ name: 'restaurante_id' })
+    restaurante: Restaurante
 }
 
 export { Usuario }

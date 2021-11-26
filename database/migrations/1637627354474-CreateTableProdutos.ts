@@ -19,7 +19,8 @@ export class CreateTableProdutos1637627354474 implements MigrationInterface {
                     },
                     {
                         name: 'descricao',
-                        type: 'varchar'
+                        type: 'varchar',
+                        isNullable: true
                     },
                     {
                         name: 'preco',
@@ -36,7 +37,7 @@ export class CreateTableProdutos1637627354474 implements MigrationInterface {
                     },
                     {
                         name: 'restaurante_id',
-                        type: 'varchar',
+                        type: 'integer',
                     },
 
                 ]

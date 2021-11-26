@@ -12,7 +12,7 @@ class ProdutoService {
     }
 
     async list() {
-        const produtos = await this.produtoRepository.find({ relations: ['categoria'] });
+        const produtos = await this.produtoRepository.find({ relations: ['categoria', 'restaurante'] });
         return produtos
     }
 
@@ -27,7 +27,7 @@ class ProdutoService {
 
     async getProduto(id: number) {
 
-        const produtos = await this.produtoRepository.findOne(id, { relations: ['categoria'] })
+        const produtos = await this.produtoRepository.findOne(id, { relations: ['categoria', 'restaurante'] })
 
         if (!produtos)
             throw new Error('Produto não encontrado')

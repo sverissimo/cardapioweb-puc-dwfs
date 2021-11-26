@@ -11,8 +11,13 @@ export class UsuarioService {
     }
 
     async list() {
-        const usuarios = await this.usuarioRepository.find({ order: { nome: 'ASC' } })
-        return usuarios
+        try {
+
+            const usuarios = await this.usuarioRepository.find({ relations: ['restaurante'], order: { nome: 'ASC' } })
+            return usuarios
+        } catch (error) {
+            console.log({ error })
+        }
     }
 
     async create(usuario: Usuario) {

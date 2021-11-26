@@ -24,7 +24,7 @@ class Produto {
     categoria_id: number;
 
     @Column({ nullable: true })
-    restaurante_id: string;
+    restaurante_id: number;
 
     @JoinColumn({ name: 'categoria_id' })
     @ManyToOne(() => Categoria)

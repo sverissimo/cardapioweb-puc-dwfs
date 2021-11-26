@@ -28,6 +28,11 @@ export class CreateTableUsuarios1637595198271 implements MigrationInterface {
                     name: 'perfil',
                     type: 'varchar'
                 },
+                {
+                    name: 'restaurante_id',
+                    type: 'integer',
+                    isNullable: true
+                },
             ]
         }))
     }
