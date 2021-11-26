@@ -13,6 +13,7 @@
 
 .stripContent {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 80%;
 
@@ -21,20 +22,22 @@
     }
 
     p {
-        margin-left: 2rem;
         padding: 0.25rem 0 0.25rem 2rem;
         border-left: 1px solid #555;
     }
-
+    a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
     span {
         margin-left: auto;
-        cursor: pointer;
     }
-    img {
-        //margin-left: 12%;
-        padding-top: 0.1rem;
-        cursor: pointer;
-    }
+}
+.homeLogo {
+    //margin-left: 12%;
+    padding-top: 0.1rem;
+    cursor: pointer;
 }
 
 .mainImage {

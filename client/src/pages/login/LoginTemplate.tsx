@@ -1,21 +1,42 @@
+import { ReactNode } from 'react'
 import styles from './login.module.scss'
 
+interface Props {
+    signIn(e: any): Promise<void>;
+    handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
+}
+
 const { loginContainer, formContainer } = styles
-const LoginTemplate = () => {
+const LoginTemplate = (props: Props): JSX.Element => {
+
+    const { signIn, handleInput } = props
+
     return (
         <div className={loginContainer}>
             <h2>Fazer login</h2>
             <main className={formContainer}>
 
-                <form>
+                <form onSubmit={signIn}>
                     <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Endereço de e-mail</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <label htmlFor="inputEmail" className="form-label">Endereço de e-mail</label>
+                        <input
+                            name="email"
+                            className="form-control"
+                            type="email"
+                            id="inputEmail"
+                            aria-describedby="emailHelp"
+                            onChange={handleInput}
+                        />
                         <div id="emailHelp" className="form-text">Seu endereço de e-mail não será compartilhado com nenhum terceiro</div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Senha</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" />
+                        <input
+                            name="password"
+                            onChange={handleInput}
+                            type="password"
+                            className="form-control"
+                            id="exampleInputPassword1" />
                     </div>
                     {/* <div className="mb-3 form-check">
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />

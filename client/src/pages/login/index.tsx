@@ -1,6 +1,6 @@
-import { useEffect } from "react"
+import React, { useEffect, useState } from 'react'
 import { axiosApi } from "../../services/axiosApi"
-
+import { ToastContainer, toast } from 'react-toastify'
 
 import LoginTemplate from "./LoginTemplate"
 
@@ -13,30 +13,36 @@ const tst = {
 
 const Login = () => {
 
-    const signIn = async (user: object) => {
+    const [state, setState] = useState({})
 
-        //Efetua o login com as informações preenchidas pelo usuário
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        setState({ ...state, [name]: value })
+    }
+
+    const signIn = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+
         try {
-            await axiosApi.post('usuarios', user)
-            //caso as credenciais (usuário/senha) estejam certas, um token foi armazenado. Faz-se então uma requisição GET dos dados do usuário
-            const
-                getUser = await axiosApi.get('/getUser'),
-                userFound = getUser?.data
-            //Ao se descodificar o token, se as credenciais estiverem certas e o token válido, retorna o usuário, armazena na globalStore e cria cookie local.      
-
+            const loggedUser = await axiosApi.post('login', state)
+            console.log("🚀 ~ file: index.tsx ~ line 21 ~ signIn ~ loggedUser", loggedUser)
+            toast.success('Alright')
             /* setCookie('loggedIn', true)
             props.logUser(userFound) */
         }
         catch (err) {
-            //toast(err?.response?.data, 'error')
+            console.log("🚀 ~ file: index.tsx ~ line 35 ~ signIn ~ err?.response?.data", err?.response?.data)
+            toast.error(err?.response?.data)
         }
-
-
     }
 
     return (
         <>
-            <LoginTemplate />
+            <LoginTemplate
+                handleInput={handleInput}
+                signIn={signIn}
+            />
+            <ToastContainer />
         </>
     )
 

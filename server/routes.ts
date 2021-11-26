@@ -33,5 +33,6 @@ routes.get('/cardapio/:restauranteId', produtoController.getCardapio)
 
 routes.get('/usuarios', usuarioController.list)
 routes.post('/usuarios', usuarioController.create)
+routes.post('/login', usuarioController.login)
 
 export { routes }
