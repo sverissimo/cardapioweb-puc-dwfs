@@ -1,0 +1,44 @@
+/* .headerContainer {
+    
+}
+ */
+.logoStrip {
+    display: flex;
+    background-color: #eee;
+    justify-content: center;
+    width: 100%;
+    min-width: 812px;
+    margin-bottom: 1rem;
+}
+
+.stripContent {
+    display: flex;
+    align-items: center;
+    width: 80%;
+
+    h1 {
+        margin-left: 2rem;
+    }
+
+    p {
+        margin-left: 2rem;
+        padding: 0.25rem 0 0.25rem 2rem;
+        border-left: 1px solid #555;
+    }
+
+    span {
+        margin-left: auto;
+        cursor: pointer;
+    }
+    img {
+        //margin-left: 12%;
+        padding-top: 0.1rem;
+        cursor: pointer;
+    }
+}
+
+.mainImage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

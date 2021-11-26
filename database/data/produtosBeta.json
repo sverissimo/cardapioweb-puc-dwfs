@@ -1,0 +1,82 @@
+[
+    {
+        "nome": "Rolinho primavera",
+        "descricao": "Rolinho primavera (unidade)",
+        "preco": 8,
+        "ativo": true,
+        "categoria_id": 1,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Rolinho de queijo",
+        "descricao": "Rolinho de queijo (unidade)",
+        "preco": 12,
+        "ativo": true,
+        "categoria_id": 1,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Rolinho de camarão",
+        "descricao": "Rolinho de camarão (unidade)",
+        "preco": 15,
+        "ativo": true,
+        "categoria_id": 1,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Frango com legumes",
+        "descricao": "Frango, brócolis, cenoura, cogumelo, acelga e pimentão vermelho",
+        "preco": 53.90,
+        "ativo": true,
+        "categoria_id": 2,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Carne com legumes",
+        "descricao": "Carne, brócolis, cenoura, cogumelo, acelga e pimentão vermelho",
+        "preco": 60,
+        "ativo": true,
+        "categoria_id": 2,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Água mineral",
+        "descricao": "Água mineral",
+        "preco": 4.50,
+        "ativo": true,
+        "categoria_id": 3,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Refrigerante lata",
+        "descricao": "Escolha o saber de sua preferência",
+        "preco": 6.00,
+        "ativo": true,
+        "categoria_id": 3,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Refrigerante 600ml",
+        "descricao": "Escolha o saber de sua preferência",
+        "preco": 10.00,
+        "ativo": true,
+        "categoria_id": 3,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Frutas carameladas",
+        "descricao": "Banana e pêra caramelizadas, serve 2 pessoas",
+        "preco": 25.00,
+        "ativo": true,
+        "categoria_id": 4,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    },
+    {
+        "nome": "Petit gateau",
+        "descricao": "Bolinho de chocolate com sorvete de creme.",
+        "preco": 30,
+        "ativo": true,
+        "categoria_id": 4,
+        "restaurante_id": "312479f3-f826-4c4c-886d-2db2b3bea393"
+    }
+]

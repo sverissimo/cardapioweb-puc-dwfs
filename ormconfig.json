@@ -1,0 +1,22 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "svom",
+    "password": "flamengo",
+    "database": "newfoods",
+    "synchronize": false,
+    "logging": false,
+    "cli": {
+        "migrationsDir": "./database/migrations"
+    },
+    "entities": [
+        "./server/entities/**.ts"
+    ],
+    "migrations": [
+        "./database/migrations/**.ts"
+    ],
+    "subscribers": [
+        "./database/subscriber/**.ts"
+    ]
+}

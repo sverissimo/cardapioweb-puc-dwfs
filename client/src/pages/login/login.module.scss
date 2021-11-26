@@ -1,0 +1,13 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 10%;
+    h2 {
+        text-align: center;
+    }
+    .formContainer {
+        width: 50%;
+        margin: 3rem;
+    }
+}

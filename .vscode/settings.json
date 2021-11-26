@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "DWFS",
+        "newfoods",
+        "popperjs"
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "cSpell.ignoreWords": [
+        "preconnect"
+    ]
+}
