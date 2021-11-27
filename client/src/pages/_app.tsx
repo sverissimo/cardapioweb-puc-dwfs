@@ -1,7 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/global.scss';
 import { Header } from '../components/Header'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import { IUsuario } from '../types/IUsuario';
 
 function MyApp({ Component, pageProps }) {
 
@@ -9,11 +11,20 @@ function MyApp({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
   }, []);
 
+  const [usuario, setUsuario] = useState({} as IUsuario)
+
+  const logUser = (usuario: IUsuario): void => {
+    setUsuario(usuario)
+  }
+
   return (
-    <>
+
+    <UserContext.Provider value={{ ...usuario, logUser }} >
+
       <Header />
       <Component {...pageProps} />
-    </>
+    </UserContext.Provider>
+
   )
 }
 

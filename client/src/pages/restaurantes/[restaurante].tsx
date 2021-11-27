@@ -1,9 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
 import { Api } from "../../services/api"
 
 export default function Cardapio(props: CardapioProps) {
-    console.log("🚀 ~ file: [restaurante].tsx ~ line 6 ~ Restaurante ~ restaurante", props.cardapio)
+    const user = useContext(UserContext)
+    console.log({ user })
 
     return (
         <>

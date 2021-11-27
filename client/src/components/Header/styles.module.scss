@@ -45,3 +45,19 @@
     justify-content: center;
     width: 100%;
 }
+
+.adminHeader {
+    font-size: 1.6rem;
+    color: #555;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0;
+        list-style-type: none;
+        li {
+            padding: 1rem;
+        }
+    }
+}

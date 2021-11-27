@@ -1,12 +1,12 @@
-import { ReactNode } from 'react'
 import styles from './login.module.scss'
 
 interface Props {
     signIn(e: any): Promise<void>;
     handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
 }
-
 const { loginContainer, formContainer } = styles
+
+
 const LoginTemplate = (props: Props): JSX.Element => {
 
     const { signIn, handleInput } = props

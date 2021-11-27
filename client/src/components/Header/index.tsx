@@ -1,9 +1,16 @@
-import styles from './styles.module.scss'
 import Link from 'next/link'
+import React, { useContext } from 'react'
+import { UserContext } from '../../contexts/UserContext'
+import AdminHeaderTemplate from './AdminHeaderTemplate'
+import styles from './styles.module.scss'
 
 
 export function Header() {
-    const { headerContainer, logoStrip, homeLogo, mainImage, stripContent } = styles
+    const
+        { headerContainer, logoStrip, homeLogo, mainImage, stripContent } = styles
+        , user = useContext(UserContext)
+        , perfil = user?.perfil
+
     return (
         <header className={headerContainer}>
             {/* <div className={styles.headerContent}> */}
@@ -23,14 +30,21 @@ export function Header() {
                             </p>
                         </a>
                     </Link>
-                    <Link href='/login'>
-                        <a >
-                            <span>
-                                Login
-                            </span>
-                            <img src="/loginIcon.svg" alt="" height='20rem' width='20rem' />
-                        </a>
-                    </Link>
+                    {
+                        !perfil ?
+                            <Link href='/login'>
+                                <a >
+                                    <span>
+                                        Login
+                                    </span>
+                                    <img src="/loginIcon.svg" alt="" height='20rem' width='20rem' />
+                                </a>
+                            </Link>
+                            :
+                            perfil === 'admin' ?
+                                <AdminHeaderTemplate />
+                                : null
+                    }
                 </div>
             </div>
             <div className={mainImage}>

@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { axiosApi } from "../../services/axiosApi"
 import { ToastContainer, toast } from 'react-toastify'
 
 import LoginTemplate from "./LoginTemplate"
+import { UserContext } from '../../contexts/UserContext'
+import Usuario from '../../entities/Usuario'
+import { useRouter } from 'next/router'
 
-const tst = {
-    "nome": "Fabrício",
-    "email": "admin@jinlon.com",
-    "password": "1234",
-    "perfil": "restauranteParceiro"
-}
+
 
 const Login = () => {
 
-    const [state, setState] = useState({})
+    const
+        [state, setState] = useState({})
+
+        , { logUser } = useContext(UserContext)
+        , router = useRouter()
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -24,9 +26,19 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            const loggedUser = await axiosApi.post('login', state)
+            const
+                response = await axiosApi.post('login', state)
+                , loggedUser = response.data
             console.log("🚀 ~ file: index.tsx ~ line 21 ~ signIn ~ loggedUser", loggedUser)
             toast.success('Alright')
+
+            const user = new Usuario(loggedUser)
+            logUser(user)
+
+            setTimeout(() => {
+                router.push('/')
+            }, 1200);
+
             /* setCookie('loggedIn', true)
             props.logUser(userFound) */
         }

@@ -1,42 +1,28 @@
 import { GetStaticProps } from "next"
-import Link from "next/link"
-import Image from 'next/image'
 import { Api } from "../services/api"
-import styles from './home.module.scss'
+import { useContext } from "react"
+import { UserContext } from "../contexts/UserContext"
+import HomeTemplate from "./HomeTemplate"
+import { Restaurante } from "../entities/Restaurante"
 
-const { homeContainer, restaurantContainer, restaurantCard } = styles
+
 
 export default function Home(props: HomeProps) {
+  const user = useContext(UserContext)
+  console.log("🚀 ~ file: index.tsx ~ line 13 ~ Home ~ user", user)
 
-  return (
-    <>
-      <main className={homeContainer}>
-        <h2>Escolha um dos restaurantes abaixo</h2>
-
-        <section className={restaurantContainer}>
-          <ul >
-            {
-              props.restaurantes.map(restaurante =>
-                <li className={restaurantCard} key={restaurante.id}>
-                  <Link href={`/restaurantes/${restaurante.id}`} >
-                    <div>
-                      <Image width={64} height={64} src="/jinlon.webp" alt="rest" />
-                      <span>
-
-                        {restaurante.nome}
-                      </span>
-                    </div>
-                  </Link>
-                </li>
-              )}
-          </ul>
-        </section>
-      </main>
-    </>
-  )
+  if (props)
+    return (
+      <HomeTemplate
+        restaurantes={props.restaurantes}
+        produtos={props.produtos}
+        user={user}
+      />
+    )
+  return null
 }
 
-type Restaurante = {
+/* type Restaurante = {
 
   id: string,
   nome: string,
@@ -46,7 +32,7 @@ type Restaurante = {
   cozinha_id: string,
   endereco?: string,
   //formaPagamento: FormaPagamento[]  
-}
+} */
 
 type Produto = {
   id: number,
@@ -76,7 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
       restaurantes,
       produtos
     },
-    revalidate: 5 //8hours
+    revalidate: 1 //8hours
     //revalidate: 60 * 60 * 8 //8hours
   }
 }
