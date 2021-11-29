@@ -10,7 +10,8 @@ export class CreateTableCozinhas1637274800983 implements MigrationInterface {
                     {
                         name: 'id',
                         type: 'integer',
-                        isPrimary: true
+                        isPrimary: true,
+                        isGenerated: true
                     },
                     {
                         name: 'nome',

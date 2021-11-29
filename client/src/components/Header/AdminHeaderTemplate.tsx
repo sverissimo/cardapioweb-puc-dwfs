@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 const { adminHeader } = styles
 
-const AdminHeaderTemplate = () => {
+const AdminHeaderTemplate = ({ menuItems }) => {
 
     return (
         <div className={adminHeader}>
@@ -19,20 +19,14 @@ const AdminHeaderTemplate = () => {
                             </a>
 
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li>
-                                    <Link href="/">
-                                        <a className="dropdown-item">Home</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/categorias">
-                                        <a className="dropdown-item" >Categorias</a>
-                                    </Link>
-                                </li>
-                                <li><a className="dropdown-item" href="#">Restaurantes</a></li>
-                                <li><a className="dropdown-item" href="#">Usuários</a></li>
+                                {menuItems.map(({ endPoint, title }, i) =>
+                                    <li key={i}>
+                                        <Link href={endPoint}>
+                                            <a className="dropdown-item">{title}</a>
+                                        </Link>
+                                    </li>
+                                )}
                             </ul>
-
                         </li>
                         <li>
                             <i className="bi bi-box-arrow-right"></i>
@@ -45,7 +39,5 @@ const AdminHeaderTemplate = () => {
         </div>
     )
 }
-
-//export default AdminHeaderTemplate
 
 export default AdminHeaderTemplate

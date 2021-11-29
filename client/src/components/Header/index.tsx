@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import AdminHeaderTemplate from './AdminHeaderTemplate'
+import { adminMenuItems, parceiroMenuItems } from './menuItems'
 import styles from './styles.module.scss'
 
 
@@ -10,12 +11,16 @@ export function Header() {
         { headerContainer, logoStrip, homeLogo, mainImage, stripContent } = styles
         , user = useContext(UserContext)
         , perfil = user?.perfil
+    let menuItems
+
+    if (perfil === 'admin')
+        menuItems = adminMenuItems
+    if (perfil === 'parceiro')
+        menuItems = parceiroMenuItems
 
     return (
         <header className={headerContainer}>
             {/* <div className={styles.headerContent}> */}
-
-
             <div className={logoStrip}>
                 <div className={stripContent}>
                     <Link href="/">
@@ -41,17 +46,17 @@ export function Header() {
                                 </a>
                             </Link>
                             :
-                            perfil === 'admin' ?
-                                <AdminHeaderTemplate />
-                                : null
+                            <AdminHeaderTemplate
+                                menuItems={menuItems}
+                            />
                     }
+
                 </div>
             </div>
             <div className={mainImage}>
 
                 {/*  <img src="/headerImage.PNG" alt="header" /> */}
             </div>
-            {/*            </div> */}
         </header>
     )
 }

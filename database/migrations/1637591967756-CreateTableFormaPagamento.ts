@@ -9,7 +9,8 @@ export class CreateTableFormaPagamento1637591967756 implements MigrationInterfac
                 {
                     name: 'id',
                     type: 'integer',
-                    isPrimary: true
+                    isPrimary: true,
+                    isGenerated: true
                 },
                 {
                     name: 'descricao',

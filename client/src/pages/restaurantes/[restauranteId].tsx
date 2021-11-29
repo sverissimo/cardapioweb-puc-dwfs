@@ -55,7 +55,7 @@ type CardapioProps = {
 export const getStaticProps: GetStaticProps = async (ctx) => {
 
     const
-        restauranteId = ctx.params.restaurante
+        restauranteId = ctx.params.restauranteId
         , api = new Api()
         , cardapio = await api.get(`cardapio/${restauranteId}`)
 

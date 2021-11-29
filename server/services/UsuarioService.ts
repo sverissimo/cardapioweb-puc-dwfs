@@ -16,6 +16,9 @@ export class UsuarioService {
         try {
 
             const usuarios = await this.usuarioRepository.find({ relations: ['restaurante'], order: { nome: 'ASC' } })
+            for (let user of usuarios) {
+                delete user.password
+            }
             return usuarios
         } catch (error) {
             console.log({ error })
