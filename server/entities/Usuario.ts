@@ -19,12 +19,13 @@ class Usuario {
     @Column()
     perfil: string;
 
-    @Column()
+    @JoinColumn({ name: 'restaurante_id' })
+    @OneToOne(() => Restaurante, { nullable: true })
+    restaurante?: Restaurante
+
+    @Column({ nullable: true })
     restaurante_id?: number;
 
-    @OneToOne(() => Restaurante)
-    @JoinColumn({ name: 'restaurante_id' })
-    restaurante: Restaurante
 }
 
 export { Usuario }

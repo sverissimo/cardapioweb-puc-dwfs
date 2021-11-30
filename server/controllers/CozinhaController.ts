@@ -8,7 +8,7 @@ class CozinhaController {
     async list(req: Request, res: Response): Promise<Response> {
         const
             cozinhasRepository = getCustomRepository(CozinhaRepository)
-            , cozinhas = await cozinhasRepository.find({ relations: ['cozinhas'] })
+            , cozinhas = await cozinhasRepository.find()
 
         return res.json(cozinhas)
     }

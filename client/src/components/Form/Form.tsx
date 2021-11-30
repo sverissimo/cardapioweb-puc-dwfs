@@ -1,41 +1,70 @@
+import { renderData } from '../../utils/dtoFilter'
 import styles from './login.module.scss'
+import { inputOptions } from './selectInputs'
 
 interface Props {
     signIn(e: any): Promise<void>;
     handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
 }
-const { loginContainer, formContainer } = styles
+const
+    { loginContainer, formContainer } = styles
+
 
 
 const Form = (props) => {
-    const { signIn, handleInput, data, subject } = props
-        , d = data?.usuarios && data?.usuarios[0] || {}
+    const { handleInput, data, subject, handleSubmit } = props
+        , { editedElement } = data
+        , formElement = renderData(editedElement)
+        , formData = formElement && Object.keys(formElement)
+        , selectInputs = Object.keys(inputOptions(data))
+        , options = inputOptions(data)
 
-
-        , tableData = Object.entries(d)
-
+    //console.log(inputOptions(data), { selectInputs })
 
     return (
         <div className='customContainer'>
             <h2>Editar {subject}</h2>
             <main className={formContainer}>
 
-                <form onSubmit={signIn}>
-
+                <form onSubmit={e => handleSubmit(e)}>
                     {
-                        tableData.map(([k, v], index) =>
-                            k !== 'id' &&
+                        formData && formData.map((key, index) =>
+                            !key.match('id') &&
                             <div className="mb-3" key={index}>
-                                <label htmlFor={k} className="form-label">{k}</label>
-                                <input
-                                    name={k}
-                                    className="form-control"
-                                    //type="email"
-                                    id={k}
-                                    aria-describedby="emailHelp"
-                                    onChange={handleInput}
-                                    value={v}
-                                />
+                                {
+                                    !selectInputs.includes(key) ?
+                                        <>
+                                            <label htmlFor={key} className="form-label">{key}</label>
+                                            <input
+                                                name={key}
+                                                className="form-control"
+                                                type={key === "email" ? "email" : "text"}
+                                                id={key}
+                                                aria-describedby="emailHelp"
+                                                onChange={e => handleInput(e)}
+                                                value={editedElement[key] || ''}
+                                                required
+                                            />
+                                        </>
+                                        :
+                                        <>
+                                            <label htmlFor={key} className="form-label">{key}</label>
+                                            <select
+                                                id={key}
+                                                name={key}
+                                                className="form-select" aria-label={key}
+                                                onChange={e => handleInput(e)}
+                                                required
+                                            >
+                                                <option selected>{editedElement[key]}</option>
+                                                {
+                                                    options[key].map((opt, i) =>
+                                                        <option key={opt} value={opt}>{opt}</option>
+                                                    )
+                                                }
+                                            </select>
+                                        </>
+                                }
                             </div>
                         )
                     }

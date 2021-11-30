@@ -34,7 +34,7 @@ class Restaurante {
     cozinha: Cozinha
 
     @Column({ nullable: true })
-    cozinha_id: string;
+    cozinha_id: number;
 
     /*   @OneToOne(() => Endereco)
       @JoinColumn()

@@ -1,3 +1,5 @@
+import { renderData } from "./dtoFilter";
+
 const editDeleteFields = [
     {
         field: 'edit',
@@ -18,16 +20,16 @@ const editDeleteFields = [
 ]
 
 
-export default function CustomTable({ collection = [], title, style, idIndex = 0, deleteFunction, openEditDialog }) {
+export default function CustomTable({ collection: originalCollection, title, style, idIndex = 0, editElement, deleteElement, openEditDialog }) {
 
-    const
-        entity = collection[0]
+    const collection = originalCollection[0] && renderData(originalCollection)
+        , entity = collection[0]
         , tableHeaders = Object.keys(entity)
         , arrayOfRows = []
         , length = tableHeaders.length
 
+    //console.log("🚀 ~ file: CustomTable.tsx ~ line 26 ~ CustomTable ~ collection", collection)
     collection.forEach(entity => {
-
         arrayOfRows.push(
             Object.entries(entity).map(([k, v]) => ({
                 field: k,
@@ -37,16 +39,18 @@ export default function CustomTable({ collection = [], title, style, idIndex = 0
         )
     });
 
+    tableHeaders.splice(0, 1)
     tableHeaders.push('edit', 'remove')
     arrayOfRows.forEach(e => e.push(...editDeleteFields))
 
-    console.log("🚀 ~ file: CustomTable.tsx ~ line 37 ~ CustomTable ~ arrayOfRows", arrayOfRows)
+    //console.log("🚀 ~ file: CustomTable.tsx ~ line 37 ~ CustomTable ~ arrayOfRows", arrayOfRows)
 
     return (
-        <table className='showDetailsTable'>
+        <table className='table'>
             <thead>
                 <tr>
                     <th className='tHeader'
+                        scope='col'
                         style={style}
                         colSpan={length}>{title}</th>
                 </tr>
@@ -59,8 +63,8 @@ export default function CustomTable({ collection = [], title, style, idIndex = 0
                     arrayOfRows.map((el, j) =>
                         <tr key={j}>
                             {
-                                el.map((obj, i) => obj.field !== 'id' &&
-                                    <td key={i} style={obj.style || { ...style }} className={obj.action && 'link'}
+                                el.map((obj, index) => obj.field !== 'id' &&
+                                    <td key={index} style={obj.style && { ...obj.style } || { width: '20px' }} className={obj.action && 'link'}
 
                                     >
                                         {/* {
@@ -70,8 +74,18 @@ export default function CustomTable({ collection = [], title, style, idIndex = 0
                                                 : obj.value
                                         } */}
                                         {typeof obj.value !== 'object' ? obj.value
-                                            : obj.action ? <i className="bi bi-trash" />
-                                                : null}
+                                            : obj.action === 'edit' ?
+                                                <i
+                                                    className="bi bi-pencil-square"
+                                                    style={{ color: 'blue' }}
+                                                    onClick={() => editElement(j)}
+                                                />
+                                                : obj.action === 'delete' ?
+                                                    <i
+                                                        className="bi bi-trash"
+                                                        style={{ color: 'red' }}
+                                                        onClick={() => deleteElement(el)} />
+                                                    : ''}
                                     </td>
                                 )}
                         </tr>

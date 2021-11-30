@@ -44,4 +44,39 @@ export class UsuarioController {
             return res.status(400).send(e.message)
         }
     }
+
+    async update(req: Request, res: Response): Promise<Response> {
+        const
+            usuarioService = new UsuarioService()
+            , usuario = req.body
+            , { id } = usuario
+
+        if (!id)
+            return res.status(400).send('Usuario não encontrado.')
+
+        try {
+            const usuarioAtual = await usuarioService.update(usuario);
+            return res.status(200).json(usuarioAtual)
+        } catch (error) {
+            return res.send(error?.message)
+        }
+    }
+
+
+    async delete(req: Request, res: Response): Promise<Response> {
+        try {
+            const
+                usuarioService = new UsuarioService()
+                , { id } = req.params
+
+            if (!id)
+                return res.status(400).send('Identificador de usuario inválido.')
+
+            await usuarioService.delete(+id)
+            return res.status(204).send('Usuario removida.')
+
+        } catch (error) {
+            return res.send(error?.message)
+        }
+    }
 }

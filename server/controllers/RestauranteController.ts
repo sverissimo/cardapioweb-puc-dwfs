@@ -22,7 +22,7 @@ class RestauranteController {
             return res.status(400).send('Restaurante não encontrado.')
         try {
 
-            const restaurantes = await restauranteService.getRestaurante(id)
+            const restaurantes = await restauranteService.getRestaurante(+id)
             return res.send(restaurantes)
         } catch (error) {
             console.log(error.message)
@@ -34,10 +34,7 @@ class RestauranteController {
     async create(req: Request, res: Response): Promise<Response> {
 
         try {
-            const
-                { nome, ativo, aberto, cozinha_id } = req.body
-                , restaurante = await new RestauranteService().create({ nome, ativo, aberto, cozinha_id })
-
+            const restaurante = await new RestauranteService().create(req.body)
             return res.status(201).json(restaurante)
 
         } catch (error) {
@@ -52,14 +49,16 @@ class RestauranteController {
             , restaurante = req.body
             , { id } = restaurante
 
+        console.log("🚀 ~ file: RestauranteController.ts ~ line 53 ~ RestauranteController ~ update ~ restaurante", restaurante)
         if (!id)
             return res.status(400).send('Restaurante não encontrado.')
 
         try {
             const restauranteAtual = await restauranteService.update(restaurante);
             return res.status(200).json(restauranteAtual)
+
         } catch (error) {
-            return res.send(error?.message)
+            return res.status(400).send(error?.message)
         }
 
 

@@ -1,13 +1,16 @@
 import { getCustomRepository, Repository } from "typeorm"
+import { Cozinha } from "../entities/Cozinha";
 import { Restaurante } from "../entities/Restaurante";
 import { RestauranteRepository } from "../repositories/RestauranteRepository"
+import { CozinhaService } from "./CozinhaService";
 
 
 interface IRestauranteCreate {
     nome: string;
     ativo: boolean;
     aberto: boolean;
-    cozinha_id?: string;
+    cozinha_id?: number;
+    cozinha: Cozinha
 }
 
 class RestauranteService {
@@ -23,27 +26,28 @@ class RestauranteService {
         return restaurante
     }
 
-    async getRestaurante(id: string) {
+    async getRestaurante(id: number) {
         const restaurante = await this.restauranteRepository.findOne(id, { relations: ['cozinha'] })
         return restaurante
     }
 
-    async create({ nome, ativo, aberto, cozinha_id }: IRestauranteCreate) {
+    async create(restaurante: IRestauranteCreate) {
+        console.log("🚀 ~ file: RestauranteService.ts ~ line 35 ~ RestauranteService ~ create ~ restaurante", restaurante)
 
-        const restauranteAlreadyExists = await this.restauranteRepository.findOne({ nome })
+        const restauranteAlreadyExists = await this.restauranteRepository.findOne({ nome: restaurante.nome })
 
         if (restauranteAlreadyExists)
             throw new Error('Restaurante já existe.');
 
-        const restaurante = this.restauranteRepository.create({
-            nome,
-            ativo,
-            aberto,
-            cozinha_id
-        })
 
-        await this.restauranteRepository.save(restaurante)
-        return restaurante
+        if (restaurante.cozinha_id) {
+            const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
+            restaurante.cozinha = cozinha
+        }
+        const createdRestaurante = this.restauranteRepository.create(restaurante)
+
+        await this.restauranteRepository.save(createdRestaurante)
+        return createdRestaurante
     }
 
     async update(restaurante: Restaurante) {
@@ -54,6 +58,11 @@ class RestauranteService {
 
         if (!restauranteAtual)
             throw new Error('Restaurante não encontrado na base de dados.')
+
+        if (restaurante.cozinha_id) {
+            const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
+            restaurante.cozinha = cozinha
+        }
 
         const updatedRestaurante = await this.restauranteRepository.create({
             ...restauranteAtual, ...restaurante

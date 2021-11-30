@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
+import { IUsuario } from '../../types/IUsuario'
 import AdminHeaderTemplate from './AdminHeaderTemplate'
 import { adminMenuItems, parceiroMenuItems } from './menuItems'
 import styles from './styles.module.scss'
@@ -10,6 +11,7 @@ export function Header() {
     const
         { headerContainer, logoStrip, homeLogo, mainImage, stripContent } = styles
         , user = useContext(UserContext)
+        , { logUser } = useContext(UserContext)
         , perfil = user?.perfil
     let menuItems
 
@@ -17,6 +19,10 @@ export function Header() {
         menuItems = adminMenuItems
     if (perfil === 'parceiro')
         menuItems = parceiroMenuItems
+
+    const logOut = () => {
+        logUser({} as IUsuario)
+    }
 
     return (
         <header className={headerContainer}>
@@ -48,9 +54,9 @@ export function Header() {
                             :
                             <AdminHeaderTemplate
                                 menuItems={menuItems}
+                                logOut={logOut}
                             />
                     }
-
                 </div>
             </div>
             <div className={mainImage}>

@@ -32,8 +32,10 @@ routes.delete('/restaurantes/:id', restauranteController.delete)
 
 routes.get('/produtos', produtoController.list)
 routes.get('/produtos/:id', produtoController.getProduto)
-routes.post('/produtos', produtoController.createMany)
+routes.post('/produtos', produtoController.create)
+routes.post('/produtos/createMany', produtoController.createMany)
 routes.put('/produtos', produtoController.editProduto)
+routes.delete('/produtos/:id', produtoController.delete)
 
 routes.get('/cardapio/:restauranteId', produtoController.getCardapio)
 
@@ -49,6 +51,8 @@ routes.delete('/categorias/:id', categoriaController.delete)
 
 routes.get('/usuarios', usuarioController.list)
 routes.post('/usuarios', usuarioController.create)
+routes.put('/usuarios', usuarioController.update)
+routes.delete('/usuarios/:id', usuarioController.delete)
 routes.post('/login', usuarioController.login)
 
 export { routes }

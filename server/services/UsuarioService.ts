@@ -2,6 +2,7 @@ import { getCustomRepository, Repository } from "typeorm";
 import { Usuario } from "../entities/Usuario";
 import { UsuarioRepository } from "../repositories/UsuarioRepository";
 import bcrypt from 'bcrypt'
+import { RestauranteService } from "./RestauranteService";
 
 
 export class UsuarioService {
@@ -54,12 +55,54 @@ export class UsuarioService {
         if (!password)
             throw new Error('O campo senha é obrigatório.')
 
+        if (usuario.restaurante_id) {
+            const restaurante = await new RestauranteService().getRestaurante(usuario.restaurante_id)
+            usuario.restaurante = restaurante
+        }
+
         const hashedPass = bcrypt.hashSync(password, 10)
         usuario.password = hashedPass
 
         const usuarioEntity = this.usuarioRepository.create(usuario)
         await this.usuarioRepository.save(usuarioEntity)
+        delete usuarioEntity.password
         return usuarioEntity
+    }
+
+    async update(usuario: Usuario) {
+
+        const
+            { id } = usuario
+            , usuarioAtual = await this.usuarioRepository.findOne(id, { relations: ['restaurante'] })
+
+        if (!usuarioAtual)
+            throw new Error('Usuario não encontrado na base de dados.')
+
+        if (usuario.restaurante_id) {
+            const restaurante = await new RestauranteService().getRestaurante(usuario.restaurante_id)
+            usuario.restaurante = restaurante
+        }
+
+        const updatedUsuario = await this.usuarioRepository.create({
+            ...usuarioAtual, ...usuario
+        })
+        delete updatedUsuario.password
+
+        //console.log("🚀 ~ file: UsuarioService.ts ~ line 80 ~ UsuarioService ~ update ~ updatedUsuario", updatedUsuario)
+
+        await this.usuarioRepository.save(updatedUsuario);
+
+        return updatedUsuario
+    }
+
+    async delete(id: number): Promise<void> {
+        console.log("🚀 ~ file: UsuarioService.ts ~ line 95 ~ UsuarioService ~ delete ~ (id", id)
+        try {
+            await this.usuarioRepository.delete(id)
+        } catch (error) {
+            console.log(error.message)
+            throw new Error('Erro ao apagar o usuario.')
+        }
     }
 
 }

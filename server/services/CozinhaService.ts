@@ -14,6 +14,11 @@ class CozinhaService {
         this.cozinhaRepository = getCustomRepository(CozinhaRepository)
     }
 
+    async getCozinha(id: number) {
+        const cozinha = await this.cozinhaRepository.findOne(id)
+        return cozinha
+    }
+
     async create({ nome }: ICozinhaCreate) {
 
         const alreadyExists = await this.cozinhaRepository.findOne({ nome })
