@@ -1,26 +1,24 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
-import { useContext } from "react"
-import { UserContext } from "../../contexts/UserContext"
 import { Restaurante } from "../../entities/Restaurante"
 import { Api } from "../../services/api"
-import { CardapioItem } from "./CardapioItem"
+import CardapioItem from "../../components/Cardapio/CardapioItem"
 
 export default function Cardapio(props: CardapioProps) {
 
-    const
-        { restaurante, cardapio, categorias } = props
+    const { restaurante, categorias, cardapio } = props
 
-    /* if (!restaurante || !cardapio! || categorias)
-        return <h2>Carregando...</h2> */
+    const router = useRouter()
+    if (router.isFallback)
+        return <h4>Carregando...</h4>
 
     return (
         <div className='customContainer'>
             <h3>
                 {`Restaurante ${restaurante?.nome}`}
             </h3>
-            {/*@ts-ignore */}
-            <h6>Cozinha {restaurante?.cozinha?.nome}</h6>
+            {/*@ts-ignore*/}
+            {restaurante.cozinha && <h6>Cozinha {restaurante.cozinha?.nome}</h6>}
             <main className='container' style={{ border: '1px solid #ccc', borderRadius: '2rem', paddingLeft: '13%' }}>
                 {
                     categorias.map((categoria, i) =>
@@ -29,7 +27,7 @@ export default function Cardapio(props: CardapioProps) {
                             {
                                 cardapio.map((el, j) => el.categoria_id === categoria.id &&
                                     <CardapioItem
-                                        key={j}
+                                        index={j}
                                         item={el}
                                         categoria={categoria}
                                     />
@@ -63,7 +61,8 @@ type Produto = {
 type CardapioProps = {
     cardapio: Array<Produto>,
     categorias: Array<any>,
-    restaurante: Restaurante
+    restaurante: Restaurante,
+    cozinhas: Array<any>
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
@@ -74,7 +73,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         , cardapio = await api.get(`cardapio/${restauranteId}`)
         , restaurante = await api.get(`restaurantes/${restauranteId}`)
         , categorias = await api.get(`categorias`)
-
 
     return {
         props: {

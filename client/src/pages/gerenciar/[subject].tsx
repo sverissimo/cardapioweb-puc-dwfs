@@ -96,7 +96,6 @@ export default function Manage(props) {
 
     const editElement = (index: any) => {
         const editedElement = state[subject][index]
-        console.log("🚀 ~ file: [subject].tsx ~ line 50 ~ editElement ~ editedElement", editedElement)
         setState({ ...state, editedElement, openDialog: true, add: false })
     }
 

@@ -6,7 +6,7 @@ const { homeContainer, restaurantContainer, restaurantCard } = styles
 
 
 const HomeTemplate = (props) => {
-    const { user } = props
+    const { user, restaurantes } = props
 
     if (user?.perfil) {
         return (
@@ -27,7 +27,7 @@ const HomeTemplate = (props) => {
                 <section className={restaurantContainer}>
                     <ul >
                         {
-                            props.restaurantes.map((restaurante, i) =>
+                            restaurantes && restaurantes.map((restaurante, i) =>
                                 <li className={restaurantCard} key={restaurante.id}>
                                     <Link href={`/cardapio/${restaurante.id}`} >
                                         <div>
