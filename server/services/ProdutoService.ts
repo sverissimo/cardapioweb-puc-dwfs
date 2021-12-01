@@ -18,7 +18,7 @@ class ProdutoService {
         return produtos
     }
 
-    async getCardapio(restauranteId: string) {
+    async getCardapio(restauranteId: number) {
 
         const cardapio = await this.produtoRepository.find({
             where: { restaurante_id: restauranteId },

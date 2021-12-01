@@ -22,7 +22,7 @@ class RestauranteService {
     }
 
     async list() {
-        const restaurante = await this.restauranteRepository.find({ relations: ['cozinha'] })
+        const restaurante = await this.restauranteRepository.find({ relations: ['cozinha'], order: { nome: 'ASC' } })
         return restaurante
     }
 

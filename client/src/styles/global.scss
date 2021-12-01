@@ -77,3 +77,38 @@ a:hover {
     align-items: center;
     margin: 2% 10%;
 }
+
+.cardapioCategoriaBlock {
+    margin: 1.5rem 0;
+}
+
+@mixin cardapioElement {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+.cardapioItem {
+    display: flex;
+    width: 45rem;
+    border-bottom: #ddd 1px solid;
+
+    &--text {
+        @include cardapioElement();
+    }
+    &--image {
+        @include cardapioElement();
+    }
+
+    &--price::before {
+        content: "R$ ";
+    }
+    &--price {
+        @include cardapioElement();
+        display: inline-block;
+        font-weight: 500;
+        margin-left: auto;
+        padding-top: 3.5%;
+    }
+}

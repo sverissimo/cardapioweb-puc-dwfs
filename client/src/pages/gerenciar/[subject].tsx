@@ -1,13 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from "next"
-import React, { useEffect, useState } from "react"
-import { promises } from "stream"
+import { useRouter } from "next/router"
+import React, { useContext, useEffect, useState } from "react"
 import Form from "../../components/Form/Form"
 import PopUpDialog from "../../components/PopUpDialog/PopUpDialog"
+import { UserContext } from "../../contexts/UserContext"
 import { IEntity } from "../../entities/IEntity"
 import { axiosApi } from "../../services/axiosApi"
 import CustomTable from "../../utils/CustomTable"
 import { getJoinColumnsName, parseSubmitData } from "../../utils/dtoFilter"
-import { Factory } from "../../utils/Factory"
 
 interface IState extends IEntity {
     openDialog: boolean;
@@ -16,26 +16,35 @@ interface IState extends IEntity {
     index: any,
     lookupProps: Array<any>
     lookupTables: Array<any>
+    loggedIn: string
+    add: boolean
 }
+
 
 export default function Manage(props) {
 
-    const { subject } = props
-    const [state, setState] = useState<IState>(
-        {
-            openDialog: false,
-            endPoint: '',
-            editedElement: undefined,
-            index: undefined,
-            lookupProps: [],
-            lookupTables: []
-        }
-    )
+    const
+        { subject } = props
+        , router = useRouter()
+        , [state, setState] = useState<IState>(
+            {
+                openDialog: false,
+                endPoint: '',
+                editedElement: undefined,
+                index: undefined,
+                lookupProps: [],
+                lookupTables: [],
+                loggedIn: '',
+                add: false
+            }
+        )
 
+    const loggedIn = useContext(UserContext)?.email
     useEffect(() => {
-        async function createObject(subject: string) {
-            try {
 
+        async function createObject(subject: string) {
+
+            try {
                 const
                     lookupTables = ['categorias', 'cozinhas', 'formaPagamento', 'restaurantes']
                     , lookupProps = ['categoria', 'cozinha', 'formaPagamento', 'restaurante']
@@ -60,13 +69,13 @@ export default function Manage(props) {
 
                 const filteredData = getJoinColumnsName(data)
 
-                setState({ ...state, [subject]: filteredData, ...lookupData, lookupProps, lookupTables })
+                setState({ ...state, [subject]: filteredData, ...lookupData, lookupProps, lookupTables, loggedIn })
             } catch (error) {
                 console.log({ error })
             }
         }
         createObject(subject)
-    }, [subject])
+    }, [subject, loggedIn])
 
 
     const addElement = () => {
@@ -82,15 +91,14 @@ export default function Manage(props) {
             emptyElement.password = ''
 
         delete emptyElement.id
-        setState({ ...state, editedElement: emptyElement, openDialog: true })
+        setState({ ...state, editedElement: emptyElement, openDialog: true, add: true })
     }
 
     const editElement = (index: any) => {
         const editedElement = state[subject][index]
         console.log("🚀 ~ file: [subject].tsx ~ line 50 ~ editElement ~ editedElement", editedElement)
-        setState({ ...state, editedElement, openDialog: true })
+        setState({ ...state, editedElement, openDialog: true, add: false })
     }
-
 
     const handleInput = e => {
         const
@@ -154,6 +162,9 @@ export default function Manage(props) {
 
 
     const toggleForm = () => setState({ ...state, openDialog: !state.openDialog })
+
+    if (!state.loggedIn)
+        return <h4>É preciso estar logado para acessar essa página.</h4>
 
     return (
         <div className='customContainer'>

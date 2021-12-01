@@ -1,11 +1,16 @@
 {
     "cSpell.words": [
+        "amarelim",
         "DWFS",
+        "jinlon",
+        "Lexend",
         "newfoods",
-        "popperjs"
+        "popperjs",
+        "webp"
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "cSpell.ignoreWords": [
+        "cvalue",
         "preconnect"
     ]
 }

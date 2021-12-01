@@ -1,7 +1,9 @@
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 import { getCustomRepository, Repository } from "typeorm";
 import { Usuario } from "../entities/Usuario";
 import { UsuarioRepository } from "../repositories/UsuarioRepository";
-import bcrypt from 'bcrypt'
 import { RestauranteService } from "./RestauranteService";
 
 
@@ -27,8 +29,11 @@ export class UsuarioService {
     }
 
     async login(usuario: Usuario) {
-        const { email, password } = usuario
-        const user = await this.usuarioRepository.findOne({ email })
+        dotenv.config({ path: '../../.env' })
+
+        const
+            { email, password } = usuario
+            , user = await this.usuarioRepository.findOne({ email })
 
         if (!user || !user?.email)
             throw new Error('Usuário não encontrado na base de dados.')
@@ -39,7 +44,9 @@ export class UsuarioService {
             throw new Error('Senha inválida.')
 
         delete user.password
-        return user
+        const accessToken = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '60m' })
+
+        return { user, accessToken }
     }
 
     async create(usuario: Usuario) {

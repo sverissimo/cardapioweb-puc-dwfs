@@ -12,22 +12,25 @@ export class UsuarioController {
         return res.json(usuarios)
     }
 
-    async login(req: Request, res: Response): Promise<Response> {
+    async login(req: Request, res: Response): Promise<void> {
 
         try {
             const
                 usuarioService = new UsuarioService()
-                , usuario = await usuarioService.login(req.body)
-            return res.status(200).json(usuario)
+                , { user, accessToken } = await usuarioService.login(req.body)
+
+            //res.status(200).json({ accessToken })
+            res.cookie('aToken', accessToken, { maxAge: 1000 * 60 * 60, httpOnly: false })
+            res.status(200).json(user)
 
         } catch (error) {
             const { email, password } = req.body
             if (!email)
-                return res.status(400).send('Favor informar o e-mail.')
+                res.status(400).send('Favor informar o e-mail.')
             if (!password)
-                return res.status(400).send('Favor informar a senha.')
+                res.status(400).send('Favor informar a senha.')
 
-            return res.status(403).send(error.message)
+            res.status(403).send(error.message)
         }
     }
 

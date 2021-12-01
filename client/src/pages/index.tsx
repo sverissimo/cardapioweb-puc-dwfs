@@ -6,10 +6,8 @@ import HomeTemplate from "./HomeTemplate"
 import { Restaurante } from "../entities/Restaurante"
 
 
-
 export default function Home(props: HomeProps) {
   const user = useContext(UserContext)
-  console.log("🚀 ~ file: index.tsx ~ line 13 ~ Home ~ user", user)
 
   if (props)
     return (
@@ -21,18 +19,6 @@ export default function Home(props: HomeProps) {
     )
   return null
 }
-
-/* type Restaurante = {
-
-  id: string,
-  nome: string,
-  ativo: boolean,
-  aberto: boolean,
-  cozinha: object,
-  cozinha_id: string,
-  endereco?: string,
-  //formaPagamento: FormaPagamento[]  
-} */
 
 type Produto = {
   id: number,

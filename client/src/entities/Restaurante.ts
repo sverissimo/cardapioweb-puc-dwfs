@@ -1,13 +1,13 @@
 import { IEntity } from "./IEntity";
 
 export class Restaurante implements IEntity {
-    private id: string;
-    private nome: string;
-    private ativo: boolean;
-    private aberto: boolean;
-    private cozinha: object;
-    private cozinha_id: string;
-    private endereco?: string;
+    id: string;
+    nome: string;
+    ativo: boolean;
+    aberto: boolean;
+    cozinha: object;
+    cozinha_id: string;
+    endereco?: string;
     endPoint: string;
     //formaPagamento: FormaPagamento[]  
 

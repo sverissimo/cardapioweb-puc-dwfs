@@ -6,7 +6,7 @@ import LoginTemplate from "./LoginTemplate"
 import { UserContext } from '../../contexts/UserContext'
 import Usuario from '../../entities/Usuario'
 import { useRouter } from 'next/router'
-
+import { setCookie } from '../../utils/setCookies'
 
 
 const Login = () => {
@@ -34,13 +34,12 @@ const Login = () => {
 
             const user = new Usuario(loggedUser)
             logUser(user)
+            setCookie('loggedUser', JSON.stringify(user))
 
             setTimeout(() => {
                 router.push('/')
             }, 1200);
 
-            /* setCookie('loggedIn', true)
-            props.logUser(userFound) */
         }
         catch (err) {
             console.log("🚀 ~ file: index.tsx ~ line 35 ~ signIn ~ err?.response?.data", err?.response?.data)

@@ -11,7 +11,7 @@ export class CategoriaController {
         try {
             const
                 categoriaRepository = getCustomRepository(CategoriaRepository)
-                , data = await categoriaRepository.find()
+                , data = await categoriaRepository.find({ order: { id: 'ASC' } })
 
             return res.json(data)
         } catch (error) {

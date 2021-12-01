@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import { IUsuario } from '../../types/IUsuario'
+import { deleteCookie } from '../../utils/setCookies'
 import AdminHeaderTemplate from './AdminHeaderTemplate'
 import { adminMenuItems, parceiroMenuItems } from './menuItems'
 import styles from './styles.module.scss'
@@ -21,6 +22,7 @@ export function Header() {
         menuItems = parceiroMenuItems
 
     const logOut = () => {
+        deleteCookie('loggedUser')
         logUser({} as IUsuario)
     }
 
@@ -31,7 +33,12 @@ export function Header() {
                 <div className={stripContent}>
                     <Link href="/">
                         <a>
-                            <img className={homeLogo} src="/logo.png" alt="logo" height='78px' width='78px' />
+                            <img
+                                className={homeLogo}
+                                src="/logo.png" alt="logo"
+                                height='78px' width='78px'
+                                title='Página Inicial'
+                            />
                             <h1>
                                 Cardápio Web
                             </h1>
@@ -48,7 +55,10 @@ export function Header() {
                                     <span>
                                         Login
                                     </span>
-                                    <img src="/loginIcon.svg" alt="" height='20rem' width='20rem' />
+                                    <img src="/loginIcon.svg"
+                                        alt="" height='20rem' width='20rem'
+                                        title='Entrar'
+                                    />
                                 </a>
                             </Link>
                             :

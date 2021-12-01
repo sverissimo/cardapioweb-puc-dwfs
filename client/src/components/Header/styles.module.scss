@@ -19,19 +19,30 @@
 
     h1 {
         margin-left: 2rem;
+        margin-right: 2rem;
     }
 
     p {
-        padding: 0.25rem 0 0.25rem 2rem;
+        padding: 0.3rem 0 0.25rem 2rem;
+        margin-top: 1rem;
         border-left: 1px solid #555;
+        text-decoration: none;
+        color: #555;
+        cursor: auto;
     }
     a {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        text-decoration: none;
     }
     span {
+        color: #000;
         margin-left: auto;
+        padding: 0 0.3rem;
+    }
+    img {
+        margin-top: 0.3rem;
     }
 }
 .homeLogo {
@@ -58,6 +69,9 @@
         list-style-type: none;
         li {
             padding: 1rem;
+        }
+        a {
+            text-decoration: none !important;
         }
     }
 }

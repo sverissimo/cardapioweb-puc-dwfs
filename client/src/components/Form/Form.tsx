@@ -13,7 +13,7 @@ const
 
 const Form = (props) => {
     const { handleInput, data, subject, handleSubmit } = props
-        , { editedElement } = data
+        , { editedElement, add } = data
         , formElement = renderData(editedElement)
         , formData = formElement && Object.keys(formElement)
         , selectInputs = Object.keys(inputOptions(data))
@@ -23,7 +23,7 @@ const Form = (props) => {
 
     return (
         <div className='customContainer'>
-            <h2>Editar {subject}</h2>
+            <h2>{add ? 'Adicionar' : 'Editar'} {subject}</h2>
             <main className={formContainer}>
 
                 <form onSubmit={e => handleSubmit(e)}>
@@ -40,6 +40,7 @@ const Form = (props) => {
                                                 className="form-control"
                                                 type={key === "email" ? "email" : "text"}
                                                 id={key}
+                                                style={{ width: '350px' }}
                                                 aria-describedby="emailHelp"
                                                 onChange={e => handleInput(e)}
                                                 value={editedElement[key] || ''}

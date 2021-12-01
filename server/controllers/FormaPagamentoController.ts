@@ -11,7 +11,7 @@ export class FormaPagamentoController {
         try {
             const
                 formaPagamentoRepository = getCustomRepository(FormaPagamentoRepository)
-                , data = await formaPagamentoRepository.find()
+                , data = await formaPagamentoRepository.find({ order: { descricao: 'ASC' } })
 
             return res.json(data)
         } catch (error) {

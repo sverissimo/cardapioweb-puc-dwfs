@@ -1,5 +1,6 @@
 import { renderData } from "./dtoFilter";
 
+
 const editDeleteFields = [
     {
         field: 'edit',
@@ -40,18 +41,19 @@ export default function CustomTable({ collection: originalCollection, title, sty
     });
 
     tableHeaders.splice(0, 1)
-    tableHeaders.push('edit', 'remove')
+    tableHeaders.push('editar', 'remover')
     arrayOfRows.forEach(e => e.push(...editDeleteFields))
 
     //console.log("🚀 ~ file: CustomTable.tsx ~ line 37 ~ CustomTable ~ arrayOfRows", arrayOfRows)
 
     return (
         <table className='table'>
+            {/*   <thead style={{ textAlign: 'center' }}> */}
             <thead>
-                <tr>
+                <tr >
                     <th className='tHeader'
                         scope='col'
-                        style={style}
+
                         colSpan={length}>{title}</th>
                 </tr>
                 <tr>
@@ -64,7 +66,7 @@ export default function CustomTable({ collection: originalCollection, title, sty
                         <tr key={j}>
                             {
                                 el.map((obj, index) => obj.field !== 'id' &&
-                                    <td key={index} style={obj.style && { ...obj.style } || { width: '20px' }} className={obj.action && 'link'}
+                                    <td key={index} className={obj.action && 'link'}
 
                                     >
                                         {/* {

@@ -10,28 +10,29 @@ const HomeTemplate = (props) => {
 
     if (user?.perfil) {
         return (
-            <>
-                <h1>Bem vindo, {user?.nome}!</h1>
-                <h3>Selecione uma das opções no meni acima</h3>
-            </>
+            <div className='customContainer' style={{ marginTop: '10px' }}>
+                <img src="/headerImage.PNG" alt="header" />
+                <h1>Olá, {user?.nome}!</h1>
+                <h3>Selecione uma das opções do menu acima.</h3>
+            </div>
         )
     }
-
+    const restaurantesImages = ['/amarelim.jpg', '/jinlon.webp']
     return (
         <>
             <main className={homeContainer}>
+                <img src="/headerImage.PNG" alt="header" />
                 <h2>Escolha um dos restaurantes abaixo</h2>
 
                 <section className={restaurantContainer}>
                     <ul >
                         {
-                            props.restaurantes.map(restaurante =>
+                            props.restaurantes.map((restaurante, i) =>
                                 <li className={restaurantCard} key={restaurante.id}>
-                                    <Link href={`/restaurantes/${restaurante.id}`} >
+                                    <Link href={`/cardapio/${restaurante.id}`} >
                                         <div>
-                                            <Image width={64} height={64} src="/jinlon.webp" alt="rest" />
+                                            <Image width={84} height={84} src={restaurantesImages[i]} alt="rest" />
                                             <span>
-
                                                 {restaurante.nome}
                                             </span>
                                         </div>
@@ -41,8 +42,7 @@ const HomeTemplate = (props) => {
                     </ul>
                 </section>
             </main>
-        </>
-    )
+        </>)
 }
 
 export default HomeTemplate

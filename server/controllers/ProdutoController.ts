@@ -17,11 +17,12 @@ class ProdutoController {
     }
 
     async getCardapio(req: Request, res: Response): Promise<Response> {
-        const { produtoId } = req.params
+        const { restauranteId } = req.params
+        console.log("🚀 ~ file: ProdutoController.ts ~ line 21 ~ ProdutoController ~ getCardapio ~ produtoId", restauranteId)
 
         try {
             const produtoService = new ProdutoService()
-            const produtos = await produtoService.getCardapio(produtoId)
+            const produtos = await produtoService.getCardapio(+restauranteId)
             return res.status(201).json(produtos)
         }
         catch (error) {
