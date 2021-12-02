@@ -1,6 +1,6 @@
 export class Api {
 
-    baseUrl: string = 'http://localhost:3333'
+    baseUrl: string = 'http://localhost:3333/api'
 
     async get(params) {
         console.log("🚀 ~ file: api.ts ~ line 6 ~ Api ~ get ~ params", params)
