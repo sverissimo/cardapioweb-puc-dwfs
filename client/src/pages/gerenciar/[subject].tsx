@@ -1,11 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next"
-import { useRouter } from "next/router"
 import React, { useContext, useEffect, useState } from "react"
 import Form from "../../components/Form/Form"
 import PopUpDialog from "../../components/PopUpDialog/PopUpDialog"
 import { UserContext } from "../../contexts/UserContext"
 import { IEntity } from "../../entities/IEntity"
-import { axiosApi } from "../../services/axiosApi"
+import { Api } from "../../services/api"
 import CustomTable from "../../utils/CustomTable"
 import { getJoinColumnsName, parseSubmitData } from "../../utils/dtoFilter"
 
@@ -25,7 +24,7 @@ export default function Manage(props) {
 
     const
         { subject } = props
-        , router = useRouter()
+        , api = new Api()
         , [state, setState] = useState<IState>(
             {
                 openDialog: false,
@@ -48,13 +47,13 @@ export default function Manage(props) {
                 const
                     lookupTables = ['categorias', 'cozinhas', 'formaPagamento', 'restaurantes']
                     , lookupProps = ['categoria', 'cozinha', 'formaPagamento', 'restaurante']
-                    , lookupTableRequests = lookupTables.map(t => axiosApi.get(t))
+                    , lookupTableRequests = lookupTables.map(t => api.get(t))
                     , lookupResponse = await Promise.all(lookupTableRequests)
                     , lookupData = {}
 
                 let i = 0
                 for (let t of lookupTables) {
-                    lookupData[t] = lookupResponse[i]?.data
+                    lookupData[t] = lookupResponse[i]
                     i++
                 }
 
@@ -62,10 +61,8 @@ export default function Manage(props) {
 
                 if (subject === 'restaurantes')
                     data = lookupData['restaurantes']
-                else {
-                    const response = await axiosApi.get(subject)
-                    data = response.data
-                }
+                else
+                    data = await api.get(subject)
 
                 const filteredData = getJoinColumnsName(data)
 
@@ -119,16 +116,18 @@ export default function Manage(props) {
         let response
 
         if (id)
-            response = await axiosApi.put(subject, requestData)
+            response = await api.put(subject, requestData)
         else
-            response = await axiosApi.post(subject, requestData)
+            response = await api.post(subject, requestData)
 
-        if (response.status <= 200 && response.status > 200) {
-            alert(response.data)
+        //O api criado retorna uma string em caso de erro.
+        if (typeof response === 'string') {
+            alert(response)
             return
         }
+
         const
-            updatedElement = response.data
+            updatedElement = response
             , originalCollection = [...state[subject]]
             , index = originalCollection.findIndex(el => el.id === editedElement.id)
 
@@ -150,7 +149,7 @@ export default function Manage(props) {
             objId = objArray.find(e => e.field === 'id')
             , id = objId.value
 
-        await axiosApi.delete(`${subject}/${id}`)
+        await api.delete(`${subject}/${id}`)
             .catch(e => console.log(e))
 
         const originalCollection = [...state[subject]]
