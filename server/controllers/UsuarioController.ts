@@ -5,9 +5,12 @@ import { UsuarioService } from "../services/UsuarioService";
 export class UsuarioController {
 
     async list(req: Request, res: Response): Promise<Response> {
+
         const
             usuarioService = new UsuarioService()
-            , usuarios = await usuarioService.list()
+            , { email } = req.params
+
+            , usuarios = await usuarioService.list(email)
 
         return res.json(usuarios)
     }

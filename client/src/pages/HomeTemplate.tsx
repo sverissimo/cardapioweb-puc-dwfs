@@ -6,15 +6,26 @@ const { homeContainer, restaurantContainer, restaurantCard } = styles
 
 
 const HomeTemplate = (props) => {
-    const { user, restaurantes } = props
+    const
+        { user, restaurantes } = props
+        , userName = user.nome || user.name
+        , userPic = user?.picture?.data
 
-    if (user?.perfil) {
+    if (user?.email) {
         return (
-            <div className='customContainer' style={{ marginTop: '10px' }}>
-                <img src="/headerImage.PNG" alt="header" />
-                <h1>Olá, {user?.nome}!</h1>
-                <h3>Selecione uma das opções do menu acima.</h3>
-            </div>
+            <>
+
+                <div className='customContainer' style={{ marginTop: '10px' }}>
+                    <img src="/headerImage.PNG" alt="header" />
+                    <h1>Olá, {userName}!</h1>
+
+                    {userPic && <Image width={85} height={85} src={userPic.url} alt='userPic' />}
+
+                    <h3>Selecione uma das opções do menu acima.</h3>
+                </div>
+
+            </>
+
         )
     }
     const restaurantesImages = ['/amarelim.jpg', '/jinlon.webp']

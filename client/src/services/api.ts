@@ -26,7 +26,7 @@ export class Api {
             })
 
         //Envia a mensagem de erro customizada no servidor
-        if (response.status <= 200 || response.status > 299)
+        if (response.status < 200 || response.status > 299)
             return response.text()
 
         const data = await response.json()

@@ -1,15 +1,18 @@
 import styles from './login.module.scss'
+import FacebookLogin from 'react-facebook-login'
 
 interface Props {
     signIn(e: any): Promise<void>;
     handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
+    componentClicked(): void;
+    responseFacebook(e: any): void;
 }
 const { loginContainer, formContainer } = styles
 
 
 const LoginTemplate = (props: Props): JSX.Element => {
 
-    const { signIn, handleInput } = props
+    const { signIn, handleInput, componentClicked, responseFacebook } = props
 
     return (
         <div className={loginContainer}>
@@ -44,6 +47,14 @@ const LoginTemplate = (props: Props): JSX.Element => {
                     </div> */}
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                <br />
+                <br />
+                <FacebookLogin
+                    appId="447489990281843"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    onClick={componentClicked}
+                    callback={responseFacebook} />
             </main>
 
         </div>

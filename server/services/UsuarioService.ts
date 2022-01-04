@@ -15,10 +15,14 @@ export class UsuarioService {
         this.usuarioRepository = getCustomRepository(UsuarioRepository)
     }
 
-    async list() {
+    async list(email: string | undefined) {
         try {
+            let where = 'TRUE'
 
-            const usuarios = await this.usuarioRepository.find({ relations: ['restaurante'], order: { nome: 'ASC' } })
+            if (email)
+                where = `email = '${email}'`
+
+            const usuarios = await this.usuarioRepository.find({ where, relations: ['restaurante'], order: { nome: 'ASC' } })
             for (let user of usuarios) {
                 delete user.password
             }

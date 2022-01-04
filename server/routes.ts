@@ -49,7 +49,7 @@ routes.post('/api/categorias', categoriaController.create)
 routes.put('/api/categorias', categoriaController.edit)
 routes.delete('/api/categorias/:id', categoriaController.delete)
 
-routes.get('/api/usuarios', usuarioController.list)
+routes.get('/api/usuarios/:email?', usuarioController.list)
 routes.post('/api/usuarios', usuarioController.create)
 routes.put('/api/usuarios', usuarioController.update)
 routes.delete('/api/usuarios/:id', usuarioController.delete)

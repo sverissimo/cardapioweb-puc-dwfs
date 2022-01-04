@@ -23,8 +23,13 @@ const editDeleteFields = [
 
 export default function CustomTable({ collection: originalCollection, title, style, idIndex = 0, editElement, deleteElement, openEditDialog }) {
 
-    const collection = originalCollection[0] && renderData(originalCollection)
-        , entity = collection[0]
+    const collection = renderData(originalCollection)
+    /* console.log("🚀 ~ file: CustomTable.tsx ~ line 27 ~ CustomTable ~ collection", collection)
+    if (!collection)
+        return <><h6>Nenhum registro encontrado.</h6><br /></>
+ */
+    const
+        entity = collection?.length && collection[0]
         , tableHeaders = Object.keys(entity)
         , arrayOfRows = []
         , length = tableHeaders.length

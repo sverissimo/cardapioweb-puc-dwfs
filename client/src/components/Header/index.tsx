@@ -22,6 +22,9 @@ export function Header() {
         menuItems = parceiroMenuItems
 
     const logOut = () => {
+        const { picture } = user
+        if (picture)
+            window['FB'].logout()
         deleteCookie('loggedUser')
         logUser({} as IUsuario)
     }
