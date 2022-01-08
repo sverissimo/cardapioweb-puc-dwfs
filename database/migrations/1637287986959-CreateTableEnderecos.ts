@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateTableEnderecos1637342535853 implements MigrationInterface {
+export class CreateTableEnderecos1637287986959 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         queryRunner.createTable(new Table({
@@ -8,8 +8,9 @@ export class CreateTableEnderecos1637342535853 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'uuid',
-                    isPrimary: true
+                    type: 'integer',
+                    isPrimary: true,
+                    isGenerated: true
                 },
                 {
                     name: 'cep',
@@ -30,6 +31,21 @@ export class CreateTableEnderecos1637342535853 implements MigrationInterface {
                     name: 'complemento',
                     type: 'varchar',
                     isNullable: true
+                },
+                {
+                    name: 'cidade_id',
+                    type: 'integer',
+                    isNullable: true
+                }
+            ],
+            foreignKeys: [
+                {
+                    name: 'FKCidade',
+                    referencedTableName: 'cidades',
+                    referencedColumnNames: ['id'],
+                    columnNames: ['cidade_id'],
+                    onDelete: 'SET NULL',
+                    onUpdate: 'SET NULL'
                 }
             ]
         }))

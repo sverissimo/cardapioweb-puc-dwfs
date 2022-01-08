@@ -28,13 +28,13 @@ export class CreateTableRestaurantes1637287986960 implements MigrationInterface 
                         default: true
                     },
                     {
-                        name: 'endereco',
-                        type: 'text',
-                        isNullable: true
-                    },
-                    {
                         name: 'cozinha_id',
                         type: 'integer',
+                    },
+                    {
+                        name: 'endereco_id',
+                        type: 'integer',
+                        isNullable: true
                     },
                     {
                         name: 'created_at',
@@ -55,6 +55,13 @@ export class CreateTableRestaurantes1637287986960 implements MigrationInterface 
                         columnNames: ['cozinha_id'],
                         onDelete: 'SET NULL',
                         onUpdate: 'SET NULL'
+                    },
+                    {
+                        name: 'FKEndereco',
+                        referencedTableName: 'enderecos',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['endereco_id'],
+                        onDelete: 'CASCADE'
                     }
                 ]
             })

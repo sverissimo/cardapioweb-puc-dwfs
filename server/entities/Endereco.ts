@@ -1,10 +1,12 @@
-/* import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import Cidade from "./Cidade";
 
-//@Entity()
+
+@Entity('enderecos')
 export class Endereco {
 
-    @PrimaryColumn()
-    id: string;
+    @PrimaryGeneratedColumn('identity')
+    id: number;
 
     @Column({ nullable: true })
     public cep: string;
@@ -17,5 +19,12 @@ export class Endereco {
 
     @Column({ nullable: true })
     public complemento: string;
+
+    @ManyToOne(() => Cidade)
+    @JoinColumn({ name: 'cidade_id' })
+    public cidade: Cidade
+
+    @Column({ nullable: true })
+    public cidade_id: number
+
 }
- */

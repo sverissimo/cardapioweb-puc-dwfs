@@ -1,0 +1,14 @@
+[
+    {
+        "nome": "Amarelim",
+        "aberto": true,
+        "ativo": true,
+        "cozinha_id": 4
+    },
+    {
+        "nome": "Jin Lon",
+        "aberto": true,
+        "ativo": true,
+        "cozinha_id": 1
+    }
+]

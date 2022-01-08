@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 class FormaPagamento {
 
     @PrimaryGeneratedColumn('identity')
-    id: string;
+    id: number;
 
     @Column()
     descricao: string;

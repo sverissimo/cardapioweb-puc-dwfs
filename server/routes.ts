@@ -6,6 +6,7 @@ import cors from 'cors'
 import { UsuarioController } from "./controllers/UsuarioController";
 import { FormaPagamentoController } from "./controllers/FormaPagamentoController";
 import { CategoriaController } from "./controllers/CategoriasController";
+import { CidadeController } from "./controllers/CidadeController";
 
 const routes = Router();
 routes.use(cors())
@@ -18,10 +19,12 @@ const
     , usuarioController = new UsuarioController()
     , formaPagamentoController = new FormaPagamentoController()
     , categoriaController = new CategoriaController()
+    , cidadeController = new CidadeController()
 
-routes.get('/api/cozinhas', cozinhaController.list)
-routes.post('/api/cozinhas', cozinhaController.create)
-routes.put('/api/cozinhas', cozinhaController.update)
+routes.route('/api/cozinhas')
+    .get(cozinhaController.list)
+    .post(cozinhaController.create)
+    .put(cozinhaController.update)
 routes.delete('/api/cozinhas/:id', cozinhaController.delete)
 
 routes.get('/api/restaurantes', restauranteController.list)
@@ -48,6 +51,10 @@ routes.get('/api/categorias', categoriaController.list)
 routes.post('/api/categorias', categoriaController.create)
 routes.put('/api/categorias', categoriaController.edit)
 routes.delete('/api/categorias/:id', categoriaController.delete)
+
+routes
+    .route('/api/cidades')
+    .get(cidadeController.list)
 
 routes.get('/api/usuarios/:email?', usuarioController.list)
 routes.post('/api/usuarios', usuarioController.create)

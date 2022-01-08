@@ -1,8 +1,11 @@
 import { getCustomRepository, Repository } from "typeorm"
 import { Cozinha } from "../entities/Cozinha";
+import { Endereco } from "../entities/Endereco";
 import { Restaurante } from "../entities/Restaurante";
+import { EnderecoRepository } from "../repositories/EnderecoRepository";
 import { RestauranteRepository } from "../repositories/RestauranteRepository"
 import { CozinhaService } from "./CozinhaService";
+import { EnderecoService } from "./EnderecoService";
 
 
 interface IRestauranteCreate {
@@ -10,7 +13,9 @@ interface IRestauranteCreate {
     ativo: boolean;
     aberto: boolean;
     cozinha_id?: number;
-    cozinha: Cozinha
+    cozinha: Cozinha;
+    endereco: Endereco;
+    endereco_id: number;
 }
 
 class RestauranteService {
@@ -22,17 +27,23 @@ class RestauranteService {
     }
 
     async list() {
-        const restaurante = await this.restauranteRepository.find({ relations: ['cozinha'], order: { nome: 'ASC' } })
+        const restaurante = await this.restauranteRepository.find({ relations: ['cozinha', 'endereco'], order: { nome: 'ASC' } })
         return restaurante
     }
 
     async getRestaurante(id: number) {
-        const restaurante = await this.restauranteRepository.findOne(id, { relations: ['cozinha'] })
+        const
+            restaurante = await this.restauranteRepository.findOne(id, { relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'] })
+            , endereco = await new EnderecoService().getEndereco(restaurante.endereco_id)
+
+        //restaurante.endereco = endereco
+        //, restauranteDTO = { ...restaurante, cidade: endereco.cidade.nome }
+
         return restaurante
     }
 
     async create(restaurante: IRestauranteCreate) {
-        console.log("🚀 ~ file: RestauranteService.ts ~ line 35 ~ RestauranteService ~ create ~ restaurante", restaurante)
+        //console.log("🚀 ~ file: RestauranteService.ts ~ line 35 ~ RestauranteService ~ create ~ restaurante", restaurante)
 
         const restauranteAlreadyExists = await this.restauranteRepository.findOne({ nome: restaurante.nome })
 
@@ -40,10 +51,24 @@ class RestauranteService {
             throw new Error('Restaurante já existe.');
 
 
+        const
+            enderecoService = new EnderecoService()
+            , endereco = await enderecoService.save(restaurante)
+        /*     , enderecoId = endereco.id
+
+            , updatedEndereco = await new EnderecoService().getEndereco(enderecoId)
+
+        restaurante.endereco_id = endereco.id */
+        restaurante.endereco = endereco
+
+
         if (restaurante.cozinha_id) {
             const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
             restaurante.cozinha = cozinha
         }
+
+
+
         const createdRestaurante = this.restauranteRepository.create(restaurante)
 
         await this.restauranteRepository.save(createdRestaurante)
@@ -62,6 +87,11 @@ class RestauranteService {
         if (restaurante.cozinha_id) {
             const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
             restaurante.cozinha = cozinha
+        }
+
+        if (restaurante.endereco) {
+            const endereco = await new EnderecoService().update(restaurante.endereco)
+            restaurante.endereco = endereco
         }
 
         const updatedRestaurante = await this.restauranteRepository.create({

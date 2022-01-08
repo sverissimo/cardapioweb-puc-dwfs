@@ -7,18 +7,19 @@ import {
     ManyToOne,
     ManyToMany,
     JoinTable,
-    PrimaryGeneratedColumn
+    PrimaryGeneratedColumn,
+    OneToOne
 } from "typeorm";
 
-import { v4 as uuid } from 'uuid';
 import { Cozinha } from "./Cozinha";
+import { Endereco } from "./Endereco";
 import { FormaPagamento } from "./FormaPagamento";
 
 
 @Entity('restaurantes')
 class Restaurante {
     @PrimaryGeneratedColumn('identity')
-    id: string;
+    id: number;
 
     @Column()
     nome: string;
@@ -36,12 +37,12 @@ class Restaurante {
     @Column({ nullable: true })
     cozinha_id: number;
 
-    /*   @OneToOne(() => Endereco)
-      @JoinColumn()
-      endereco: Endereco */
+    @OneToOne(() => Endereco, { onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'endereco_id' })
+    endereco?: Endereco
 
     @Column({ nullable: true })
-    endereco?: string;
+    endereco_id: number;
 
     @ManyToMany(() => FormaPagamento)
     @JoinTable()
@@ -53,11 +54,6 @@ class Restaurante {
     @UpdateDateColumn()
     updated_at: Date;
 
-    /*   constructor() {
-          if (!this.id) {
-              this.id = uuid();
-          }
-      } */
 }
 
 export { Restaurante };
