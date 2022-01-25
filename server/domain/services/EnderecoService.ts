@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
-import { Endereco } from "../entities/Endereco";
-import { EnderecoRepository } from "../repositories/EnderecoRepository";
+import { Endereco } from "../models/Endereco";
+import { EnderecoRepository } from "../../repositories/EnderecoRepository";
 
 
 export class EnderecoService {

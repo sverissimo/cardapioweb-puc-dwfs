@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import { Restaurante } from "../entities/Restaurante";
+import { Restaurante } from "../domain/models/Restaurante";
 
 
 @EntityRepository(Restaurante)

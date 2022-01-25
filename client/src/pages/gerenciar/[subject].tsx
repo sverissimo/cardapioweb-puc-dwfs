@@ -57,12 +57,13 @@ export default function Manage(props) {
                     i++
                 }
 
-                let data
+                let data: any
 
                 if (subject === 'restaurantes')
                     data = lookupData['restaurantes']
                 else
                     data = await api.get(subject)
+                //console.log("🚀 ~ file: [subject].tsx ~ line 66 ~ createObject ~ data", data)
 
                 const filteredData = getJoinColumnsName(data)
 

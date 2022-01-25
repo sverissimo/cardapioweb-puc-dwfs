@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm"
-import { Produto } from "../entities/Produto"
-import { CategoriaRepository } from "../repositories/CategoriaRepository"
-import { ProdutoRepository } from "../repositories/ProdutoRepository"
+import { Produto } from "../models/Produto"
+import { CategoriaRepository } from "../../repositories/CategoriaRepository"
+import { ProdutoRepository } from "../../repositories/ProdutoRepository"
 import { RestauranteService } from "./RestauranteService"
 
 

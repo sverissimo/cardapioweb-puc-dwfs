@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { CozinhaController } from "./controllers/CozinhaController";
-import { ProdutoController } from "./controllers/ProdutoController";
-import { RestauranteController } from "./controllers/RestauranteController";
+import { CozinhaController } from "./api/controllers/CozinhaController";
+import { ProdutoController } from "./api/controllers/ProdutoController";
+import { RestauranteController } from "./api/controllers/RestauranteController";
 import cors from 'cors'
-import { UsuarioController } from "./controllers/UsuarioController";
-import { FormaPagamentoController } from "./controllers/FormaPagamentoController";
-import { CategoriaController } from "./controllers/CategoriasController";
-import { CidadeController } from "./controllers/CidadeController";
+import { UsuarioController } from "./api/controllers/UsuarioController";
+import { FormaPagamentoController } from "./api/controllers/FormaPagamentoController";
+import { CategoriaController } from "./api/controllers/CategoriasController";
+import { CidadeController } from "./api/controllers/CidadeController";
 
 const routes = Router();
 routes.use(cors())
@@ -58,6 +58,7 @@ routes
 
 routes.get('/api/usuarios/:email?', usuarioController.list)
 routes.post('/api/usuarios', usuarioController.create)
+routes.post('/api/usuariosMany', usuarioController.createMany)
 routes.put('/api/usuarios', usuarioController.update)
 routes.delete('/api/usuarios/:id', usuarioController.delete)
 routes.post('/api/login', usuarioController.login)

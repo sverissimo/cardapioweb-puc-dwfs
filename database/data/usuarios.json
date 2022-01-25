@@ -1,0 +1,28 @@
+[
+    {
+        "nome": "Administrador do Sistema",
+        "email": "admin@cardapio-web.com.br",
+        "perfil": "admin",
+        "password": "1234"
+    },
+    {
+        "nome": "Sandro",
+        "email": "sandro@cardapio-web.com.br",
+        "perfil": "admin",
+        "password": "1234"
+    },
+    {
+        "nome": "Bruna",
+        "email": "bruna@amarelim.com.br",
+        "perfil": "parceiro",
+        "restaurante_id": 1,
+        "password": "1234"
+    },
+    {
+        "nome": "João",
+        "email": "joao@jinlon.com.br",
+        "perfil": "parceiro",
+        "restaurante_id": 2,
+        "password": "1234"
+    }
+]

@@ -1,9 +1,9 @@
 import { getCustomRepository, Repository } from "typeorm"
-import { Cozinha } from "../entities/Cozinha";
-import { Endereco } from "../entities/Endereco";
-import { Restaurante } from "../entities/Restaurante";
-import { EnderecoRepository } from "../repositories/EnderecoRepository";
-import { RestauranteRepository } from "../repositories/RestauranteRepository"
+import { Cozinha } from "../models/Cozinha";
+import { Endereco } from "../models/Endereco";
+import { Restaurante } from "../models/Restaurante";
+import { EnderecoRepository } from "../../repositories/EnderecoRepository";
+import { RestauranteRepository } from "../../repositories/RestauranteRepository"
 import { CozinhaService } from "./CozinhaService";
 import { EnderecoService } from "./EnderecoService";
 
@@ -32,13 +32,7 @@ class RestauranteService {
     }
 
     async getRestaurante(id: number) {
-        const
-            restaurante = await this.restauranteRepository.findOne(id, { relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'] })
-            , endereco = await new EnderecoService().getEndereco(restaurante.endereco_id)
-
-        //restaurante.endereco = endereco
-        //, restauranteDTO = { ...restaurante, cidade: endereco.cidade.nome }
-
+        const restaurante = await this.restauranteRepository.findOne(id, { relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'] })
         return restaurante
     }
 

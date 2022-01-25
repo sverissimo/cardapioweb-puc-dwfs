@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UsuarioService } from "../services/UsuarioService";
+import { UsuarioService } from "../../domain/services/UsuarioService";
 
 
 export class UsuarioController {
@@ -27,6 +27,7 @@ export class UsuarioController {
             res.status(200).json(user)
 
         } catch (error) {
+            console.log("🚀 ~ file: UsuarioController.ts ~ line 30 ~ UsuarioController ~ login ~ error", error)
             const { email, password } = req.body
             if (!email)
                 res.status(400).send('Favor informar o e-mail.')
@@ -43,6 +44,20 @@ export class UsuarioController {
             const
                 usuarioService = new UsuarioService()
                 , usuario = await usuarioService.create(req.body)
+            return res.status(201).json(usuario)
+
+        } catch (e) {
+            console.log(e.message)
+            return res.status(400).send(e.message)
+        }
+    }
+
+    async createMany(req: Request, res: Response): Promise<Response> {
+
+        try {
+            const
+                usuarioService = new UsuarioService()
+                , usuario = await usuarioService.createMany(req.body)
             return res.status(201).json(usuario)
 
         } catch (e) {

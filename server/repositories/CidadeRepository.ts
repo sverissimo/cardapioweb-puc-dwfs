@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import Cidade from "../entities/Cidade";
+import Cidade from "../domain/models/Cidade";
 
 
 @EntityRepository(Cidade)

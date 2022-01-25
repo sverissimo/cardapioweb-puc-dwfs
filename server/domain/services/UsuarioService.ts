@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import { getCustomRepository, Repository } from "typeorm";
-import { Usuario } from "../entities/Usuario";
-import { UsuarioRepository } from "../repositories/UsuarioRepository";
+import { Usuario } from "../models/Usuario";
+import { UsuarioRepository } from "../../repositories/UsuarioRepository";
 import { RestauranteService } from "./RestauranteService";
 
 
@@ -78,6 +78,20 @@ export class UsuarioService {
         await this.usuarioRepository.save(usuarioEntity)
         delete usuarioEntity.password
         return usuarioEntity
+    }
+
+    async createMany(usuarios: Usuario[]) {
+        const response = []
+        try {
+            for (let usuario of usuarios) {
+                const user = await this.create(usuario)
+                response.push(user)
+            }
+            return response
+        } catch (error) {
+            console.log(error.message)
+            throw new Error('Erro ao criar múltiplos usuarios.')
+        }
     }
 
     async update(usuario: Usuario) {

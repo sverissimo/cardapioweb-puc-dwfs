@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import { Categoria } from "../entities/Categoria";
+import { Categoria } from "../domain/models/Categoria";
 
 
 @EntityRepository(Categoria)

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { RestauranteService } from '../services/RestauranteService';
+import { RestauranteService } from '../../domain/services/RestauranteService';
+import { RestauranteAssembler } from '../assembler/RestauranteAssembler';
 
 class RestauranteController {
 
@@ -22,11 +23,18 @@ class RestauranteController {
             return res.status(400).send('Restaurante não encontrado.')
         try {
 
-            const restaurantes = await restauranteService.getRestaurante(+id)
-            return res.send(restaurantes)
+            const restaurante = await restauranteService.getRestaurante(+id)
+
+            if (!restaurante)
+                res.status(404).send('Restaurante não encontrado.')
+
+            const restauranteDTO = new RestauranteAssembler().toDTO(restaurante)
+
+            return res.send(restauranteDTO)
+
         } catch (error) {
             console.log(error.message)
-            return res.status(400).send('Erro ao apagar o restaurante. Verifique se o identificador é válido.')
+            return res.status(400).send(error.message)
         }
     }
 

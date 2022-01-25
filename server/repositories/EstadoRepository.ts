@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import Estado from "../entities/Estado";
+import Estado from "../domain/models/Estado";
 
 
 @EntityRepository(Estado)

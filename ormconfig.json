@@ -11,7 +11,7 @@
         "migrationsDir": "./database/migrations"
     },
     "entities": [
-        "./server/entities/**.ts"
+        "./server/domain/models/**.ts"
     ],
     "migrations": [
         "./database/migrations/**.ts"

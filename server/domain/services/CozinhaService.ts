@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
-import { Cozinha } from "../entities/Cozinha";
-import { CozinhaRepository } from "../repositories/CozinhaRepository";
+import { Cozinha } from "../models/Cozinha";
+import { CozinhaRepository } from "../../repositories/CozinhaRepository";
 
 interface ICozinhaCreate {
     nome: string

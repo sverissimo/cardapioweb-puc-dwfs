@@ -1,18 +1,17 @@
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm"
-import Cidade from "../entities/Cidade";
-import { CidadeRepository } from "../repositories/CidadeRepository"
+import { CategoriaRepository } from "../../repositories/CategoriaRepository"
 
 
-export class CidadeController {
+export class CategoriaController {
 
 
     async list(req: Request, res: Response): Promise<Response> {
 
         try {
             const
-                cidadeRepository = getCustomRepository(CidadeRepository)
-                , data = await cidadeRepository.find({ order: { id: 'ASC' }, relations: ['estado'] })
+                categoriaRepository = getCustomRepository(CategoriaRepository)
+                , data = await categoriaRepository.find({ order: { id: 'ASC' } })
 
             return res.json(data)
         } catch (error) {
@@ -25,10 +24,10 @@ export class CidadeController {
 
         try {
             const
-                cidadeRepository = getCustomRepository(CidadeRepository)
-                , data = cidadeRepository.create(req.body)
+                categoriaRepository = getCustomRepository(CategoriaRepository)
+                , data = categoriaRepository.create(req.body)
 
-            await cidadeRepository.save(data)
+            await categoriaRepository.save(data)
             return res.status(201).json(data)
 
         } catch (error) {
@@ -44,14 +43,14 @@ export class CidadeController {
                 return res.status(400).send('É necessário enviar o id para editar esse item.')
 
             const
-                cidadeRepository = getCustomRepository(CidadeRepository)
-                , currentData = await cidadeRepository.findOne(id)
-                , updatedData = cidadeRepository.create({ ...currentData, ...req.body })
+                categoriaRepository = getCustomRepository(CategoriaRepository)
+                , currentData = await categoriaRepository.findOne(id)
+                , updatedData = categoriaRepository.create({ ...currentData, ...req.body })
 
             if (!currentData)
                 return res.status(400).send('Item não encontrado na base de dados.')
 
-            await cidadeRepository.save(updatedData)
+            await categoriaRepository.save(updatedData)
             return res.status(200).json(updatedData)
 
         } catch (error) {
@@ -67,13 +66,13 @@ export class CidadeController {
                 return res.status(400).send('É necessário enviar o id para remover esse item.')
 
             const
-                cidadeRepository = getCustomRepository(CidadeRepository)
-                , data = await cidadeRepository.findOne(id)
+                categoriaRepository = getCustomRepository(CategoriaRepository)
+                , data = await categoriaRepository.findOne(id)
 
             if (!data)
                 return res.status(400).send('Item não encontrado na base de dados.')
 
-            await cidadeRepository.delete(id)
+            await categoriaRepository.delete(id)
             return res.status(204).send()
 
         } catch (error) {

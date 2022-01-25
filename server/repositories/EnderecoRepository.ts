@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import { Endereco } from "../entities/Endereco";
+import { Endereco } from "../domain/models/Endereco";
 
 
 @EntityRepository(Endereco)

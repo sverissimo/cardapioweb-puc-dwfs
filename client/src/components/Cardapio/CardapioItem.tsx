@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-const CardapioItem = ({ item, categoria, index }) => {
+const CardapioItem = ({ item, categoria }) => {
 
     return (
-        <div className='cardapioItem' key={index}>
+        <div className='cardapioItem'>
 
             <div className="cardapioItem--image">
                 <Image width={50} height={50} src={`/${categoria.nome}.png`} alt={item} />

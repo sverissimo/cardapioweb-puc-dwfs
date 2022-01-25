@@ -9,6 +9,7 @@ export class Api {
         const
             response = await fetch(`${this.baseUrl}/${params}`)
             , data = await response.json()
+
         return data
     }
 

@@ -1,17 +1,18 @@
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm"
-import { FormaPagamentoRepository } from "../repositories/FormaPagamentoRepository"
+import Cidade from "../../domain/models/Cidade";
+import { CidadeRepository } from "../../repositories/CidadeRepository"
 
 
-export class FormaPagamentoController {
+export class CidadeController {
 
 
     async list(req: Request, res: Response): Promise<Response> {
 
         try {
             const
-                formaPagamentoRepository = getCustomRepository(FormaPagamentoRepository)
-                , data = await formaPagamentoRepository.find({ order: { descricao: 'ASC' } })
+                cidadeRepository = getCustomRepository(CidadeRepository)
+                , data = await cidadeRepository.find({ order: { id: 'ASC' }, relations: ['estado'] })
 
             return res.json(data)
         } catch (error) {
@@ -24,10 +25,10 @@ export class FormaPagamentoController {
 
         try {
             const
-                formaPagamentoRepository = getCustomRepository(FormaPagamentoRepository)
-                , data = formaPagamentoRepository.create(req.body)
+                cidadeRepository = getCustomRepository(CidadeRepository)
+                , data = cidadeRepository.create(req.body)
 
-            await formaPagamentoRepository.save(data)
+            await cidadeRepository.save(data)
             return res.status(201).json(data)
 
         } catch (error) {
@@ -43,14 +44,14 @@ export class FormaPagamentoController {
                 return res.status(400).send('É necessário enviar o id para editar esse item.')
 
             const
-                formaPagamentoRepository = getCustomRepository(FormaPagamentoRepository)
-                , currentData = await formaPagamentoRepository.findOne(id)
-                , updatedData = formaPagamentoRepository.create({ ...currentData, ...req.body })
+                cidadeRepository = getCustomRepository(CidadeRepository)
+                , currentData = await cidadeRepository.findOne(id)
+                , updatedData = cidadeRepository.create({ ...currentData, ...req.body })
 
             if (!currentData)
                 return res.status(400).send('Item não encontrado na base de dados.')
 
-            await formaPagamentoRepository.save(updatedData)
+            await cidadeRepository.save(updatedData)
             return res.status(200).json(updatedData)
 
         } catch (error) {
@@ -66,13 +67,13 @@ export class FormaPagamentoController {
                 return res.status(400).send('É necessário enviar o id para remover esse item.')
 
             const
-                formaPagamentoRepository = getCustomRepository(FormaPagamentoRepository)
-                , data = await formaPagamentoRepository.findOne(id)
+                cidadeRepository = getCustomRepository(CidadeRepository)
+                , data = await cidadeRepository.findOne(id)
 
             if (!data)
                 return res.status(400).send('Item não encontrado na base de dados.')
 
-            await formaPagamentoRepository.delete(id)
+            await cidadeRepository.delete(id)
             return res.status(204).send()
 
         } catch (error) {

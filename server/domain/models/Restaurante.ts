@@ -22,7 +22,7 @@ class Restaurante {
     id: number;
 
     @Column()
-    nome: string;
+    public nome: string;
 
     @Column()
     ativo: boolean;

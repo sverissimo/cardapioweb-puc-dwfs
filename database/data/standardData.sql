@@ -1,8 +1,3 @@
-INSERT INTO usuarios (id, nome, email, password, perfil, restaurante_id) VALUES (1, 'admin', 'admin@cardapio-web.com.br', '1234', 'admin', NULL) ON CONFLICT DO NOTHING;
-INSERT INTO usuarios (id, nome, email, password, perfil, restaurante_id) VALUES (2, 'admin', 'admin@cardapio-web.com.br', '1234', 'Sandro', NULL) ON CONFLICT DO NOTHING;
-INSERT INTO usuarios (id, nome, email, password, perfil, restaurante_id) VALUES (3, 'parceiro', 'bruna@amarelim.com.br', '1234', 'Bruna', 1) ON CONFLICT DO NOTHING;
-INSERT INTO usuarios (id, nome, email, password, perfil, restaurante_id) VALUES (4, 'parceiro', 'joao@jinlon.com.br', '1234', 'João', 2) ON CONFLICT DO NOTHING;
-
 INSERT INTO forma_pagamento (id, descricao) VALUES (1, 'Cartão de débito') ON CONFLICT DO NOTHING;
 INSERT INTO forma_pagamento (id, descricao) VALUES (2, 'Cartão de crédito') ON CONFLICT DO NOTHING;
 INSERT INTO forma_pagamento (id, descricao) VALUES (3, 'PIX') ON CONFLICT DO NOTHING;

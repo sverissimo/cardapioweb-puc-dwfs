@@ -5,6 +5,7 @@ import { IUsuario } from '../types/IUsuario';
 
 import '../styles/global.scss';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-toastify/dist/ReactToastify.min.css'
 import { getCookie } from '../utils/setCookies';
 
 

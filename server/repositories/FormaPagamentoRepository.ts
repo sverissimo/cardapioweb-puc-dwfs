@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import { FormaPagamento } from "../entities/FormaPagamento";
+import { FormaPagamento } from "../domain/models/FormaPagamento";
 
 
 @EntityRepository(FormaPagamento)

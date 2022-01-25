@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4000",
+    "devHttps": "node ./server.js",
     "build": "next build",
     "start": "next start -p 4000",
     "lint": "next lint"

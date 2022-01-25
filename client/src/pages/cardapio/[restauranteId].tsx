@@ -25,9 +25,9 @@ export default function Cardapio(props: CardapioProps) {
                         <div className="cardapioCategoriaBlock" key={i}>
                             <h4>{categoria.nome}</h4>
                             {
-                                cardapio.map((el, j) => el.categoria_id === categoria.id &&
+                                cardapio.map(el => el.categoria_id === categoria.id &&
                                     <CardapioItem
-                                        index={j}
+                                        key={el.id}
                                         item={el}
                                         categoria={categoria}
                                     />

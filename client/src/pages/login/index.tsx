@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react'
 
-//import { ToastContainer, toast } from 'react-toastify'
-
 import LoginTemplate from "./LoginTemplate"
 import { UserContext } from '../../contexts/UserContext'
 import Usuario from '../../entities/Usuario'
 import { useRouter } from 'next/router'
 import { setCookie } from '../../utils/setCookies'
 import { Api } from '../../services/api'
+import { ToastContainer, toast } from 'react-toastify'
 
 
 const Login = () => {
@@ -31,6 +30,7 @@ const Login = () => {
             , userSearch = await api.get(`usuarios/${email}`)
         userSearch.length && Object.assign(facebookUser, userSearch[0])
 
+        //console.log("🚀 ~ file: index.tsx ~ line 31 ~ Login ~ facebookUser", facebookUser)
 
         const user = new Usuario({ ...facebookUser })
 
@@ -50,9 +50,20 @@ const Login = () => {
         e.preventDefault()
 
         try {
+            console.log("🚀 ~ file: index.tsx ~ line 54 ~ signIn ~ state", state)
             const loggedUser = await api.post('login', state)
 
-            //toast.success('Alright')
+            if (typeof loggedUser === 'string') {
+                toast.error(loggedUser, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                })
+                return
+            }
 
             const user = new Usuario(loggedUser)
             console.log("🚀 ~ file: index.tsx ~ line 40 ~ signIn ~ user", user)
@@ -79,7 +90,9 @@ const Login = () => {
                 responseFacebook={responseFacebook}
             />
 
-            {/* <ToastContainer /> */}
+            <ToastContainer
+                position="top-right"
+            />
         </>
     )
 }

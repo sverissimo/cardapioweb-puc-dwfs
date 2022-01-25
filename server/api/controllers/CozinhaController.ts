@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { getCustomRepository } from 'typeorm';
-import { CozinhaRepository } from '../repositories/CozinhaRepository';
-import { CozinhaService } from '../services/CozinhaService';
+import { CozinhaRepository } from '../../repositories/CozinhaRepository';
+import { CozinhaService } from '../../domain/services/CozinhaService';
 
 class CozinhaController {
 
