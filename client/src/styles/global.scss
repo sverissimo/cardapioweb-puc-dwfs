@@ -59,6 +59,11 @@ a:hover {
     cursor: pointer;
 }
 
+td.link,
+th.link {
+    text-align: center;
+}
+
 .dropdown-menu {
     display: none !important;
 }

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 
 import LoginTemplate from "./LoginTemplate"
 import { UserContext } from '../../contexts/UserContext'
-import Usuario from '../../entities/Usuario'
+import Usuario from '../../models/UsuarioModel'
 import { useRouter } from 'next/router'
 import { setCookie } from '../../utils/setCookies'
 import { Api } from '../../services/api'

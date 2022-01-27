@@ -27,8 +27,8 @@ export function parseSubmitData(obj, data) {
             : obj[k] === 'não' ? false
                 : obj[k]
 
-        if (obj[k] === '')
-            delete obj[k]
+        /* if (obj[k] === '')
+            delete obj[k] */
 
         if (lookupProps.includes(k)) {
 

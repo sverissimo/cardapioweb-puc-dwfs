@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
-import { Restaurante } from "../../entities/Restaurante"
+import { Restaurante } from "../../models/RestauranteModel"
 import { Api } from "../../services/api"
 import CardapioItem from "../../components/Cardapio/CardapioItem"
 

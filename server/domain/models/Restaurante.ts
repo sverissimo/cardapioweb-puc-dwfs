@@ -8,7 +8,8 @@ import {
     ManyToMany,
     JoinTable,
     PrimaryGeneratedColumn,
-    OneToOne
+    OneToOne,
+    OneToMany
 } from "typeorm";
 
 import { Cozinha } from "./Cozinha";
@@ -37,13 +38,12 @@ class Restaurante {
     @Column({ nullable: true })
     cozinha_id: number;
 
-    @OneToOne(() => Endereco, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'endereco_id' })
+    @OneToOne(() => Endereco, endereco => endereco.restaurante)
     endereco?: Endereco
-
-    @Column({ nullable: true })
-    endereco_id: number;
-
+    /* 
+        @Column({ nullable: true })
+        endereco_id: number
+     */
     @ManyToMany(() => FormaPagamento)
     @JoinTable()
     formaPagamento: FormaPagamento[]

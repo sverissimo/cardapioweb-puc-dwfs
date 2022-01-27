@@ -3,12 +3,12 @@ import React, { useContext, useEffect, useState } from "react"
 import Form from "../../components/Form/Form"
 import PopUpDialog from "../../components/PopUpDialog/PopUpDialog"
 import { UserContext } from "../../contexts/UserContext"
-import { IEntity } from "../../entities/IEntity"
 import { Api } from "../../services/api"
-import CustomTable from "../../utils/CustomTable"
+import CustomTable from "../../components/Table/CustomTable"
 import { getJoinColumnsName, parseSubmitData } from "../../utils/dtoFilter"
+import { filterData } from "../../utils/filterData"
 
-interface IState extends IEntity {
+interface IState {
     openDialog: boolean;
     endPoint: string;
     editedElement: any;
@@ -38,15 +38,17 @@ export default function Manage(props) {
             }
         )
 
-    const loggedIn = useContext(UserContext)?.email
-    useEffect(() => {
+    const
+        user = useContext(UserContext)
+        , loggedIn = user?.email
 
+    useEffect(() => {
         async function createObject(subject: string) {
 
             try {
                 const
-                    lookupTables = ['categorias', 'cozinhas', 'formaPagamento', 'restaurantes']
-                    , lookupProps = ['categoria', 'cozinha', 'formaPagamento', 'restaurante']
+                    lookupTables = ['categorias', 'cozinhas', 'formaPagamento', 'restaurantes', 'cidades', 'estados']
+                    , lookupProps = ['categoria', 'cozinha', 'formaPagamento', 'restaurante', 'cidade', 'estado']
                     , lookupTableRequests = lookupTables.map(t => api.get(t))
                     , lookupResponse = await Promise.all(lookupTableRequests)
                     , lookupData = {}
@@ -59,15 +61,15 @@ export default function Manage(props) {
 
                 let data: any
 
-                if (subject === 'restaurantes')
+                if (subject === 'restaurantes') {
                     data = lookupData['restaurantes']
+                    data = filterData(user, data)
+                }
                 else
                     data = await api.get(subject)
-                //console.log("🚀 ~ file: [subject].tsx ~ line 66 ~ createObject ~ data", data)
 
-                const filteredData = getJoinColumnsName(data)
+                setState({ ...state, ...lookupData, [subject]: data, lookupProps, lookupTables, loggedIn })
 
-                setState({ ...state, [subject]: filteredData, ...lookupData, lookupProps, lookupTables, loggedIn })
             } catch (error) {
                 console.log({ error })
             }
@@ -94,6 +96,7 @@ export default function Manage(props) {
 
     const editElement = (index: any) => {
         const editedElement = state[subject][index]
+        //console.log("🚀 ~ file: [subject].tsx ~ line 96 ~ editElement ~ editedElement", editedElement)
         setState({ ...state, editedElement, openDialog: true, add: false })
     }
 
@@ -112,7 +115,7 @@ export default function Manage(props) {
         const
             { editedElement } = state
             , { id } = editedElement
-            , requestData = parseSubmitData(editedElement, state)
+            , requestData = editedElement
 
         let response
 
@@ -144,11 +147,12 @@ export default function Manage(props) {
     }
 
 
-    const deleteElement = async (objArray: Array<any>) => {
+    const deleteElement = async (tableRow: Array<any>) => {
 
         const
-            objId = objArray.find(e => e.field === 'id')
-            , id = objId.value
+            objId = tableRow.find(e => e.field === 'id')
+            , id = objId?.value
+        console.log("🚀 ~ file: [subject].tsx ~ line 149 ~ deleteElement ~ tableRow", tableRow)
 
         await api.delete(`${subject}/${id}`)
             .catch(e => console.log(e))
@@ -158,7 +162,6 @@ export default function Manage(props) {
 
         setState({ ...state, [subject]: updatedCollection })
     }
-
 
     const toggleForm = () => setState({ ...state, openDialog: !state.openDialog })
 

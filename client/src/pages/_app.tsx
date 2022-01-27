@@ -19,12 +19,12 @@ function MyApp({ Component, pageProps }) {
 
   const logUser = (usuario: IUsuario): void => {
     setUsuario(usuario)
-    console.log("🚀 ~ file: _app.tsx ~ line 21 ~ logUser ~ usuario", usuario)
+    //console.log("🚀 ~ file: _app.tsx ~ line 21 ~ logUser ~ usuario", usuario)
   }
 
   useEffect(() => {
     const loggedUser = getCookie('loggedUser') && JSON.parse(getCookie('loggedUser'))
-    console.log("🚀 ~ file: _app.tsx ~ line 25 ~ useEffect ~ loggedUser", loggedUser)
+    //console.log("🚀 ~ file: _app.tsx ~ line 25 ~ useEffect ~ loggedUser", loggedUser)
 
     if (!usuario.email)
       setUsuario({ ...usuario, ...loggedUser })

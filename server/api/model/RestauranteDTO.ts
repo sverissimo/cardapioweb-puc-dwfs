@@ -1,6 +1,4 @@
-import { Cozinha } from "../../domain/models/Cozinha";
 import { FormaPagamento } from "../../domain/models/FormaPagamento";
-
 
 class RestauranteDTO {
 

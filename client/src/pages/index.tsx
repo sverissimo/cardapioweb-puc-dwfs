@@ -3,20 +3,30 @@ import { Api } from "../services/api"
 import { useContext } from "react"
 import { UserContext } from "../contexts/UserContext"
 import HomeTemplate from "./HomeTemplate"
-import { Restaurante } from "../entities/Restaurante"
+import { Restaurante } from "../models/RestauranteModel"
+import { filterData } from "../utils/filterData"
+import { getCookie } from "../utils/setCookies"
 
 
 export default function Home(props: HomeProps) {
   const user = useContext(UserContext)
 
-  if (props)
+  if (props) {
+    let { restaurantes, produtos } = props
+    //    console.log("🚀 ~ file: index.tsx ~ line 15 ~ Home ~ props", props)
+
+    restaurantes = filterData(user, restaurantes)
+    produtos = filterData(user, produtos)
+    //console.log("🚀 ~ file: index.tsx ~ line 17 ~ Home ~ restaurantes", restaurantes)
+
     return (
       <HomeTemplate
-        restaurantes={props.restaurantes}
-        produtos={props.produtos}
+        restaurantes={restaurantes}
+        produtos={produtos}
         user={user}
       />
     )
+  }
   return null
 }
 

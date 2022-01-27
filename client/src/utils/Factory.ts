@@ -1,4 +1,4 @@
-import { Restaurante } from "../entities/Restaurante";
+import { Restaurante } from "../models/RestauranteModel";
 
 
 export class Factory {

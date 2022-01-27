@@ -1,3 +1,4 @@
+import { capitalize } from '../../utils/capitalize'
 import { renderData } from '../../utils/dtoFilter'
 import styles from './login.module.scss'
 import { inputOptions } from './selectInputs'
@@ -6,20 +7,20 @@ interface Props {
     signIn(e: any): Promise<void>;
     handleInput(e: React.ChangeEvent<HTMLInputElement>): void;
 }
-const
-    { loginContainer, formContainer } = styles
 
-
+const { formContainer } = styles
 
 const Form = (props) => {
     const { handleInput, data, subject, handleSubmit } = props
         , { editedElement, add } = data
-        , formElement = renderData(editedElement)
+
+        , formElement = editedElement
         , formData = formElement && Object.keys(formElement)
         , selectInputs = Object.keys(inputOptions(data))
         , options = inputOptions(data)
 
-    //console.log(inputOptions(data), { selectInputs })
+    console.log("🚀 ~ file: Form.tsx ~ line 18 ~ Form ~ editedElement", editedElement)
+
 
     return (
         <div className='customContainer'>
@@ -29,12 +30,12 @@ const Form = (props) => {
                 <form onSubmit={e => handleSubmit(e)}>
                     {
                         formData && formData.map((key, index) =>
-                            !key.match('id') &&
+                            key !== 'id' && !key.match('Id') &&
                             <div className="mb-3" key={index}>
                                 {
                                     !selectInputs.includes(key) ?
                                         <>
-                                            <label htmlFor={key} className="form-label">{key}</label>
+                                            <label htmlFor={key} className="form-label">{capitalize(key)}</label>
                                             <input
                                                 name={key}
                                                 className="form-control"
@@ -44,23 +45,28 @@ const Form = (props) => {
                                                 aria-describedby="emailHelp"
                                                 onChange={e => handleInput(e)}
                                                 value={editedElement[key] || ''}
-                                                required
+                                                required={key !== 'complemento'}
                                             />
                                         </>
                                         :
                                         <>
-                                            <label htmlFor={key} className="form-label">{key}</label>
+                                            <label htmlFor={key} className="form-label">{capitalize(key)}</label>
                                             <select
                                                 id={key}
                                                 name={key}
-                                                className="form-select" aria-label={key}
+                                                className="form-select"
+                                                aria-label={key}
                                                 onChange={e => handleInput(e)}
-                                                required
+                                                defaultValue={editedElement[key]}
                                             >
-                                                <option selected>{editedElement[key]}</option>
+                                                {/* <option selected>{editedElement[key]}</option> */}
                                                 {
                                                     options[key].map((opt, i) =>
-                                                        <option key={opt} value={opt}>{opt}</option>
+                                                        <option key={opt}
+                                                            value={opt}
+                                                            defaultValue={editedElement[key]}
+                                                        >{opt}
+                                                        </option>
                                                     )
                                                 }
                                             </select>

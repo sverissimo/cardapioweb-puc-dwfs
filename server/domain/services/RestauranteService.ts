@@ -1,4 +1,4 @@
-import { getCustomRepository, Repository } from "typeorm"
+import { createQueryBuilder, getCustomRepository, getRepository, Repository } from "typeorm"
 import { Cozinha } from "../models/Cozinha";
 import { Endereco } from "../models/Endereco";
 import { Restaurante } from "../models/Restaurante";
@@ -13,9 +13,12 @@ interface IRestauranteCreate {
     ativo: boolean;
     aberto: boolean;
     cozinha_id?: number;
-    cozinha: Cozinha;
-    endereco: Endereco;
-    endereco_id: number;
+    cozinha?: Cozinha
+    cep: string;
+    logradouro: string;
+    numero: string;
+    complemento?: string;
+    cidade_id?: number;
 }
 
 class RestauranteService {
@@ -27,7 +30,18 @@ class RestauranteService {
     }
 
     async list() {
-        const restaurante = await this.restauranteRepository.find({ relations: ['cozinha', 'endereco'], order: { nome: 'ASC' } })
+        const restaurante = await this.restauranteRepository.find({
+            relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'],
+            order: { nome: 'ASC' }
+        })
+        /*   const restaurante = await
+              createQueryBuilder('restaurantes')
+                  .select('restaurante')
+                  .addSelect('logradouro')
+                  .from(Restaurante, 'restaurante')
+                  .leftJoinAndSelect('restaurante.endereco', "endereco.logradouro")
+                  .getMany(); */
+
         return restaurante
     }
 
@@ -37,37 +51,38 @@ class RestauranteService {
     }
 
     async create(restaurante: IRestauranteCreate) {
-        //console.log("🚀 ~ file: RestauranteService.ts ~ line 35 ~ RestauranteService ~ create ~ restaurante", restaurante)
 
         const restauranteAlreadyExists = await this.restauranteRepository.findOne({ nome: restaurante.nome })
-
         if (restauranteAlreadyExists)
             throw new Error('Restaurante já existe.');
 
+        try {
 
-        const
-            enderecoService = new EnderecoService()
-            , endereco = await enderecoService.save(restaurante)
-        /*     , enderecoId = endereco.id
+            if (restaurante.cozinha_id) {
+                const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
+                restaurante.cozinha = cozinha
+            }
 
-            , updatedEndereco = await new EnderecoService().getEndereco(enderecoId)
+            const createdRestaurante = this.restauranteRepository.create(restaurante)
+            await this.restauranteRepository.save(createdRestaurante)
 
-        restaurante.endereco_id = endereco.id */
-        restaurante.endereco = endereco
+            const
+                enderecoService = new EnderecoService()
+                , endereco = { ...restaurante, restaurante_id: createdRestaurante?.id }
+            await enderecoService.save(endereco)
 
+            const
+                { id } = createdRestaurante
+                , newRestaurante = await this.getRestaurante(id)
 
-        if (restaurante.cozinha_id) {
-            const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
-            restaurante.cozinha = cozinha
+            return newRestaurante
+
+        } catch (error) {
+            console.log(error.message)
+            throw new Error(error.message)
         }
-
-
-
-        const createdRestaurante = this.restauranteRepository.create(restaurante)
-
-        await this.restauranteRepository.save(createdRestaurante)
-        return createdRestaurante
     }
+
 
     async update(restaurante: Restaurante) {
 
@@ -78,23 +93,22 @@ class RestauranteService {
         if (!restauranteAtual)
             throw new Error('Restaurante não encontrado na base de dados.')
 
-        if (restaurante.cozinha_id) {
-            const cozinha = await new CozinhaService().getCozinha(restaurante.cozinha_id)
-            restaurante.cozinha = cozinha
-        }
-
-        if (restaurante.endereco) {
-            const endereco = await new EnderecoService().update(restaurante.endereco)
-            restaurante.endereco = endereco
-        }
-
         const updatedRestaurante = await this.restauranteRepository.create({
             ...restauranteAtual, ...restaurante
         })
 
         await this.restauranteRepository.save(updatedRestaurante);
-        return updatedRestaurante
+
+        const
+            enderecoService = new EnderecoService()
+            , endereco = { ...restaurante, restaurante_id: updatedRestaurante?.id }
+        await enderecoService.update(endereco)
+
+        const restauranteModel = await this.getRestaurante(id)
+
+        return restauranteModel
     }
+
 
     async delete(id: string): Promise<void> {
         try {

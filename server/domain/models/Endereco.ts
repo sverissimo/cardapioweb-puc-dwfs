@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import Cidade from "./Cidade";
+import { Restaurante } from "./Restaurante";
 
 
 @Entity('enderecos')
@@ -26,5 +27,12 @@ export class Endereco {
 
     @Column({ nullable: true })
     public cidade_id: number
+
+    @OneToOne(() => Restaurante)
+    @JoinColumn({ name: 'restaurante_id' })
+    public restaurante: Restaurante
+
+    @Column({ nullable: true })
+    public restaurante_id: number
 
 }

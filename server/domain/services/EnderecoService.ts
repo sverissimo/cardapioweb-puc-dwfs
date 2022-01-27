@@ -1,20 +1,23 @@
 import { getCustomRepository } from "typeorm";
 import { Endereco } from "../models/Endereco";
 import { EnderecoRepository } from "../../repositories/EnderecoRepository";
+import { CidadeRepository } from "../../repositories/CidadeRepository";
+import Cidade from "../models/Cidade";
 
 
 export class EnderecoService {
 
     enderecoRepository: EnderecoRepository
+    cidadeRepository: CidadeRepository
 
     constructor() {
         this.enderecoRepository = getCustomRepository(EnderecoRepository)
+        this.cidadeRepository = getCustomRepository(CidadeRepository)
     }
 
     async getEndereco(id: number) {
 
         try {
-
             const endereco = await this.enderecoRepository.findOne(id, { relations: ['cidade'] })
             return endereco
 
@@ -24,29 +27,31 @@ export class EnderecoService {
         }
     }
 
+
     async save(endereco): Promise<any> {
 
-        const _endereco = this.enderecoRepository.create(endereco)
-        endereco = await this.enderecoRepository.save(_endereco)
+        const newEndereco = this.enderecoRepository.create(endereco)
+        endereco = await this.enderecoRepository.save(newEndereco)
+        console.log("🚀 ~ file: EnderecoService.ts ~ line 32 ~ EnderecoService ~ save ~ endereco", endereco)
 
-        console.log("🚀 ~ file: EnderecoService.ts ~ line 29 ~ EnderecoService ~ save ~ savedEndereco", endereco)
         return endereco
-
     }
 
-    async update(endereco: Endereco): Promise<any> {
-        const
-            { id } = endereco
-            , enderecoAtual = await this.enderecoRepository.findOne(id)
 
-        console.log("🚀 ~ file: EnderecoService.ts ~ line 41 ~ EnderecoService ~ update ~ enderecoAtual", enderecoAtual)
+    async update(endereco: Endereco | any): Promise<any> {
+        const
+            { id, cidade } = endereco
+            , enderecoAtual = await this.enderecoRepository.find({ restaurante_id: id })
+            , cidadeObj: Cidade = await this.cidadeRepository.findOne({ nome: cidade })
+
+        if (cidadeObj)
+            endereco.cidade_id = cidadeObj.id
 
         const updatedEndereco = this.enderecoRepository.create({
             ...enderecoAtual, ...endereco
         })
 
         await this.enderecoRepository.save(updatedEndereco)
-        console.log("🚀 ~ file: EnderecoService.ts ~ line 49 ~ EnderecoService ~ update ~ updatedEndereco", updatedEndereco)
         return updatedEndereco
     }
 }

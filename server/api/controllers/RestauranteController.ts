@@ -1,16 +1,27 @@
 import { Request, Response } from 'express';
+import { Restaurante } from '../../domain/models/Restaurante';
 import { RestauranteService } from '../../domain/services/RestauranteService';
 import { RestauranteAssembler } from '../assembler/RestauranteAssembler';
 
 class RestauranteController {
 
+    restauranteAssembler: RestauranteAssembler;
+
+    constructor() {
+        this.restauranteAssembler = new RestauranteAssembler()
+    }
+
     async list(req: Request, res: Response): Promise<Response> {
 
         const
             restauranteService = new RestauranteService()
+            , restauranteAssembler = new RestauranteAssembler()
             , restaurantes = await restauranteService.list()
 
-        return res.send(restaurantes)
+            , restauranteDTOCollection = restaurantes.map(r => restauranteAssembler.toDTO(r))
+
+
+        return res.send(restauranteDTOCollection)
     }
 
     async getRestaurante(req: Request, res: Response): Promise<Response> {
@@ -18,17 +29,18 @@ class RestauranteController {
         const
             { id } = req.params
             , restauranteService = new RestauranteService()
+            , restauranteAssembler = new RestauranteAssembler()
 
         if (!id)
             return res.status(400).send('Restaurante não encontrado.')
         try {
 
-            const restaurante = await restauranteService.getRestaurante(+id)
+            const restaurante: Restaurante = await restauranteService.getRestaurante(+id)
 
             if (!restaurante)
                 res.status(404).send('Restaurante não encontrado.')
 
-            const restauranteDTO = new RestauranteAssembler().toDTO(restaurante)
+            const restauranteDTO = restauranteAssembler.toDTO(restaurante)
 
             return res.send(restauranteDTO)
 
@@ -40,30 +52,46 @@ class RestauranteController {
 
 
     async create(req: Request, res: Response): Promise<Response> {
+        const
+            restauranteService = new RestauranteService()
+            , restauranteAssembler = new RestauranteAssembler()
 
         try {
-            const restaurante = await new RestauranteService().create(req.body)
-            return res.status(201).json(restaurante)
+            const
+                restauranteModel = await restauranteAssembler.toModel(req.body)
+                , newRestaurante: Restaurante = await restauranteService.create(restauranteModel)
+            console.log("🚀 ~ file: RestauranteController.ts ~ line 63 ~ RestauranteController ~ create ~ newRestaurante", newRestaurante)
+
+            const restauranteDTO = restauranteAssembler.toDTO(newRestaurante)
+
+            return res.status(201).json(restauranteDTO)
 
         } catch (error) {
             console.log("🚀 ~ file: RestauranteController.ts ~ line 44 ~ RestauranteController ~ create ~ error", error)
-            res.status(400).send(`Restaurante de nome ${req?.body?.nome} já existe`)
+            res.status(400).send(error.message)
         }
     }
 
     async update(req: Request, res: Response): Promise<Response> {
         const
             restauranteService = new RestauranteService()
-            , restaurante = req.body
-            , { id } = restaurante
-
-        console.log("🚀 ~ file: RestauranteController.ts ~ line 53 ~ RestauranteController ~ update ~ restaurante", restaurante)
-        if (!id)
-            return res.status(400).send('Restaurante não encontrado.')
+            , restauranteAssembler = new RestauranteAssembler()
 
         try {
-            const restauranteAtual = await restauranteService.update(restaurante);
-            return res.status(200).json(restauranteAtual)
+            const
+                restaurante = await restauranteAssembler.toModel(req.body)
+                , { id } = restaurante
+
+            //console.log("🚀 ~ file: RestauranteController.ts ~ line 80 ~ RestauranteController ~ update ~ restaurante", restaurante)
+
+            if (!id)
+                return res.status(400).send('Restaurante não encontrado.')
+
+            const
+                updatedRestaurante = await restauranteService.update(restaurante)
+                , restauranteDTO = restauranteAssembler.toDTO(updatedRestaurante)
+
+            return res.status(200).json(restauranteDTO)
 
         } catch (error) {
             return res.status(400).send(error?.message)

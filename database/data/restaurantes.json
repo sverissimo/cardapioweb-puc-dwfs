@@ -1,14 +1,32 @@
 [
     {
-        "nome": "Amarelim",
+        "nome": "Amarelim do Prado",
         "aberto": true,
         "ativo": true,
-        "cozinha_id": 4
+        "cozinha_id": 4,
+        "logradouro": "Av Francisco Sa",
+        "numero": "658",
+        "cep": "30411-174",
+        "cidade_id": 1
+    },
+    {
+        "nome": "Itália Grill",
+        "aberto": true,
+        "ativo": true,
+        "cozinha_id": 2,
+        "logradouro": "Av. Olegário Maciel",
+        "numero": "1600",
+        "cep": "30180-111",
+        "cidade_id": 1
     },
     {
         "nome": "Jin Lon",
         "aberto": true,
         "ativo": true,
-        "cozinha_id": 1
+        "cozinha_id": 1,
+        "logradouro": " Av. do Contorno",
+        "numero": "4667",
+        "cep": "30220-040",
+        "cidade_id": 1
     }
 ]

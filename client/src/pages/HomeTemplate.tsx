@@ -12,7 +12,7 @@ const HomeTemplate = (props) => {
         , userName = user?.nome || user?.name
         , userPic = user?.picture?.data
         , restaurantesImages = ['/amarelim.jpg', '/jinlon.webp']
-    console.log("🚀 ~ file: HomeTemplate.tsx ~ line 35 ~ HomeTemplate ~ user?.perfil", user?.perfil)
+
     return (
         <>
             <header className='customContainer'>

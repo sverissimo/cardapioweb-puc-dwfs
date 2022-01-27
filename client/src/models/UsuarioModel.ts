@@ -6,6 +6,7 @@ export default class Usuario implements IUsuario {
     email;
     password?;
     perfil;
+    restaurante: string;
     restaurante_id?;
     picture?;
     name?;
@@ -15,4 +16,9 @@ export default class Usuario implements IUsuario {
     }
 
     logUser: (usuario: IUsuario) => void
+
+    toTableModel(usuario: Usuario) {
+        const { id, password, restaurante_id, picture, name, ...usuarioTableModel } = usuario
+        return usuarioTableModel
+    }
 }
