@@ -1,0 +1,99 @@
+[
+    {
+        "id": "b8b04fc3-74bf-4a3c-98ad-c8918897ec3c",
+        "code": "b8b04fc3-74bf-4a3c-98ad-c8918897ec3c",
+        "description": "Bananinha",
+        "needChoices": false,
+        "unitPrice": 2,
+        "unitMinPrice": 2,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "23d8506e-be3a-4433-b661-80b0e52335d8",
+        "code": "23d8506e-be3a-4433-b661-80b0e52335d8",
+        "description": "Bananinha diet",
+        "needChoices": false,
+        "unitPrice": 3,
+        "unitMinPrice": 3,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "23d8506e-be3a-4433-b661-80b0e52335d8",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "cbf43bfd-9f49-4518-88f9-e830b4325a06",
+        "code": "cbf43bfd-9f49-4518-88f9-e830b4325a06",
+        "description": "Bombom",
+        "details": "Sonho de Valsa",
+        "needChoices": false,
+        "unitPrice": 2,
+        "unitMinPrice": 2,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "cbf43bfd-9f49-4518-88f9-e830b4325a06",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "3df3d5f9-e114-44dd-aeed-dcfa1095f8f4",
+        "code": "3df3d5f9-e114-44dd-aeed-dcfa1095f8f4",
+        "description": "Brigadeiro Famoso",
+        "needChoices": false,
+        "unitPrice": 2.5,
+        "unitMinPrice": 2.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "3df3d5f9-e114-44dd-aeed-dcfa1095f8f4",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "fcc75388-6de3-4661-8ad5-ce900f0aa628",
+        "code": "fcc75388-6de3-4661-8ad5-ce900f0aa628",
+        "description": "Chiclete caxinha",
+        "needChoices": false,
+        "unitPrice": 0.35,
+        "unitMinPrice": 0.35
+    },
+    {
+        "id": "56703e4c-b46d-4aaf-a73d-19453abaeffc",
+        "code": "56703e4c-b46d-4aaf-a73d-19453abaeffc",
+        "description": "Paçoca",
+        "details": "Paçoquinha",
+        "needChoices": false,
+        "unitPrice": 1,
+        "unitMinPrice": 1
+    }
+]

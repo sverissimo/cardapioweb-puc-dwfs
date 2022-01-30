@@ -1,0 +1,280 @@
+[
+    {
+        "id": "5928266c-fe57-40ba-ba30-91c8b6cdbbe4",
+        "code": "5928266c-fe57-40ba-ba30-91c8b6cdbbe4",
+        "description": "Aguá mineral sem gás",
+        "needChoices": false,
+        "unitPrice": 3.5,
+        "unitMinPrice": 3.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "5928266c-fe57-40ba-ba30-91c8b6cdbbe4",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "368a24d6-3145-447f-aded-1da58999623c",
+        "code": "368a24d6-3145-447f-aded-1da58999623c",
+        "description": "Caipirinha Da Casa",
+        "details": "Caipirinha Da Casa Com Cachaça Da Roça",
+        "needChoices": false,
+        "unitPrice": 14.9,
+        "unitMinPrice": 14.9,
+        "sellingOption": {
+            "minimum": 0,
+            "incremental": 0,
+            "availableUnits": [
+                "UNIT"
+            ]
+        },
+        "productTags": [
+            {
+                "group": "DISH_CLASSIFICATION",
+                "tags": [
+                    "ALCOHOLIC_DRINK"
+                ]
+            },
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "368a24d6-3145-447f-aded-1da58999623c",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "78c0e61b-db97-4133-b164-f5fd70ba5b93",
+        "code": "78c0e61b-db97-4133-b164-f5fd70ba5b93",
+        "description": "Caipixi Da Casa",
+        "details": "Caipirinha De Abacaxi Com Cachaça Da Roça",
+        "needChoices": false,
+        "unitPrice": 14.5,
+        "unitMinPrice": 14.5,
+        "productTags": [
+            {
+                "group": "DISH_CLASSIFICATION",
+                "tags": [
+                    "ALCOHOLIC_DRINK"
+                ]
+            },
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "78c0e61b-db97-4133-b164-f5fd70ba5b93",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "a3ee9f47-b221-4470-a5d6-faedc375fd4b",
+        "code": "a3ee9f47-b221-4470-a5d6-faedc375fd4b",
+        "description": "Refrigerante  garrafa pet 1 litro",
+        "details": "Mate couro tradicional",
+        "needChoices": false,
+        "unitPrice": 9,
+        "unitMinPrice": 9,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "a3ee9f47-b221-4470-a5d6-faedc375fd4b",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "211f9762-95df-45ea-a0ce-60039d0fe85d",
+        "code": "211f9762-95df-45ea-a0ce-60039d0fe85d",
+        "description": "Refrigerante 200 ml",
+        "details": "Guaraná E Pepsi",
+        "needChoices": false,
+        "unitPrice": 3,
+        "unitMinPrice": 3,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "211f9762-95df-45ea-a0ce-60039d0fe85d",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "96839e1b-5396-40e5-9a5b-55d5e34e902b",
+        "code": "96839e1b-5396-40e5-9a5b-55d5e34e902b",
+        "description": "Refrigerante lata 350ml",
+        "details": "Guaraná comum ,  , tõnica e tõnica zero , coca cola comum,  coca zero ,,sukita uva",
+        "needChoices": true,
+        "choices": [
+            {
+                "code": "13BAE9",
+                "name": "Escolha seu refrigerante:",
+                "min": 1,
+                "max": 1,
+                "garnishItens": [
+                    {
+                        "id": "f7ab248e-2e50-435e-b0e6-e8887b7f6aec",
+                        "code": "f7ab248e-2e50-435e-b0e6-e8887b7f6aec",
+                        "description": "Coca-Cola",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "09c927e0-b231-4af9-9e0e-4321aa3dd97a",
+                        "code": "09c927e0-b231-4af9-9e0e-4321aa3dd97a",
+                        "description": "Coca-Cola zero",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "d29996eb-23e8-49ef-807f-0bb3eb3391fd",
+                        "code": "d29996eb-23e8-49ef-807f-0bb3eb3391fd",
+                        "description": "Fanta laranja",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "05cf266b-b791-474e-bbf4-7ad732d3f390",
+                        "code": "05cf266b-b791-474e-bbf4-7ad732d3f390",
+                        "description": "Fanta uva",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "7e69b971-85fa-40f5-b3d9-10d5cede1935",
+                        "code": "7e69b971-85fa-40f5-b3d9-10d5cede1935",
+                        "description": "Guaraná antártica",
+                        "unitPrice": 0
+                    }
+                ]
+            }
+        ],
+        "unitPrice": 6,
+        "unitMinPrice": 6,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "96839e1b-5396-40e5-9a5b-55d5e34e902b",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "222ee523-1f37-4fc7-9899-61cf2c006495",
+        "code": "222ee523-1f37-4fc7-9899-61cf2c006495",
+        "description": "Suco Natural Maracujá",
+        "details": "Garrafinha 500 Mk.Suco Natural Da Fruta",
+        "needChoices": false,
+        "unitPrice": 10,
+        "unitMinPrice": 10,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "222ee523-1f37-4fc7-9899-61cf2c006495",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "3c885ab7-688b-4753-9afc-ec5beafe8e5f",
+        "code": "3c885ab7-688b-4753-9afc-ec5beafe8e5f",
+        "description": "Suco abacaxi natural 500ml",
+        "details": "Natural..500 ml",
+        "needChoices": false,
+        "unitPrice": 10.5,
+        "unitMinPrice": 10.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "3c885ab7-688b-4753-9afc-ec5beafe8e5f",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "6d1c8345-3b8e-4a97-ab79-158a361ae0e9",
+        "code": "6d1c8345-3b8e-4a97-ab79-158a361ae0e9",
+        "description": "Suco de laranja natural 500ml",
+        "needChoices": false,
+        "unitPrice": 10.5,
+        "unitMinPrice": 10.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "6d1c8345-3b8e-4a97-ab79-158a361ae0e9",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "b62a1a10-552c-4eed-b343-078a2afe6ff3",
+        "code": "b62a1a10-552c-4eed-b343-078a2afe6ff3",
+        "description": "Suco detox",
+        "details": "Couve, limão laranja, cenoura, abacaxi e gengibre",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/201902061000_sucod.jpg",
+        "needChoices": false,
+        "unitPrice": 13,
+        "unitMinPrice": 13,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "b62a1a10-552c-4eed-b343-078a2afe6ff3",
+            "quantity": 0,
+            "unit": "g"
+        }
+    }
+]

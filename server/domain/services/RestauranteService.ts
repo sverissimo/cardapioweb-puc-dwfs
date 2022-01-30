@@ -34,20 +34,17 @@ class RestauranteService {
             relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'],
             order: { nome: 'ASC' }
         })
-        /*   const restaurante = await
-              createQueryBuilder('restaurantes')
-                  .select('restaurante')
-                  .addSelect('logradouro')
-                  .from(Restaurante, 'restaurante')
-                  .leftJoinAndSelect('restaurante.endereco', "endereco.logradouro")
-                  .getMany(); */
-
         return restaurante
     }
 
     async getRestaurante(id: number) {
         const restaurante = await this.restauranteRepository.findOne(id, { relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'] })
         return restaurante
+    }
+
+    async findByName(nome: string) {
+        const nomeRestaurante = await this.restauranteRepository.findOne({ nome })
+        return nomeRestaurante
     }
 
     async create(restaurante: IRestauranteCreate) {

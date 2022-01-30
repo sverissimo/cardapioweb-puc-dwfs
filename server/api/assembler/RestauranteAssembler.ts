@@ -5,9 +5,10 @@ import { Cozinha } from '../../domain/models/Cozinha';
 import { Restaurante } from "../../domain/models/Restaurante";
 import { CozinhaService } from '../../domain/services/CozinhaService';
 import { CidadeRepository } from '../../repositories/CidadeRepository';
+import IEntityAssembler from './IEntityAssembler';
 //import { RestauranteDTO } from "../model/RestauranteDTO";
 
-export class RestauranteAssembler {
+export class RestauranteAssembler implements IEntityAssembler {
 
     public toDTO(restaurante: Restaurante) {
 

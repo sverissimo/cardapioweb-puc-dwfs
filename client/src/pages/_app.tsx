@@ -38,7 +38,6 @@ function MyApp({ Component, pageProps }) {
       <Header />
       <Component {...pageProps} />
     </UserContext.Provider>
-
   )
 }
 

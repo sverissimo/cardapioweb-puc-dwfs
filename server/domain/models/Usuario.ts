@@ -14,7 +14,7 @@ class Usuario {
     email: string;
 
     @Column()
-    password: string;
+    password?: string;
 
     @Column()
     perfil: string;
@@ -24,7 +24,7 @@ class Usuario {
     restaurante?: Restaurante
 
     @Column({ nullable: true })
-    restaurante_id?: number;
+    restaurante_id?: number | null;
 
 }
 

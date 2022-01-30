@@ -1,6 +1,6 @@
 import { IUsuario } from "../types/IUsuario";
 
-export default class Usuario implements IUsuario {
+export default class UsuarioModel implements IUsuario {
     id;
     nome?;
     email;
@@ -17,8 +17,12 @@ export default class Usuario implements IUsuario {
 
     logUser: (usuario: IUsuario) => void
 
-    toTableModel(usuario: Usuario) {
-        const { id, password, restaurante_id, picture, name, ...usuarioTableModel } = usuario
+    toTableModel(usuario: UsuarioModel) {
+        const { password, restaurante_id, picture, name, ...usuarioTableModel } = usuario
         return usuarioTableModel
+    }
+
+    toFormModel() {
+
     }
 }

@@ -5,6 +5,8 @@ import { getCustomRepository, Repository } from "typeorm";
 import { Usuario } from "../models/Usuario";
 import { UsuarioRepository } from "../../repositories/UsuarioRepository";
 import { RestauranteService } from "./RestauranteService";
+import { UsuarioDTO } from '../../types/usuarioDTO.type';
+import { UsuarioCreateDTO } from '../../types/usuarioCreateDTO.type';
 
 
 export class UsuarioService {
@@ -53,12 +55,11 @@ export class UsuarioService {
         return { user, accessToken }
     }
 
-    async create(usuario: Usuario) {
+    async create(usuario: UsuarioCreateDTO) {
 
         const
-            { email, password } = usuario,
-            usuarioExists = await this.usuarioRepository.findOne({ email })
-        console.log("🚀 ~ file: UsuarioService.ts ~ line 29 ~ UsuarioService ~ create ~ usuario", usuario)
+            { email, password } = usuario
+            , usuarioExists = await this.usuarioRepository.findOne({ email })
 
         if (usuarioExists)
             throw new Error('Usuário já existe na base de dados.')
@@ -66,54 +67,55 @@ export class UsuarioService {
         if (!password)
             throw new Error('O campo senha é obrigatório.')
 
-        if (usuario.restaurante_id) {
-            const restaurante = await new RestauranteService().getRestaurante(usuario.restaurante_id)
-            usuario.restaurante = restaurante
-        }
 
-        const hashedPass = bcrypt.hashSync(password, 10)
-        usuario.password = hashedPass
+        const
+            restaurante = await new RestauranteService().findByName(usuario.restaurante)
+            , hashedPass = bcrypt.hashSync(password, 10)
+            , usuarioModel = {
+                ...usuario,
+                password: hashedPass,
+                restaurante
+            }
 
-        const usuarioEntity = this.usuarioRepository.create(usuario)
+        const usuarioEntity: Usuario = this.usuarioRepository.create(usuarioModel)
         await this.usuarioRepository.save(usuarioEntity)
         delete usuarioEntity.password
         return usuarioEntity
     }
 
-    async createMany(usuarios: Usuario[]) {
-        const response = []
-        try {
-            for (let usuario of usuarios) {
-                const user = await this.create(usuario)
-                response.push(user)
+    /*     async createMany(usuarios: Usuario[]) {
+            const response = []
+            try {
+                for (let usuario of usuarios) {
+                    const user = await this.create(usuario)
+                    response.push(user)
+                }
+                return response
+            } catch (error) {
+                console.log(error.message)
+                throw new Error('Erro ao criar múltiplos usuarios.')
             }
-            return response
-        } catch (error) {
-            console.log(error.message)
-            throw new Error('Erro ao criar múltiplos usuarios.')
-        }
-    }
+        } */
 
     async update(usuario: Usuario) {
 
         const
             { id } = usuario
-            , usuarioAtual = await this.usuarioRepository.findOne(id, { relations: ['restaurante'] })
+            , usuarioAtual = await this.usuarioRepository.findOne(id)
 
         if (!usuarioAtual)
             throw new Error('Usuario não encontrado na base de dados.')
 
-        if (usuario.restaurante_id) {
-            const restaurante = await new RestauranteService().getRestaurante(usuario.restaurante_id)
-            usuario.restaurante = restaurante
+        if (usuario.perfil === 'admin') {
+            usuario.restaurante_id = null
+            delete usuario.restaurante
         }
 
         const updatedUsuario = await this.usuarioRepository.create({
             ...usuarioAtual, ...usuario
         })
-        delete updatedUsuario.password
 
-        //console.log("🚀 ~ file: UsuarioService.ts ~ line 80 ~ UsuarioService ~ update ~ updatedUsuario", updatedUsuario)
+        delete updatedUsuario.password
 
         await this.usuarioRepository.save(updatedUsuario);
 

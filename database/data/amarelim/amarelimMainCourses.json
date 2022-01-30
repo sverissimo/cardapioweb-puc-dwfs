@@ -1,0 +1,209 @@
+[
+    {
+        "id": "9cf54ebf-8ef1-4621-8944-6ed2ba871c4c",
+        "code": "9cf54ebf-8ef1-4621-8944-6ed2ba871c4c",
+        "description": "Feijoada completa- 4 pessoas",
+        "details": "Acompanha arroz, couve, vinagrete e farofa.serve até 4 pessoas..",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202007171431_JLDZ_f.jpg",
+        "needChoices": false,
+        "unitPrice": 95.5,
+        "unitMinPrice": 95.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_4"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "9cf54ebf-8ef1-4621-8944-6ed2ba871c4c",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "96e41ecd-83b7-4dc6-87c5-16320b53737e",
+        "code": "96e41ecd-83b7-4dc6-87c5-16320b53737e",
+        "description": "Mexidão -duas pessoas",
+        "details": "Preparo de arroz, feijão, ovos, bacon, bife de pernil, tomate e carne desfiada. Acompanha batata rússtica, ovo frito e couve..serve duas pessoas..\n\nCaso desejar o mexidão com línguiça..descrever na obs:\n\"Com línguiça\"..",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202007101743_6Z4S_m.jpg",
+        "needChoices": false,
+        "unitPrice": 54,
+        "unitMinPrice": 54,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "96e41ecd-83b7-4dc6-87c5-16320b53737e",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "8793751c-ab6a-4755-84ca-590f4cc0cbe5",
+        "code": "8793751c-ab6a-4755-84ca-590f4cc0cbe5",
+        "description": "Parmegiana de frango-serve 4 pessoas",
+        "details": "Parmegiana de frango com purê de batatas, acompanha arroz e salada",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202010311201_cVXP_.jpeg",
+        "needChoices": false,
+        "unitPrice": 113,
+        "unitMinPrice": 113,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_4"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "8793751c-ab6a-4755-84ca-590f4cc0cbe5",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "68a862cb-d3da-44e9-bda0-b90ae6ae7c76",
+        "code": "68a862cb-d3da-44e9-bda0-b90ae6ae7c76",
+        "description": "Porção Linguiça Acebolada",
+        "details": "Linguiça Acebolada Caseira serve até duas pessoas",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202105251714_RB8T_f.png",
+        "needChoices": false,
+        "unitPrice": 53,
+        "unitMinPrice": 53,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "68a862cb-d3da-44e9-bda0-b90ae6ae7c76",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "a675e2a1-8068-4352-b01c-5f3e3cae731e",
+        "code": "a675e2a1-8068-4352-b01c-5f3e3cae731e",
+        "description": "Porção almôndegas da casa",
+        "details": "Almôndegas da casa ao molho com cobertura de queijo e cebolinha.porção com 4 unidades.acompanha pãozinho.",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202007212200_FBU9_m.jpg",
+        "needChoices": false,
+        "unitPrice": 40.9,
+        "unitMinPrice": 40.9,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "a675e2a1-8068-4352-b01c-5f3e3cae731e",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "e16b206f-cbe6-48ef-8ffe-aca85c98c7d9",
+        "code": "e16b206f-cbe6-48ef-8ffe-aca85c98c7d9",
+        "description": "Porção torresminho",
+        "details": "Torresminho pururuca da casa..",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202007101754_kgVN_t.jpg",
+        "needChoices": false,
+        "unitPrice": 15,
+        "unitMinPrice": 15,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "e16b206f-cbe6-48ef-8ffe-aca85c98c7d9",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "a96d40d1-7577-4a32-af6e-7ecf9e25ce5f",
+        "code": "a96d40d1-7577-4a32-af6e-7ecf9e25ce5f",
+        "description": "Torresmo De Barriga",
+        "details": "Torresmo De Barriga Pururucado ..400 Gramas.Acompanha Limão",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202108041927_38SJ_i.jpg",
+        "needChoices": false,
+        "unitPrice": 42,
+        "unitMinPrice": 42,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "a96d40d1-7577-4a32-af6e-7ecf9e25ce5f",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "29b5aedb-4086-4bde-81d9-e6b9d53356da",
+        "code": "29b5aedb-4086-4bde-81d9-e6b9d53356da",
+        "description": "Torresmo De Barriga Com Mandioca Frita",
+        "details": "Torresmo De Barriga Com Mandioca Frita..400 Gramas",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202007101555_HP38_t.jpg",
+        "needChoices": false,
+        "unitPrice": 49.9,
+        "unitMinPrice": 49.9,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "29b5aedb-4086-4bde-81d9-e6b9d53356da",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "a44201a6-7562-4890-aa58-075e7b9fbed2",
+        "code": "a44201a6-7562-4890-aa58-075e7b9fbed2",
+        "description": "Tropeiro Completo -4 Pessoas",
+        "details": "Acompanha Bife De pernil ou linguiça caseira, Ovo, Torresminho Da Casa, Couve,Arroz E Salada",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202010311202_TkTS_f.png",
+        "needChoices": false,
+        "unitPrice": 113,
+        "unitMinPrice": 113,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_4"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "a44201a6-7562-4890-aa58-075e7b9fbed2",
+            "quantity": 0,
+            "unit": "g"
+        }
+    }
+]

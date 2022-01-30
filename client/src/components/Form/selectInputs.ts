@@ -11,7 +11,6 @@ export const inputOptions = data => {
         , cidades = data.cidades.map(c => c.nome)
         , estados = data.estados.map(c => c.nome)
 
-
     return {
         aberto: ['sim', 'não'],
         ativo: ['sim', 'não'],
@@ -20,7 +19,7 @@ export const inputOptions = data => {
         cidade: cidades,
         estado: estados,
         formaPagamento,
-        perfil: ['admin', 'parceiro'],
+        perfil: ['Administrador', 'Parceiro'],
         restaurante: restaurantes
     }
 }

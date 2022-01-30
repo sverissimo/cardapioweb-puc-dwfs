@@ -1,13 +1,21 @@
 import { Request, Response } from 'express'
 import { ProdutoService } from '../../domain/services/ProdutoService'
+import { ProdutoDTO } from '../../types/produtoDTO.type'
+import { ProdutoAssembler } from '../assembler/ProdutoAssembler'
 
 class ProdutoController {
 
 
     async list(req: Request, res: Response): Promise<Response> {
+        const
+            produtoService = new ProdutoService()
+            , produtoAssembler = new ProdutoAssembler()
+
         try {
-            const produtoService = new ProdutoService()
-            const produtos = await produtoService.list()
+            const
+                produtosModel = await produtoService.list()
+                , produtos = produtosModel.map(p => produtoAssembler.toDTO(p))
+
             return res.status(201).json(produtos)
         }
         catch (error) {
@@ -18,7 +26,6 @@ class ProdutoController {
 
     async getCardapio(req: Request, res: Response): Promise<Response> {
         const { restauranteId } = req.params
-        console.log("🚀 ~ file: ProdutoController.ts ~ line 21 ~ ProdutoController ~ getCardapio ~ produtoId", restauranteId)
 
         try {
             const produtoService = new ProdutoService()
@@ -48,9 +55,14 @@ class ProdutoController {
     async create(req: Request, res: Response): Promise<Response> {
 
         try {
-            const produtoService = new ProdutoService()
-            const produtos = await produtoService.create(req.body)
-            return res.status(201).json(produtos)
+            const
+                produtoService = new ProdutoService()
+                , produtoAssembler = new ProdutoAssembler()
+                , produtoModel = await produtoAssembler.toModel(req.body)
+                , produto = await produtoService.create(produtoModel)
+                , produtoDTO = produtoAssembler.toDTO(produto)
+
+            return res.status(201).json(produtoDTO)
         }
         catch (error) {
             console.log({ error: error.message })
@@ -74,17 +86,22 @@ class ProdutoController {
 
     async editProduto(req: Request, res: Response): Promise<Response> {
 
+        const
+            produtoService = new ProdutoService()
+            , produtoAssembler = new ProdutoAssembler()
+            , produto = req.body
+            , { id } = produto instanceof Object && produto
+
+        if (!id)
+            return res.status(400).send('Product id missing.')
+
         try {
             const
-                produtoService = new ProdutoService()
-                , produto = req.body
-                , { id } = produto instanceof Object && produto
+                produtoModel = await produtoAssembler.toModel(produto)
+                , updatedProduct = await produtoService.editProduto(produtoModel)
+                , produtoDTO: ProdutoDTO = produtoAssembler.toDTO(updatedProduct)
 
-            if (!id)
-                return res.status(400).send('Product id missing.')
-
-            const updatedProduct = await produtoService.editProduto(produto)
-            return res.status(200).json(updatedProduct)
+            return res.status(200).json(produtoDTO)
 
         } catch (error) {
             console.log("🚀 ~ file: ProdutoController.ts ~ line 61 ~ ProdutoController ~ editProduto ~ error", error.message)

@@ -5,12 +5,6 @@ import { RestauranteAssembler } from '../assembler/RestauranteAssembler';
 
 class RestauranteController {
 
-    restauranteAssembler: RestauranteAssembler;
-
-    constructor() {
-        this.restauranteAssembler = new RestauranteAssembler()
-    }
-
     async list(req: Request, res: Response): Promise<Response> {
 
         const
@@ -60,7 +54,6 @@ class RestauranteController {
             const
                 restauranteModel = await restauranteAssembler.toModel(req.body)
                 , newRestaurante: Restaurante = await restauranteService.create(restauranteModel)
-            console.log("🚀 ~ file: RestauranteController.ts ~ line 63 ~ RestauranteController ~ create ~ newRestaurante", newRestaurante)
 
             const restauranteDTO = restauranteAssembler.toDTO(newRestaurante)
 
@@ -82,8 +75,6 @@ class RestauranteController {
                 restaurante = await restauranteAssembler.toModel(req.body)
                 , { id } = restaurante
 
-            //console.log("🚀 ~ file: RestauranteController.ts ~ line 80 ~ RestauranteController ~ update ~ restaurante", restaurante)
-
             if (!id)
                 return res.status(400).send('Restaurante não encontrado.')
 
@@ -96,8 +87,6 @@ class RestauranteController {
         } catch (error) {
             return res.status(400).send(error?.message)
         }
-
-
     }
 
 

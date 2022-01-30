@@ -11,7 +11,7 @@ const HomeTemplate = (props) => {
         { user, restaurantes } = props
         , userName = user?.nome || user?.name
         , userPic = user?.picture?.data
-        , restaurantesImages = ['/amarelim.jpg', '/jinlon.webp']
+        , restaurantesImages = ['', '/amarelim.jpg', '/galetoItalia.png', '/jinlon.webp']
 
     return (
         <>
@@ -29,7 +29,6 @@ const HomeTemplate = (props) => {
                 }
             </header>
 
-
             <main className={homeContainer}>
                 {
                     user?.perfil && user.perfil !== 'cliente' ?
@@ -41,10 +40,14 @@ const HomeTemplate = (props) => {
                                 <ul >
                                     {
                                         restaurantes && restaurantes.map((restaurante, i) =>
-                                            <li className={restaurantCard} key={restaurante.id}>
+                                            <li className={restaurantCard} key={restaurante.nome}>
                                                 <Link href={`/cardapio/${restaurante.id}`} >
                                                     <div>
-                                                        <Image width={84} height={84} src={restaurantesImages[i] || '/restaurantGenericLogo.png'} alt="rest" />
+                                                        <Image
+                                                            width={84}
+                                                            height={84}
+                                                            src={restaurantesImages[restaurante.id] || '/restaurantGenericLogo.png'}
+                                                            alt="rest" />
                                                         <span>
                                                             {restaurante.nome}
                                                         </span>

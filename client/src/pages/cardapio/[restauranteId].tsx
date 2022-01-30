@@ -1,12 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
-import { Restaurante } from "../../models/RestauranteModel"
+import { RestauranteModel } from "../../models/RestauranteModel"
 import { Api } from "../../services/api"
 import CardapioItem from "../../components/Cardapio/CardapioItem"
 
 export default function Cardapio(props: CardapioProps) {
 
-    const { restaurante, categorias, cardapio } = props
+    const
+        { restaurante, categorias, cardapio } = props
+        , { logradouro, numero, cidade } = restaurante
+        , endereco = logradouro + ', ' + numero
 
     const router = useRouter()
     if (router.isFallback)
@@ -18,7 +21,7 @@ export default function Cardapio(props: CardapioProps) {
                 {`Restaurante ${restaurante?.nome}`}
             </h3>
             {/*@ts-ignore*/}
-            {restaurante.cozinha && <h6>Cozinha {restaurante.cozinha?.nome}</h6>}
+            {restaurante.cozinha && <h6>Cozinha {restaurante.cozinha}</h6>}
             <main className='container' style={{ border: '1px solid #ccc', borderRadius: '2rem', paddingLeft: '13%' }}>
                 {
                     categorias.map((categoria, i) =>
@@ -36,6 +39,7 @@ export default function Cardapio(props: CardapioProps) {
                         </div>
                     )}
             </main>
+            <footer className="cardapio-footer">{restaurante.nome} - {endereco}. {cidade}, {restaurante.estado}</footer>
         </div>
     )
 }
@@ -61,7 +65,7 @@ type Produto = {
 type CardapioProps = {
     cardapio: Array<Produto>,
     categorias: Array<any>,
-    restaurante: Restaurante,
+    restaurante: RestauranteModel,
     cozinhas: Array<any>
 }
 

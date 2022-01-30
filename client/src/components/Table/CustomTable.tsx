@@ -1,12 +1,16 @@
 import { TableModelFactory } from "./TableModelFactory";
+import styles from './table.module.scss'
 
+const { tHeader, link } = styles
 
 export default function CustomTable({ collection: originalCollection, title, style, idIndex = 0, editElement, deleteElement, openEditDialog }) {
 
     const
         tableModel = new TableModelFactory(title)
-        , collection = tableModel.toTable(originalCollection)
-        , { tableHeaders, length, arrayOfRows } = collection
+        , table = tableModel.create(originalCollection)
+        , { tableHeaders, length, arrayOfRows } = table
+    console.log("🚀 ~ file: CustomTable.tsx ~ line 12 ~ CustomTable ~ length", length)
+
     //console.log("🚀 ~ file: CustomTable.tsx ~ line 10 ~ CustomTable ~ tableHeaders", tableHeaders)
 
     return (
@@ -14,7 +18,7 @@ export default function CustomTable({ collection: originalCollection, title, sty
             {/*   <thead style={{ textAlign: 'center' }}> */}
             <thead>
                 <tr>
-                    <th className='tHeader'
+                    <th className={tHeader}
                         scope='col'
                         colSpan={length}>{title}</th>
                 </tr>
@@ -23,7 +27,7 @@ export default function CustomTable({ collection: originalCollection, title, sty
                         tableHeaders.map((header, i) => header !== 'Id' &&
                             <th key={i}
                                 style={style}
-                                className={(header === 'Editar' || header === 'Remover' || header === 'Estado') ? 'link' : ''}>
+                                className={(header === 'Editar' || header === 'Remover' || header === 'Estado') ? link : ''}>
                                 {header}
                             </th>
                         )
@@ -39,7 +43,7 @@ export default function CustomTable({ collection: originalCollection, title, sty
                                     const obj = el[index]
                                     return (
                                         obj.field !== 'id' &&
-                                        <td key={index} className={(obj.action || obj.field === 'estado') ? 'link' : ''}>
+                                        <td key={index} className={(obj.action || obj.field === 'estado') ? link : ''}>
                                             {
                                                 typeof obj.value !== 'object' ? obj.value
                                                     : obj.action === 'edit' ?

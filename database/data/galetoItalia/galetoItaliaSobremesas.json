@@ -1,0 +1,168 @@
+[
+    {
+        "id": "0c4ee410-79f3-4821-9b05-9758313c5a41",
+        "code": "0c4ee410-79f3-4821-9b05-9758313c5a41",
+        "description": "Rolinho romeu e julieta",
+        "details": "Rolinho de massa crocante recheado com queijo e goiabada acompanha sorvete de creme.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202105141224_61OJ_.jpeg",
+        "needChoices": false,
+        "unitPrice": 30,
+        "unitMinPrice": 30,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "0c4ee410-79f3-4821-9b05-9758313c5a41",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "c7d2165b-d76d-4407-a588-d0bff0807e10",
+        "code": "c7d2165b-d76d-4407-a588-d0bff0807e10",
+        "description": "Tiramisù",
+        "details": "Clássica sobremesa italiana à base de café e creme de queijo",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202106131356_44M1_i.jpg",
+        "needChoices": false,
+        "unitPrice": 30,
+        "unitMinPrice": 30,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "c7d2165b-d76d-4407-a588-d0bff0807e10",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "ff8015ac-8ac3-4906-b48e-c46b8c014290",
+        "code": "ff8015ac-8ac3-4906-b48e-c46b8c014290",
+        "description": "Pudim de leite condensado",
+        "details": "Pudim de leite condensado com calda de caramelo.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202003270847_LNUr_i.jpg",
+        "needChoices": false,
+        "unitPrice": 25,
+        "unitMinPrice": 25,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "ff8015ac-8ac3-4906-b48e-c46b8c014290",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "5c486c9b-048b-463e-af05-0e3086217f2e",
+        "code": "5c486c9b-048b-463e-af05-0e3086217f2e",
+        "description": "Petit gateau",
+        "details": "Bolinho recheado com chocolate acompanhado de sorvete de creme.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202003270848_cqyV_i.jpg",
+        "needChoices": false,
+        "unitPrice": 30,
+        "unitMinPrice": 30,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "5c486c9b-048b-463e-af05-0e3086217f2e",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "502bc3da-f01f-4b64-a4fe-bed77a31399e",
+        "code": "502bc3da-f01f-4b64-a4fe-bed77a31399e",
+        "description": "Frutas caramelizadas",
+        "details": "Opção de banana ou maçã ou abacaxi caramelado.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202003270848_sz3V_i.jpg",
+        "needChoices": true,
+        "choices": [
+            {
+                "code": "DE08E4",
+                "name": "Escolha a fruta:",
+                "min": 0,
+                "max": 1,
+                "garnishItens": [
+                    {
+                        "id": "4ecc1029-03fa-4213-88c2-88caa5a1b9ef",
+                        "code": "4ecc1029-03fa-4213-88c2-88caa5a1b9ef",
+                        "description": "Banana",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "2da62333-67bb-4791-89bd-6f0653eb0137",
+                        "code": "2da62333-67bb-4791-89bd-6f0653eb0137",
+                        "description": "Maçã",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "7f7506a2-dd09-424a-9291-4ae5a67fe4d3",
+                        "code": "7f7506a2-dd09-424a-9291-4ae5a67fe4d3",
+                        "description": "Abacaxi",
+                        "unitPrice": 0
+                    }
+                ]
+            }
+        ],
+        "unitPrice": 25,
+        "unitMinPrice": 25,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "502bc3da-f01f-4b64-a4fe-bed77a31399e",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "3f065d57-e930-4754-9f6a-8afc89e961b7",
+        "code": "3f065d57-e930-4754-9f6a-8afc89e961b7",
+        "description": "Pêra à moda Galeto Itália",
+        "details": "Pêra cozida no vinho branco, recheada com sorvete de creme e coberta com calda de pêssego.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202103091752_PUuK_.jpeg",
+        "needChoices": false,
+        "unitPrice": 32,
+        "unitMinPrice": 32,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "3f065d57-e930-4754-9f6a-8afc89e961b7",
+            "quantity": 0,
+            "unit": "g"
+        }
+    }
+]

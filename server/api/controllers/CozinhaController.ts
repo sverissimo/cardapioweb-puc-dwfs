@@ -6,7 +6,7 @@ import { CozinhaService } from '../../domain/services/CozinhaService';
 class CozinhaController {
 
     async list(req: Request, res: Response): Promise<Response> {
-        console.log('Cookies: ', req.cookies)
+
         const
             cozinhasRepository = getCustomRepository(CozinhaRepository)
             , cozinhas = await cozinhasRepository.find()

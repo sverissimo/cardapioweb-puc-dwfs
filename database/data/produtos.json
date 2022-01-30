@@ -5,7 +5,7 @@
         "preco": 8,
         "ativo": true,
         "categoria_id": 1,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Rolinho de queijo",
@@ -13,7 +13,7 @@
         "preco": 12,
         "ativo": true,
         "categoria_id": 1,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Rolinho de camarão",
@@ -21,7 +21,7 @@
         "preco": 15,
         "ativo": true,
         "categoria_id": 1,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Frango com legumes",
@@ -29,7 +29,7 @@
         "preco": 53.90,
         "ativo": true,
         "categoria_id": 2,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Carne com legumes",
@@ -37,7 +37,7 @@
         "preco": 60,
         "ativo": true,
         "categoria_id": 2,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Água mineral",
@@ -45,7 +45,7 @@
         "preco": 4.50,
         "ativo": true,
         "categoria_id": 3,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Refrigerante lata",
@@ -53,7 +53,7 @@
         "preco": 6.00,
         "ativo": true,
         "categoria_id": 3,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Refrigerante 600ml",
@@ -61,7 +61,7 @@
         "preco": 10.00,
         "ativo": true,
         "categoria_id": 3,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Frutas carameladas",
@@ -69,7 +69,7 @@
         "preco": 25.00,
         "ativo": true,
         "categoria_id": 4,
-        "restaurante_id": 1
+        "restaurante_id": 3
     },
     {
         "nome": "Petit gateau",
@@ -77,6 +77,6 @@
         "preco": 30,
         "ativo": true,
         "categoria_id": 4,
-        "restaurante_id": 1
+        "restaurante_id": 3
     }
 ]

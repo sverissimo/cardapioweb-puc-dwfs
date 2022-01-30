@@ -1,7 +1,7 @@
 import { CategoriaModel } from "../../models/CategoriaModel"
 import { FormaPagamentoModel } from "../../models/FormaPagamentoModel"
-import { Restaurante } from "../../models/RestauranteModel"
-import Usuario from "../../models/UsuarioModel"
+import { RestauranteModel } from "../../models/RestauranteModel"
+import UsuarioModel from "../../models/UsuarioModel"
 import editDeleteFields from "./editDeleteFields"
 
 export class TableModelFactory {
@@ -13,13 +13,14 @@ export class TableModelFactory {
         this.subject = subject
     }
 
-    toTable(collection: any[]) {
+    create(collection: any[]) {
         collection = this.tableDataAssembler(collection)
 
         const
             tableHeaders = this.createHeader(collection)
             , arrayOfRows = []
-            , length = tableHeaders.length
+
+        console.log("🚀 ~ file: TableModelFactory.ts ~ line 23 ~ TableModelFactory ~ create ~ tableHeaders", tableHeaders)
 
         collection.forEach(entity => {
 
@@ -30,7 +31,6 @@ export class TableModelFactory {
             missingProps.forEach(prop => entity[prop] = '')
 
             arrayOfRows.push(
-
                 Object.entries(entity).map(([k, v]) => ({
                     field: k,
                     title: k,
@@ -41,6 +41,8 @@ export class TableModelFactory {
 
         tableHeaders.push('Editar', 'Remover')
         arrayOfRows.forEach(e => e.push(...editDeleteFields))
+
+        const length = tableHeaders.length
 
         return { tableHeaders, arrayOfRows, length }
     }
@@ -63,10 +65,10 @@ export class TableModelFactory {
 
         switch (this.subject) {
             case 'restaurantes':
-                this.model = new Restaurante({})
+                this.model = new RestauranteModel({})
                 break;
             case 'usuarios':
-                this.model = new Usuario({})
+                this.model = new UsuarioModel({})
                 break;
             case 'formaPagamento':
                 this.model = new FormaPagamentoModel({})

@@ -12,7 +12,7 @@ class Produto {
     nome: string;
 
     @Column()
-    descricao: string;
+    descricao?: string;
 
     @Column()
     preco: string;

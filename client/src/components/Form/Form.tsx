@@ -1,5 +1,6 @@
 import { capitalize } from '../../utils/capitalize'
-import { renderData } from '../../utils/dtoFilter'
+//import { renderData } from '../../utils/dtoFilter'
+import FormFactory from './FormFactory'
 import styles from './login.module.scss'
 import { inputOptions } from './selectInputs'
 
@@ -13,14 +14,11 @@ const { formContainer } = styles
 const Form = (props) => {
     const { handleInput, data, subject, handleSubmit } = props
         , { editedElement, add } = data
+        /*    , formData = editedElement && Object.keys(editedElement)
+           , selectInputs = Object.keys(inputOptions(data))
+           , options = inputOptions(data) */
 
-        , formElement = editedElement
-        , formData = formElement && Object.keys(formElement)
-        , selectInputs = Object.keys(inputOptions(data))
-        , options = inputOptions(data)
-
-    console.log("🚀 ~ file: Form.tsx ~ line 18 ~ Form ~ editedElement", editedElement)
-
+        , { formFields, selectInputs, options } = new FormFactory(subject, data).create()
 
     return (
         <div className='customContainer'>
@@ -29,7 +27,7 @@ const Form = (props) => {
 
                 <form onSubmit={e => handleSubmit(e)}>
                     {
-                        formData && formData.map((key, index) =>
+                        formFields && formFields.map((key, index) =>
                             key !== 'id' && !key.match('Id') &&
                             <div className="mb-3" key={index}>
                                 {
@@ -39,7 +37,7 @@ const Form = (props) => {
                                             <input
                                                 name={key}
                                                 className="form-control"
-                                                type={key === "email" ? "email" : "text"}
+                                                type={key === "email" ? "email" : key === "password" ? "password" : "text"}
                                                 id={key}
                                                 style={{ width: '350px' }}
                                                 aria-describedby="emailHelp"
@@ -48,7 +46,7 @@ const Form = (props) => {
                                                 required={key !== 'complemento'}
                                             />
                                         </>
-                                        :
+                                        : !(key === 'restaurante' && (editedElement.perfil === 'Administrador' || !editedElement.perfil)) &&
                                         <>
                                             <label htmlFor={key} className="form-label">{capitalize(key)}</label>
                                             <select
@@ -58,8 +56,9 @@ const Form = (props) => {
                                                 aria-label={key}
                                                 onChange={e => handleInput(e)}
                                                 defaultValue={editedElement[key]}
+                                                required={true}
                                             >
-                                                {/* <option selected>{editedElement[key]}</option> */}
+                                                {(add || subject === 'usuarios') && <option> </option>}
                                                 {
                                                     options[key].map((opt, i) =>
                                                         <option key={opt}

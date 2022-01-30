@@ -1,0 +1,182 @@
+[
+    {
+        "id": "8059cba2-4a88-4a81-9c76-b1bdd5bff1b2",
+        "code": "8059cba2-4a88-4a81-9c76-b1bdd5bff1b2",
+        "description": "Refrigerante lata",
+        "needChoices": true,
+        "choices": [
+            {
+                "code": "29AC78",
+                "name": "Escolha Seu Refigerante",
+                "min": 1,
+                "max": 1,
+                "garnishItens": [
+                    {
+                        "id": "80337b28-d2da-46b8-b1a9-2a2e68e51e3e",
+                        "code": "80337b28-d2da-46b8-b1a9-2a2e68e51e3e",
+                        "description": "Coca-Cola",
+                        "unitPrice": 7
+                    },
+                    {
+                        "id": "021984c8-e7b0-4eb4-b954-31d5940bc0fc",
+                        "code": "021984c8-e7b0-4eb4-b954-31d5940bc0fc",
+                        "description": "Coca-Cola zero",
+                        "unitPrice": 7
+                    },
+                    {
+                        "id": "4f2d4539-aa9b-4f48-9a0a-6ee0718a1950",
+                        "code": "4f2d4539-aa9b-4f48-9a0a-6ee0718a1950",
+                        "description": "Guaraná",
+                        "unitPrice": 7
+                    },
+                    {
+                        "id": "903d2af3-800e-4316-8941-372e3b90d601",
+                        "code": "903d2af3-800e-4316-8941-372e3b90d601",
+                        "description": "Guaraná zero",
+                        "unitPrice": 7
+                    },
+                    {
+                        "id": "eaa841c2-8b5a-4967-b71f-1583f551406c",
+                        "code": "eaa841c2-8b5a-4967-b71f-1583f551406c",
+                        "description": "Soda",
+                        "unitPrice": 7
+                    },
+                    {
+                        "id": "a61802c5-9fb6-4d84-9bb7-073e147386f8",
+                        "code": "a61802c5-9fb6-4d84-9bb7-073e147386f8",
+                        "description": "Soda zero",
+                        "unitPrice": 7
+                    }
+                ]
+            }
+        ],
+        "unitPrice": 0,
+        "unitMinPrice": 7,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "8059cba2-4a88-4a81-9c76-b1bdd5bff1b2",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "3bd237c8-6959-4fef-bcb1-a8601ac60386",
+        "code": "3bd237c8-6959-4fef-bcb1-a8601ac60386",
+        "description": "Água mineral",
+        "needChoices": true,
+        "choices": [
+            {
+                "code": "F71F4A",
+                "name": "Opção",
+                "min": 1,
+                "max": 1,
+                "garnishItens": [
+                    {
+                        "id": "7790b179-02af-49d7-a62d-0d428f6129e2",
+                        "code": "7790b179-02af-49d7-a62d-0d428f6129e2",
+                        "description": "Com gás",
+                        "unitPrice": 0
+                    },
+                    {
+                        "id": "2d078b95-6810-473a-9043-e939aa492b7d",
+                        "code": "2d078b95-6810-473a-9043-e939aa492b7d",
+                        "description": "Sem gás",
+                        "unitPrice": 0
+                    }
+                ]
+            }
+        ],
+        "unitPrice": 6,
+        "unitMinPrice": 6,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "3bd237c8-6959-4fef-bcb1-a8601ac60386",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "e70f180b-214a-4066-85f6-af5126539e1d",
+        "code": "e70f180b-214a-4066-85f6-af5126539e1d",
+        "description": "Refrigerante 2 litros",
+        "needChoices": true,
+        "choices": [
+            {
+                "code": "B5E03E",
+                "name": "Escolha Seu Refrigerante",
+                "min": 1,
+                "max": 1,
+                "garnishItens": [
+                    {
+                        "id": "633a88cc-268f-4d68-b56a-5733925d8a04",
+                        "code": "633a88cc-268f-4d68-b56a-5733925d8a04",
+                        "description": "Guarana",
+                        "unitPrice": 15
+                    },
+                    {
+                        "id": "378529a2-0382-4edf-9be0-8a7416c9864b",
+                        "code": "378529a2-0382-4edf-9be0-8a7416c9864b",
+                        "description": "Coca zero",
+                        "unitPrice": 15
+                    }
+                ]
+            }
+        ],
+        "unitPrice": 0,
+        "unitMinPrice": 15,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "d800dbbe-c5ae-4e2c-8a4a-19685f7ec7a3",
+        "code": "d800dbbe-c5ae-4e2c-8a4a-19685f7ec7a3",
+        "description": "H2oh",
+        "needChoices": false,
+        "unitPrice": 10,
+        "unitMinPrice": 10,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "47742a98-0283-4802-ba84-57b6b065caa9",
+        "code": "47742a98-0283-4802-ba84-57b6b065caa9",
+        "description": "Água Tônica",
+        "needChoices": false,
+        "unitPrice": 7,
+        "unitMinPrice": 7
+    },
+    {
+        "id": "3b3765fe-b01e-4ace-90c3-c645b367258e",
+        "code": "3b3765fe-b01e-4ace-90c3-c645b367258e",
+        "description": "Schweppes",
+        "needChoices": false,
+        "unitPrice": 8,
+        "unitMinPrice": 8
+    }
+]

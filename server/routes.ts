@@ -60,7 +60,7 @@ routes.get('/api/estados', estadoController.list)
 
 routes.get('/api/usuarios/:email?', usuarioController.list)
 routes.post('/api/usuarios', usuarioController.create)
-routes.post('/api/usuariosMany', usuarioController.createMany)
+//routes.post('/api/usuariosMany', usuarioController.createMany)
 routes.put('/api/usuarios', usuarioController.update)
 routes.delete('/api/usuarios/:id', usuarioController.delete)
 routes.post('/api/login', usuarioController.login)

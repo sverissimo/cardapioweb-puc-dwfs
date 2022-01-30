@@ -24,13 +24,27 @@ export class PopulateDB {
                 .map((el, i) => `$${i + 1}`)
                 .join()
 
+
         for (let row of data) {
+
             const values = Object.values(row)
             await queryRunner.query(
                 `INSERT INTO ${this.table} (${columns}) 
                 values (${valuePlaceHolders}) ON CONFLICT DO NOTHING;`, values
             )
         }
+    }
+
+    convertJsonToQuery(pathToFile: string) {
+        const
+            jsonData = this.readSqlFile(pathToFile)
+            , data = JSON.parse(jsonData.toString())
+            , columns = Object.keys(data[0])
+            , valuePlaceHolders = columns
+                .map((el, i) => `$${i + 1}`)
+                .join()
+        return { data, columns, valuePlaceHolders }
+
 
     }
 }

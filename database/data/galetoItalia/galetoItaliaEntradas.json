@@ -1,0 +1,205 @@
+[
+    {
+        "id": "f714a112-1c1b-45c5-b95e-36b3d58831ea",
+        "code": "f714a112-1c1b-45c5-b95e-36b3d58831ea",
+        "description": "Couvert Galeto Itália",
+        "details": "Cesta de pães artesanais acompanhados de patê de salmão e ratatouille (berinjela).",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202105141123_Q2G4_.jpeg",
+        "needChoices": false,
+        "unitPrice": 30,
+        "unitMinPrice": 30,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "f714a112-1c1b-45c5-b95e-36b3d58831ea",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "27b68d0d-781f-4d58-87de-27100b3243e7",
+        "code": "27b68d0d-781f-4d58-87de-27100b3243e7",
+        "description": "Bruschetta de camarão",
+        "details": "Pão artesanal torrado com camarões, tomates em concassé e molho basílico.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202012281428_smo6_.jpeg",
+        "needChoices": false,
+        "unitPrice": 45,
+        "unitMinPrice": 45,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "74443b37-7977-4ad2-930c-2f2a7ba14f12",
+        "code": "74443b37-7977-4ad2-930c-2f2a7ba14f12",
+        "description": "Carpaccio",
+        "details": "Carpaccio de boi ou de salmão ao molho de mostarda e alcaparras acompanhado de pães artesanais.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202012281430_HeV9_.jpeg",
+        "needChoices": true,
+        "choices": [
+            {
+                "code": "619CC4",
+                "name": "Escolha o carpaccio",
+                "min": 1,
+                "max": 1,
+                "garnishItens": [
+                    {
+                        "id": "3f4eeb81-e540-42bf-8294-53a757853a81",
+                        "code": "3f4eeb81-e540-42bf-8294-53a757853a81",
+                        "description": "Carpaccio de boi",
+                        "unitPrice": 45
+                    },
+                    {
+                        "id": "b1dd7f01-0585-424c-9cc7-e627804fc0fa",
+                        "code": "b1dd7f01-0585-424c-9cc7-e627804fc0fa",
+                        "description": "Carpaccio de salmão",
+                        "unitPrice": 50
+                    }
+                ]
+            }
+        ],
+        "unitPrice": 0,
+        "unitMinPrice": 45,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "74443b37-7977-4ad2-930c-2f2a7ba14f12",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "e847f6ff-f957-4515-a517-ddca6d4b3f8a",
+        "code": "e847f6ff-f957-4515-a517-ddca6d4b3f8a",
+        "description": "Burrata",
+        "details": "Queijo fresco e cremoso, rúcula e tomate, acompanhado de pães artesanais.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202012281431_x94j_.jpeg",
+        "needChoices": false,
+        "unitPrice": 45,
+        "unitMinPrice": 45,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "50a6ef74-9812-4eb1-b493-38f6f54ff911",
+        "code": "50a6ef74-9812-4eb1-b493-38f6f54ff911",
+        "description": "Tábua de queijos",
+        "details": "Seleção de queijos: canastra, ricota, brie, gorgonzola e mussarela de búfalo. Acompanhado de pães artesanais e geleia de jabuticaba.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202201141319_3J07_i.jpg",
+        "needChoices": false,
+        "unitPrice": 80,
+        "unitMinPrice": 80,
+        "productTags": [
+            {
+                "group": "DIETARY_RESTRICTIONS",
+                "tags": [
+                    "VEGETARIAN"
+                ]
+            },
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "50a6ef74-9812-4eb1-b493-38f6f54ff911",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "22d9ca33-5a5a-4e7d-bedd-2875cafcb0bc",
+        "code": "22d9ca33-5a5a-4e7d-bedd-2875cafcb0bc",
+        "description": "Salada Tropical",
+        "details": "Mix de folhas, pêra ao vinho e redução de balsâmico.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202012252318_4JZJ_.jpeg",
+        "needChoices": false,
+        "unitPrice": 35,
+        "unitMinPrice": 35,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "22d9ca33-5a5a-4e7d-bedd-2875cafcb0bc",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "f652ca49-3d2e-4a48-909b-b99d46ad79ea",
+        "code": "f652ca49-3d2e-4a48-909b-b99d46ad79ea",
+        "description": "Camarão ao alho",
+        "details": "Camarões descascados salteados ao alho e óleo.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202111021330_0AEL_i.jpg",
+        "needChoices": false,
+        "unitPrice": 75,
+        "unitMinPrice": 75,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_2"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "f652ca49-3d2e-4a48-909b-b99d46ad79ea",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "15f669ba-e2c9-4e19-a7c5-25e1a6ed805f",
+        "code": "15f669ba-e2c9-4e19-a7c5-25e1a6ed805f",
+        "description": "Camarão Galeto Itália (8 unidades)",
+        "details": "Camarões grandes marinados no Saquê, fritos e refogados com cebolinha e alho.",
+        "logoUrl": "ce76f0fe-4ed4-45ac-8535-0f2ce16b4142/202110311220_7J81_i.jpg",
+        "needChoices": false,
+        "unitPrice": 80,
+        "unitMinPrice": 80,
+        "unitOriginalPrice": 100,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "15f669ba-e2c9-4e19-a7c5-25e1a6ed805f",
+            "quantity": 0,
+            "unit": "g"
+        }
+    }
+]

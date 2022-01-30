@@ -9,11 +9,14 @@ const CardapioItem = ({ item, categoria }) => {
                 <Image width={50} height={50} src={`/${categoria.nome}.png`} alt={item} />
             </div>
 
-            <div className="cardapioItem--text">
-                <span>
+            <div className="cardapioItem--div">
+                <span className="cardapioItem--text">
                     {item.nome}
                 </span>
-                {item.descricao}
+                <span className="cardapioItem--description">
+
+                    {item.descricao}
+                </span>
             </div>
 
             <div className="cardapioItem--price">

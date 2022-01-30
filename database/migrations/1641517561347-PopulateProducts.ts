@@ -6,8 +6,16 @@ export class PopulateProducts1641517561347 extends PopulateDB implements Migrati
     table = 'produtos'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        this.insertJSON(queryRunner, '../data/produtos.json')
+        //await this.insertJSON(queryRunner, '../data/produtos.json')
+        const { data, columns, valuePlaceHolders } = this.convertJsonToQuery('../data/importedMenu.json')
 
+        for (let row of data) {
+            const values = Object.values(row)
+            await queryRunner.query(
+                `INSERT INTO ${this.table} (${columns}) 
+                values (${valuePlaceHolders}) ON CONFLICT DO NOTHING;`, values
+            )
+        }
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

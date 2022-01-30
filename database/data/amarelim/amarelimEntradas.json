@@ -1,0 +1,129 @@
+[
+    {
+        "id": "6efb95e8-f0f8-4526-8661-b0d4fc6b6ff7",
+        "code": "6efb95e8-f0f8-4526-8661-b0d4fc6b6ff7",
+        "description": "Angu a baiana",
+        "details": "Acompanha pãozinho e cebolinha",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/201908051741_41574444.jpg",
+        "needChoices": false,
+        "unitPrice": 19.5,
+        "unitMinPrice": 19.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "6efb95e8-f0f8-4526-8661-b0d4fc6b6ff7",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "cedf5ef9-1ac4-4e04-bdd1-5a0758de328a",
+        "code": "cedf5ef9-1ac4-4e04-bdd1-5a0758de328a",
+        "description": "Caldo de abóbora com Gorgonzola",
+        "details": ".Acompanha raspas de gorgonzola...caldo vegetariano..não contém nenhum tipo de carne.Serve uma pessoa. O pãozinho é opcional, caso desejar, gentileza informar na obs: \" Com pãozinho\".",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202005131454_Zevs_c.jpg",
+        "needChoices": false,
+        "unitPrice": 17,
+        "unitMinPrice": 17,
+        "productTags": [
+            {
+                "group": "DIETARY_RESTRICTIONS",
+                "tags": [
+                    "VEGETARIAN"
+                ]
+            },
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "cedf5ef9-1ac4-4e04-bdd1-5a0758de328a",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "38768b5f-e9f3-4228-ada1-3c88cdedd4fa",
+        "code": "38768b5f-e9f3-4228-ada1-3c88cdedd4fa",
+        "description": "Caldo de alho poró",
+        "details": "Alho poró,batatas, creme de leite, cebola.. . Serve uma pessoa..caldo exclusivo vegetariano..não contem carne. O pãozinho é opcional, caso desejar, gentileza informar na obs: \" Com pãozinho\"",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202005041903_q6dz_s.png",
+        "needChoices": false,
+        "unitPrice": 16,
+        "unitMinPrice": 16,
+        "productTags": [
+            {
+                "group": "DIETARY_RESTRICTIONS",
+                "tags": [
+                    "VEGETARIAN"
+                ]
+            },
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "38768b5f-e9f3-4228-ada1-3c88cdedd4fa",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "e0990f43-73a2-4644-a5c0-be00beb2032d",
+        "code": "e0990f43-73a2-4644-a5c0-be00beb2032d",
+        "description": "Caldo de mandioca",
+        "details": "Acompanha pãozinho, cebolinha e torresminho",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/201908051739_41573895.jpg",
+        "needChoices": false,
+        "unitPrice": 17.5,
+        "unitMinPrice": 17.5,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "NOT_APPLICABLE"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "e0990f43-73a2-4644-a5c0-be00beb2032d",
+            "quantity": 0,
+            "unit": "g"
+        }
+    },
+    {
+        "id": "c6346e74-046a-49f8-b905-6e516ec175a0",
+        "code": "c6346e74-046a-49f8-b905-6e516ec175a0",
+        "description": "Dobradinha com pé de porco",
+        "details": "Dobradinha, pé de porco, cenoura., bacon, linguiça calabresa.. Mtx 500ml",
+        "logoUrl": "82df3264-d9ec-429e-8e40-5692b96ca62f/202106291645_G11Y_i.jpg",
+        "needChoices": false,
+        "unitPrice": 18,
+        "unitMinPrice": 18,
+        "productTags": [
+            {
+                "group": "PORTION_SIZE",
+                "tags": [
+                    "SERVES_1"
+                ]
+            }
+        ],
+        "productInfo": {
+            "id": "c6346e74-046a-49f8-b905-6e516ec175a0",
+            "quantity": 0,
+            "unit": "g"
+        }
+    }
+]

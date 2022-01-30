@@ -1,4 +1,4 @@
-export class Restaurante {
+export class RestauranteModel {
     id: number;
     nome: string;
     ativo: boolean;
@@ -19,7 +19,7 @@ export class Restaurante {
         Object.assign(this, props)
     }
 
-    toTableModel(restaurante: Restaurante) {
+    toTableModel(restaurante: RestauranteModel) {
         const { cozinhaId, cidadeId, endPoint, ...restauranteTableModel } = restaurante
         return restauranteTableModel
     }

@@ -37,7 +37,7 @@ class ProdutoService {
         return produtos
     }
 
-    async create(produto) {
+    async create(produto: Produto) {
 
 
         if (produto.categoria_id) {
@@ -49,9 +49,9 @@ class ProdutoService {
             produto.restaurante = restaurante
         }
 
-        const produtoEntities = this.produtoRepository.create(produto)
-        await this.produtoRepository.save(produtoEntities);
-        return produtoEntities
+        const _produto = this.produtoRepository.create(produto)
+        await this.produtoRepository.save(_produto);
+        return _produto
     }
 
     async createMany(produtos: Array<any>) {
@@ -83,15 +83,15 @@ class ProdutoService {
         if (!produtoAtual)
             throw new Error('Produto não encontrado na base de dados.')
 
-        if (produto.categoria_id) {
-            const categoriaRepository = getCustomRepository(CategoriaRepository)
-            produto.categoria = await categoriaRepository.findOne(produto.categoria_id)
-        }
-
-        if (produto.restaurante_id) {
-            const restaurante = await new RestauranteService().getRestaurante(produto.restaurante_id)
-            produto.restaurante = restaurante
-        }
+        /*    if (produto.categoria_id) {
+               const categoriaRepository = getCustomRepository(CategoriaRepository)
+               produto.categoria = await categoriaRepository.findOne(produto.categoria_id)
+           }
+   
+           if (produto.restaurante_id) {
+               const restaurante = await new RestauranteService().getRestaurante(produto.restaurante_id)
+               produto.restaurante = restaurante
+           } */
 
         const updatedProduct = this.produtoRepository.create({
             ...produtoAtual, ...produto

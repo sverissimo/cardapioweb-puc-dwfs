@@ -1,0 +1,23 @@
+[
+    {
+        "logradouro": "Av Francisco Sa",
+        "numero": "658",
+        "cep": "30411-174",
+        "cidade_id": 1,
+        "restaurante_id": 1
+    },
+    {
+        "logradouro": "Rua Alagoas",
+        "numero": "1417",
+        "cep": "30130-160",
+        "cidade_id": 1,
+        "restaurante_id": 2
+    },
+    {
+        "logradouro": " Av. do Contorno",
+        "numero": "4667",
+        "cep": "30220-040",
+        "cidade_id": 1,
+        "restaurante_id": 3
+    }
+]

@@ -5,7 +5,6 @@ import PopUpDialog from "../../components/PopUpDialog/PopUpDialog"
 import { UserContext } from "../../contexts/UserContext"
 import { Api } from "../../services/api"
 import CustomTable from "../../components/Table/CustomTable"
-import { getJoinColumnsName, parseSubmitData } from "../../utils/dtoFilter"
 import { filterData } from "../../utils/filterData"
 
 interface IState {
@@ -68,6 +67,9 @@ export default function Manage(props) {
                 else
                     data = await api.get(subject)
 
+                if (subject === 'produtos')
+                    data = filterData(user, data)
+
                 setState({ ...state, ...lookupData, [subject]: data, lookupProps, lookupTables, loggedIn })
 
             } catch (error) {
@@ -90,6 +92,9 @@ export default function Manage(props) {
         if (subject === 'usuarios')
             emptyElement.password = ''
 
+        if (subject === 'produtos')
+            emptyElement.restaurante = state[subject][0].restaurante
+
         delete emptyElement.id
         setState({ ...state, editedElement: emptyElement, openDialog: true, add: true })
     }
@@ -104,7 +109,6 @@ export default function Manage(props) {
         const
             { name, value } = e.target
             , editedElement = { ...state.editedElement }
-        console.log("🚀 ~ file: [subject].tsx ~ line 78 ~ Manage ~ { name, value }", { name, value })
 
         editedElement[name] = value
         setState({ ...state, editedElement })
@@ -141,7 +145,7 @@ export default function Manage(props) {
             originalCollection
                 .push(updatedElement)
 
-        const updatedCollection = getJoinColumnsName(originalCollection)
+        const updatedCollection = originalCollection
 
         setState({ ...state, [subject]: updatedCollection, openDialog: false })
     }
