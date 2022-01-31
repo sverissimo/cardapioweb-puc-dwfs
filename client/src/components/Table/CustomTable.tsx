@@ -9,9 +9,6 @@ export default function CustomTable({ collection: originalCollection, title, sty
         tableModel = new TableModelFactory(title)
         , table = tableModel.create(originalCollection)
         , { tableHeaders, length, arrayOfRows } = table
-    console.log("🚀 ~ file: CustomTable.tsx ~ line 12 ~ CustomTable ~ length", length)
-
-    //console.log("🚀 ~ file: CustomTable.tsx ~ line 10 ~ CustomTable ~ tableHeaders", tableHeaders)
 
     return (
         <table className='table'>

@@ -14,7 +14,11 @@ export class UsuarioController {
             , { email } = req.params
             , _usuarios = await usuarioService.list(email)
 
-        const usuarios = _usuarios.map(u => usuarioAssembler.toDTO(u))
+        const usuarios = []
+        for (let user of _usuarios) {
+            const usuario = await usuarioAssembler.toDTO(user)
+            usuarios.push(usuario)
+        }
 
         return res.json(usuarios)
     }

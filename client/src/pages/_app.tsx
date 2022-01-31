@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css';
 import { Header } from '../components/Header'
 import { useEffect, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';

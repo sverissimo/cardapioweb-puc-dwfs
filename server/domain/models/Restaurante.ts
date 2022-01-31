@@ -40,19 +40,22 @@ class Restaurante {
 
     @OneToOne(() => Endereco, endereco => endereco.restaurante)
     endereco?: Endereco
-    /* 
-        @Column({ nullable: true })
-        endereco_id: number
-     */
-    @ManyToMany(() => FormaPagamento)
-    @JoinTable()
-    formaPagamento: FormaPagamento[]
+
+    @ManyToMany(() => FormaPagamento, { cascade: true })
+    @JoinTable({
+        name: 'restaurante_forma_pagamento',
+        joinColumn: { name: 'restaurante_id', referencedColumnName: 'id' },
+        inverseJoinColumn: { name: 'forma_pagamento_id' }
+    })
+    formas_pagamento: FormaPagamento[]
 
     @CreateDateColumn()
     created_at: Date;
 
     @UpdateDateColumn()
     updated_at: Date;
+
+
 
 }
 

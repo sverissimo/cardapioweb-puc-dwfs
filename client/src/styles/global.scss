@@ -129,3 +129,19 @@ a:hover {
         padding-top: 3.5%;
     }
 }
+
+.downloadXls {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    cursor: pointer;
+    &__text {
+        margin: 0 0.5rem;
+        margin-top: 0.4rem;
+        font-size: 0.65rem;
+        font-weight: 500;
+    }
+    &__text:hover {
+        font-style: italic;
+    }
+}

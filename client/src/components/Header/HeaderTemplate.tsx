@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styles from './styles.module.scss'
 
 
-const { adminHeader, headerContainer, logoStrip, homeLogo, mainImage, stripContent } = styles
+const { adminHeader, logoStrip, homeLogo, stripContent } = styles
 
 type Iprops = {
     menuItems: any;

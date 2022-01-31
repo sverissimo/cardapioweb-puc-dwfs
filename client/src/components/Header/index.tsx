@@ -14,7 +14,6 @@ export function Header() {
         , user = useContext(UserContext)
         , { logUser } = useContext(UserContext)
         , perfil = user?.perfil
-    console.log("🚀 ~ file: index.tsx ~ line 17 ~ Header ~ perfil", perfil)
 
     let menuItems = []
 
@@ -22,7 +21,6 @@ export function Header() {
         menuItems = adminMenuItems
     if (perfil === 'Parceiro')
         menuItems = parceiroMenuItems
-    console.log("🚀 ~ file: index.tsx ~ line 24 ~ Header ~ menuItems", menuItems)
 
     const logOut = () => {
         const { picture } = user

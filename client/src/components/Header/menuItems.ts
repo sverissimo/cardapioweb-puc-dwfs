@@ -25,6 +25,10 @@ export const adminMenuItems: ItemsArray = [
     {
         endPoint: '/gerenciar/usuarios',
         title: 'Usuários'
+    },
+    {
+        endPoint: '/relatorios',
+        title: 'Relatórios'
     }
 ]
 

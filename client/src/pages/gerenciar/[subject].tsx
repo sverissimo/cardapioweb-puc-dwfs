@@ -6,6 +6,7 @@ import { UserContext } from "../../contexts/UserContext"
 import { Api } from "../../services/api"
 import CustomTable from "../../components/Table/CustomTable"
 import { filterData } from "../../utils/filterData"
+import ExportToExcel from "../../components/ExportToExcel/ExportToExcel"
 
 interface IState {
     openDialog: boolean;
@@ -166,6 +167,9 @@ export default function Manage(props) {
 
         setState({ ...state, [subject]: updatedCollection })
     }
+    const downloadXls = () => {
+
+    }
 
     const toggleForm = () => setState({ ...state, openDialog: !state.openDialog })
 
@@ -176,15 +180,22 @@ export default function Manage(props) {
         <div className='customContainer'>
             {
                 state[subject] &&
-                <CustomTable
-                    collection={state[subject]}
-                    title={subject}
-                    style={{ width: '300px' }}
-                    idIndex={0}
-                    editElement={editElement}
-                    deleteElement={deleteElement}
-                    openEditDialog={toggleForm}
-                />}
+                <>
+                    <ExportToExcel
+                        data={state[subject]}
+                        subject={subject}
+                    />
+                    <CustomTable
+                        collection={state[subject]}
+                        title={subject}
+                        style={{ width: '300px' }}
+                        idIndex={0}
+                        editElement={editElement}
+                        deleteElement={deleteElement}
+                        openEditDialog={toggleForm}
+                    />
+                </>
+            }
             <button
                 type="button"
                 className="btn btn-primary"

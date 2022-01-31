@@ -31,7 +31,7 @@ class RestauranteService {
 
     async list() {
         const restaurante = await this.restauranteRepository.find({
-            relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado'],
+            relations: ['cozinha', 'endereco', 'endereco.cidade', 'endereco.cidade.estado', 'formas_pagamento'],
             order: { nome: 'ASC' }
         })
         return restaurante

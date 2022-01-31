@@ -2,9 +2,11 @@ import humps from 'humps'
 import { getCustomRepository } from 'typeorm';
 import Cidade from '../../domain/models/Cidade';
 import { Cozinha } from '../../domain/models/Cozinha';
+import { FormaPagamento } from '../../domain/models/FormaPagamento';
 import { Restaurante } from "../../domain/models/Restaurante";
 import { CozinhaService } from '../../domain/services/CozinhaService';
 import { CidadeRepository } from '../../repositories/CidadeRepository';
+import { FormaPagamentoRepository } from '../../repositories/FormaPagamentoRepository';
 import IEntityAssembler from './IEntityAssembler';
 //import { RestauranteDTO } from "../model/RestauranteDTO";
 
@@ -13,7 +15,7 @@ export class RestauranteAssembler implements IEntityAssembler {
     public toDTO(restaurante: Restaurante) {
 
         const
-            { endereco, cozinha, created_at, updated_at, ...restauranteDTOProps } = restaurante
+            { endereco, cozinha, formas_pagamento, created_at, updated_at, ...restauranteDTOProps } = restaurante
             , cozinhaName = cozinha.nome
             , cozinha_id = cozinha.id
             , cidadeName = endereco?.cidade?.nome
@@ -54,7 +56,7 @@ export class RestauranteAssembler implements IEntityAssembler {
         restaurante.aberto = restaurante.aberto === 'sim' ? true : false
 
         const
-            { cidade, estado, cozinha, ..._restaurante } = restaurante
+            { cidade, estado, cozinha, formaPagamento, ..._restaurante } = restaurante
             , cozinhaObject: Cozinha = await new CozinhaService().findByName(cozinha)
 
         if (cozinhaObject)
@@ -64,6 +66,14 @@ export class RestauranteAssembler implements IEntityAssembler {
 
         if (cidadeObj)
             _restaurante.cidade_id = cidadeObj.id
+
+        if (formaPagamento) {
+            const
+                pgIds = formaPagamento.map(pgId => ({ id: pgId }))
+                , formasPagamento: FormaPagamento[] = await getCustomRepository(FormaPagamentoRepository).find({ where: pgIds })
+
+            _restaurante.formasPagamento = formasPagamento
+        }
 
         const restauranteModel = humps.decamelizeKeys(_restaurante)
         return restauranteModel

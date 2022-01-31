@@ -7,7 +7,7 @@ import IEntityAssembler from './IEntityAssembler';
 
 export class UsuarioAssembler implements IEntityAssembler {
 
-    async toDTO(usuario: Usuario) {
+    async toDTO(usuario: Usuario): Promise<UsuarioDTO> {
         const
             { restaurante, password, restaurante_id, ...usuarioDTOProps } = usuario
             , usuarioDTO: UsuarioDTO = usuarioDTOProps
@@ -17,9 +17,8 @@ export class UsuarioAssembler implements IEntityAssembler {
             usuarioDTO.restaurante = restauranteObject.nome
         }
 
-        console.log("🚀 ~ file: UsuarioAssembler.ts ~ line 18 ~ UsuarioAssembler ~ toDTO ~ usuarioDTO", usuarioDTO)
-
         usuarioDTO.perfil = usuarioDTO.perfil === 'admin' ? 'Administrador' : 'Parceiro'
+        //console.log("🚀 ~ file: UsuarioAssembler.ts ~ line 21 ~ UsuarioAssembler ~ toDTO ~ usuarioDTO", usuarioDTO)
 
         return usuarioDTO
     }
