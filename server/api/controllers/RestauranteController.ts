@@ -55,9 +55,9 @@ class RestauranteController {
                 restauranteModel = await restauranteAssembler.toModel(req.body)
                 , newRestaurante: Restaurante = await restauranteService.create(restauranteModel)
 
-            //const restauranteDTO = restauranteAssembler.toDTO(newRestaurante)
+            const restauranteDTO = restauranteAssembler.toDTO(newRestaurante)
 
-            return res.status(201).json(newRestaurante)
+            return res.status(201).json(restauranteDTO)
 
         } catch (error) {
             console.log("🚀 ~ file: RestauranteController.ts ~ line 64 ~ RestauranteController ~ create ~ error", error)

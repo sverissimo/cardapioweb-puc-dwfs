@@ -3,6 +3,6 @@ export type UsuarioCreateDTO = {
     nome: string;
     email: string;
     perfil: string;
-    password: string;
+    password?: string;
     restaurante?: string
 }

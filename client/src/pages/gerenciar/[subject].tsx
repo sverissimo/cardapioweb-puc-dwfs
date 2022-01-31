@@ -157,7 +157,6 @@ export default function Manage(props) {
         const
             objId = tableRow.find(e => e.field === 'id')
             , id = objId?.value
-        console.log("🚀 ~ file: [subject].tsx ~ line 149 ~ deleteElement ~ tableRow", tableRow)
 
         await api.delete(`${subject}/${id}`)
             .catch(e => console.log(e))
@@ -166,9 +165,6 @@ export default function Manage(props) {
             , updatedCollection = originalCollection.filter(el => el.id !== id)
 
         setState({ ...state, [subject]: updatedCollection })
-    }
-    const downloadXls = () => {
-
     }
 
     const toggleForm = () => setState({ ...state, openDialog: !state.openDialog })
@@ -196,14 +192,17 @@ export default function Manage(props) {
                     />
                 </>
             }
-            <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => addElement()}
-            >
-                <i className="bi bi-plus" style={{ fontSize: '1.2rem' }} />  Adicionar
-            </button>
-
+            {
+                (user.perfil === 'Administrador' || subject !== 'restaurantes') &&
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => addElement()}
+                    style={{ margin: '1.5rem' }}
+                >
+                    <i className="bi bi-plus" style={{ fontSize: '1.2rem', }} />  Adicionar
+                </button>
+            }
             {state.openDialog &&
                 <PopUpDialog close={toggleForm}                >
                     <Form

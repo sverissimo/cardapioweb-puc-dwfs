@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { UsuarioService } from "../../domain/services/UsuarioService";
-import IEntityAssembler from "../assembler/IEntityAssembler";
 import { UsuarioAssembler } from "../assembler/UsuarioAssembler";
 
 
@@ -55,7 +54,7 @@ export class UsuarioController {
                 usuarioService = new UsuarioService()
                 , usuarioAssembler = new UsuarioAssembler()
                 , usuario = await usuarioService.create(req.body)
-                , usuarioDTO = usuarioAssembler.toDTO(usuario)
+                , usuarioDTO = await usuarioAssembler.toDTO(usuario)
 
             return res.status(201).json(usuarioDTO)
 
@@ -93,7 +92,7 @@ export class UsuarioController {
             const
                 usuarioModel = await usuarioAssembler.toModel(usuario)
                 , usuarioAtualizado = await usuarioService.update(usuarioModel)
-                , usuarioDTO = usuarioAssembler.toDTO(usuarioAtualizado)
+                , usuarioDTO = await usuarioAssembler.toDTO(usuarioAtualizado)
 
             return res.status(200).json(usuarioDTO)
 

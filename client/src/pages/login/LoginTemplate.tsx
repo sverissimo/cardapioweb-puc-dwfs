@@ -1,5 +1,6 @@
 import styles from './login.module.scss'
 import FacebookLogin from 'react-facebook-login'
+import { useEffect } from 'react'
 
 interface Props {
     signIn(e: any): Promise<void>;
@@ -13,6 +14,14 @@ const { loginContainer, formContainer } = styles
 const LoginTemplate = (props: Props): JSX.Element => {
 
     const { signIn, handleInput, componentClicked, responseFacebook } = props
+
+    useEffect(() => {
+        const
+            elements = document.getElementsByClassName('kep-login-facebook metro')
+            , facebookButton = elements.length && elements[0]
+        facebookButton ? facebookButton.innerHTML = 'Logar com o Facebook' : void 0
+    }, [])
+
 
     return (
         <div className={loginContainer}>
@@ -54,7 +63,8 @@ const LoginTemplate = (props: Props): JSX.Element => {
                     autoLoad={false}
                     fields="name,email,picture"
                     onClick={componentClicked}
-                    callback={responseFacebook} />
+                    callback={responseFacebook}
+                />
             </main>
 
         </div>

@@ -17,8 +17,7 @@ export class UsuarioAssembler implements IEntityAssembler {
             usuarioDTO.restaurante = restauranteObject.nome
         }
 
-        usuarioDTO.perfil = usuarioDTO.perfil === 'admin' ? 'Administrador' : 'Parceiro'
-        //console.log("🚀 ~ file: UsuarioAssembler.ts ~ line 21 ~ UsuarioAssembler ~ toDTO ~ usuarioDTO", usuarioDTO)
+        usuarioDTO.perfil = (usuarioDTO.perfil === 'admin' || usuarioDTO.perfil === 'Administrador') ? 'Administrador' : 'Parceiro'
 
         return usuarioDTO
     }

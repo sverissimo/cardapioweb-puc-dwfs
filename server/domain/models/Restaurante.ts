@@ -38,7 +38,7 @@ class Restaurante {
     @Column({ nullable: true })
     cozinha_id: number;
 
-    @OneToOne(() => Endereco, endereco => endereco.restaurante)
+    @OneToOne(() => Endereco, endereco => endereco.restaurante, { cascade: true })
     endereco?: Endereco
 
     @ManyToMany(() => FormaPagamento, { cascade: true })
@@ -54,9 +54,6 @@ class Restaurante {
 
     @UpdateDateColumn()
     updated_at: Date;
-
-
-
 }
 
 export { Restaurante };

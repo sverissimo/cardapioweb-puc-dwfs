@@ -102,6 +102,7 @@ class RestauranteService {
         await enderecoService.update(endereco)
 
         const restauranteModel = await this.getRestaurante(id)
+        console.log("🚀 ~ file: RestauranteService.ts ~ line 105 ~ RestauranteService ~ update ~ restauranteModel", restauranteModel)
 
         return restauranteModel
     }

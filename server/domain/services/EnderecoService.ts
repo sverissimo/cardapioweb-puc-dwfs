@@ -32,7 +32,6 @@ export class EnderecoService {
 
         const newEndereco = this.enderecoRepository.create(endereco)
         endereco = await this.enderecoRepository.save(newEndereco)
-        console.log("🚀 ~ file: EnderecoService.ts ~ line 32 ~ EnderecoService ~ save ~ endereco", endereco)
 
         return endereco
     }
@@ -41,14 +40,15 @@ export class EnderecoService {
     async update(endereco: Endereco | any): Promise<any> {
         const
             { id, cidade } = endereco
-            , enderecoAtual = await this.enderecoRepository.find({ restaurante_id: id })
+            , enderecoAtual = await this.enderecoRepository.findOne({ restaurante_id: id })
             , cidadeObj: Cidade = await this.cidadeRepository.findOne({ nome: cidade })
+
 
         if (cidadeObj)
             endereco.cidade_id = cidadeObj.id
 
         const updatedEndereco = this.enderecoRepository.create({
-            ...enderecoAtual, ...endereco
+            ...enderecoAtual, ...endereco, id: enderecoAtual.id
         })
 
         await this.enderecoRepository.save(updatedEndereco)

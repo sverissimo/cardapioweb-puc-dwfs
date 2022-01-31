@@ -22,6 +22,7 @@ export class TableModelFactory {
 
         collection.forEach(entity => {
 
+
             const
                 entityProps = Object.keys(entity)
                 , missingProps = tableHeaders.filter(header => !entityProps.includes(header.toLowerCase()))

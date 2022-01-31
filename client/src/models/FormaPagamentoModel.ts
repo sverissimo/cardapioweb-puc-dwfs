@@ -7,7 +7,7 @@ export class FormaPagamentoModel {
     }
 
     toTableModel(formaPagamento: FormaPagamentoModel) {
-        const { id, ...formaPagamentoTableModel } = formaPagamento
+        const { ...formaPagamentoTableModel } = formaPagamento
         return formaPagamentoTableModel
     }
 

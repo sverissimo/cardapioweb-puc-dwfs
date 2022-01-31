@@ -7,7 +7,7 @@ export class CategoriaModel {
     }
 
     toTableModel(categoria: CategoriaModel) {
-        const { id, ...categoriaTableModel } = categoria
+        const { ...categoriaTableModel } = categoria
         return categoriaTableModel
     }
 

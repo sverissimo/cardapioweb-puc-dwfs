@@ -21,7 +21,6 @@ class CozinhaService {
 
     async findByName(nome: string): Promise<Cozinha> {
         const cozinha: Cozinha = await this.cozinhaRepository.findOne({ nome })
-        console.log("🚀 ~ file: CozinhaService.ts ~ line 24 ~ CozinhaService ~ findByName ~ cozinha", cozinha)
         return cozinha
     }
 
