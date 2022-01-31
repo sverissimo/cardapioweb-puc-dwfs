@@ -71,7 +71,7 @@ export default function Manage(props) {
                 if (subject === 'produtos')
                     data = filterData(user, data)
 
-                setState({ ...state, ...lookupData, [subject]: data, lookupProps, lookupTables, loggedIn })
+                setState(state => ({ ...state, ...lookupData, [subject]: data, lookupProps, lookupTables, loggedIn }))
 
             } catch (error) {
                 console.log({ error })
@@ -226,7 +226,10 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = (ctx) => {
 
-    const { subject } = ctx.params
+    const { subject, slug } = ctx.params
+
+    console.log(`Building slug: ${slug}`)
+
     return {
         props: {
             subject

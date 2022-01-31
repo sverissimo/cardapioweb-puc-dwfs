@@ -3,9 +3,8 @@ import { Api } from "../services/api"
 import { useContext } from "react"
 import { UserContext } from "../contexts/UserContext"
 import HomeTemplate from "./HomeTemplate"
-import { Restaurante } from "../models/RestauranteModel"
 import { filterData } from "../utils/filterData"
-import { getCookie } from "../utils/setCookies"
+import { RestauranteModel } from "../models/RestauranteModel"
 
 
 export default function Home(props: HomeProps) {
@@ -42,7 +41,7 @@ type Produto = {
 }
 
 type HomeProps = {
-  restaurantes: Array<Restaurante>,
+  restaurantes: Array<RestauranteModel>,
   produtos: Produto[]
 };
 

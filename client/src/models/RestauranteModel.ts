@@ -5,13 +5,13 @@ export class RestauranteModel {
     aberto: boolean;
     cozinha: object;
     cozinhaId: number;
-    cep: string;
-    logradouro: string;
-    numero: string;
-    complemento: string;
-    cidadeId: number;
-    cidade: string;
-    estado: string;
+    cep?: string;
+    logradouro?: string;
+    numero?: string;
+    complemento?: string;
+    cidadeId?: number;
+    cidade?: string;
+    estado?: string;
     endPoint?: string = 'restaurante';
     //formaPagamento: FormaPagamento[]  
 

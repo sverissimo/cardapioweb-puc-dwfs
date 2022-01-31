@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
   }, [usuario.email])
 
   return (
-
+    //@ts-ignore
     <UserContext.Provider value={{ ...usuario, logUser }} >
 
       <Header />

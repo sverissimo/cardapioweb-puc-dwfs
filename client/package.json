@@ -5,7 +5,7 @@
     "dev": "next dev -p 4000",
     "devHttps": "node ./server.js",
     "build": "next build",
-    "start": "next start -p 4000",
+    "start": "SET NODE_ENV=production & node ./server.js",
     "lint": "next lint"
   },
   "dependencies": {

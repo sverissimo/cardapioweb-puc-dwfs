@@ -1,6 +1,4 @@
-import { Bar, Column, Pie } from '@ant-design/plots'
-
-export class ChartFactory {
+class ChartFactory {
 
     toBar(rawData: any[]) {
 
@@ -19,9 +17,7 @@ export class ChartFactory {
             seriesField: 'type',
 
         }
-
-        if (data.length)
-            return <Bar {...config} />
+        return config;
     }
 
     toColumn(rawData: any[]) {
@@ -53,10 +49,10 @@ export class ChartFactory {
             },
 
         };
-        return <Column {...config} />;
+        return config;
     }
 
-    toPie(rawData) {
+    toPie(rawData: any[]) {
 
         const data = []
 
@@ -86,12 +82,9 @@ export class ChartFactory {
                     type: 'element-active',
                 },
             ],
-        };
-
-        if (data.length) {
-            return <Pie {...config} />
         }
-        else
-            return null
+        return config
     }
 }
+
+export default ChartFactory

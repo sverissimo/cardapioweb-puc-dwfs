@@ -4,7 +4,7 @@ import { Api } from '../../services/api'
 import { useEffect, useState } from 'react'
 const { mainContainer, container, title } = styles
 
-const Relatorios = () => {
+const Relatorios = (props) => {
     const
         titles = [
             'Número de produtos por Restaurante',
@@ -38,7 +38,7 @@ const Relatorios = () => {
                     i++
                 }
                 console.log({ data });
-                setState({ ...state, ...data, tables })
+                setState(state => ({ ...state, ...data, tables }))
 
             } catch (error) { console.log({ error }) }
         }

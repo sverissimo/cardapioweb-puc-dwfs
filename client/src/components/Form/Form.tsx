@@ -1,8 +1,6 @@
 import { capitalize } from '../../utils/capitalize'
-//import { renderData } from '../../utils/dtoFilter'
 import FormFactory from './FormFactory'
 import styles from './login.module.scss'
-import { inputOptions } from './selectInputs'
 
 interface Props {
     signIn(e: any): Promise<void>;

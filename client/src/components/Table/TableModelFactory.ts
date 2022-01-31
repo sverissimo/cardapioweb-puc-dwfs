@@ -20,8 +20,6 @@ export class TableModelFactory {
             tableHeaders = this.createHeader(collection)
             , arrayOfRows = []
 
-        console.log("🚀 ~ file: TableModelFactory.ts ~ line 23 ~ TableModelFactory ~ create ~ tableHeaders", tableHeaders)
-
         collection.forEach(entity => {
 
             const
