@@ -12,11 +12,8 @@ const { formContainer } = styles
 const Form = (props) => {
     const { handleInput, data, subject, handleSubmit } = props
         , { editedElement, add } = data
-        /*    , formData = editedElement && Object.keys(editedElement)
-           , selectInputs = Object.keys(inputOptions(data))
-           , options = inputOptions(data) */
-
         , { formFields, selectInputs, options } = new FormFactory(subject, data).create()
+
 
     return (
         <div className='customContainer'>

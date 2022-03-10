@@ -1,10 +1,10 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Restaurante } from "./Restaurante";
 
 @Entity('cozinhas')
 class Cozinha {
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn('identity')
     id: number;
 
     @Column()

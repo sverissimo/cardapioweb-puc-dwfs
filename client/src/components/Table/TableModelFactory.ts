@@ -1,4 +1,5 @@
 import { CategoriaModel } from "../../models/CategoriaModel"
+import { CozinhaModel } from "../../models/CozinhaModel"
 import { FormaPagamentoModel } from "../../models/FormaPagamentoModel"
 import { RestauranteModel } from "../../models/RestauranteModel"
 import UsuarioModel from "../../models/UsuarioModel"
@@ -80,7 +81,6 @@ export class TableModelFactory {
         }
 
         if (this.model) {
-
             const dataToReturn = data.map(element => this.model.toTableModel(element))
             return dataToReturn
         }

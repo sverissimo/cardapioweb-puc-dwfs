@@ -15,6 +15,10 @@ export const adminMenuItems: ItemsArray = [
         title: 'Categorias'
     },
     {
+        endPoint: '/gerenciar/cozinhas',
+        title: 'Cozinhas'
+    },
+    {
         endPoint: '/gerenciar/formaPagamento',
         title: 'Formas de pagamento'
     },

@@ -2,9 +2,6 @@ import { getCustomRepository } from "typeorm";
 import { Cozinha } from "../models/Cozinha";
 import { CozinhaRepository } from "../../repositories/CozinhaRepository";
 
-interface ICozinhaCreate {
-    nome: string
-}
 
 class CozinhaService {
 
@@ -24,17 +21,19 @@ class CozinhaService {
         return cozinha
     }
 
-    async create({ nome }: ICozinhaCreate) {
+    async create(cozinha: Cozinha) {
 
-        const alreadyExists = await this.cozinhaRepository.findOne({ nome })
+        const
+            { nome } = cozinha
+            , alreadyExists = await this.cozinhaRepository.findOne({ nome })
 
         if (alreadyExists)
             throw new Error(`Cozinha ${nome} já cadastrada.`)
 
-        const cozinha = this.cozinhaRepository.create({ nome })
-        await this.cozinhaRepository.save(cozinha)
+        const _cozinha = this.cozinhaRepository.create(cozinha)
+        await this.cozinhaRepository.save(_cozinha)
 
-        return cozinha
+        return _cozinha
     }
 
     async update(cozinha: Cozinha) {

@@ -134,6 +134,7 @@ export default function Manage(props) {
             alert(response)
             return
         }
+        console.log("🚀 ~ file: [subject].tsx ~ line 135 ~ Manage ~ response", response)
 
         const
             updatedElement = response
@@ -225,9 +226,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = (ctx) => {
 
-    const { subject, slug } = ctx.params
-
-    console.log(`Building slug: ${slug}`)
+    const { subject } = ctx.params
 
     return {
         props: {
